@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#0d1117">
+<title>Trading Engine v2</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#0d1117;color:#c9d1d9;font-size:14px;padding:12px;-webkit-tap-highlight-color:transparent;overflow-x:hidden}
+h1{font-size:20px;color:#58a6ff}
+h2{font-size:13px;color:#8b949e;margin:16px 0 8px;border-bottom:1px solid #21262d;padding-bottom:4px}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.badge{padding:3px 10px;border-radius:12px;font-size:11px;font-weight:700}
+.badge-live{background:#0d4429;color:#3fb950;border:1px solid #238636}
+.badge-idle{background:#1c1d21;color:#8b949e;border:1px solid #30363d}
+.ts{font-size:10px;color:#484f58}
+
+/* Cards */
+.cards{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-bottom:12px}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:10px 12px}
+.card .lbl{font-size:10px;color:#8b949e;text-transform:uppercase;letter-spacing:.5px}
+.card .val{font-size:22px;font-weight:700;margin-top:2px}
+.card.wide{grid-column:span 2}
+.pos{color:#3fb950}.neg{color:#f85149}.neu{color:#c9d1d9}.warn{color:#d29922}
+
+/* Positions */
+.trade{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;margin-bottom:8px}
+.trade-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.trade-ticker{font-size:18px;font-weight:700;color:#58a6ff}
+.trade-leg{font-size:10px;color:#8b949e;background:#21262d;padding:2px 8px;border-radius:10px}
+.trade-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+.trade-item{font-size:11px}
+.trade-item .t-lbl{color:#8b949e}
+.trade-item .t-val{font-weight:600;font-size:13px}
+.trade-pnl{display:flex;justify-content:space-between;margin-top:8px;padding-top:8px;border-top:1px solid #21262d;font-weight:700;font-size:15px}
+
+/* Watchlist */
+.wl-row{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:10px 12px;margin-bottom:6px}
+.wl-row.has-signal{border-color:#9e6a03;background:#1a1700}
+.wl-top{display:flex;justify-content:space-between;align-items:center}
+.wl-ticker{font-weight:700;font-size:15px}
+.wl-price{color:#8b949e;font-size:12px}
+.wl-signal{color:#f0e68c;font-weight:700;font-size:11px;background:#3d3100;padding:2px 8px;border-radius:10px}
+.wl-conds{margin-top:6px;display:flex;flex-wrap:wrap;gap:4px}
+.cond{padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600}
+.cond-yes{background:#1a3a1a;color:#3fb950}
+.cond-no{background:#1a1a1a;color:#484f58}
+.cond-near{background:#2d2800;color:#d29922}
+.s1-tag{padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600}
+.s1-yes{background:#0d4429;color:#3fb950}
+.s1-no{background:#1a1a1a;color:#484f58}
+
+/* Last run */
+.run-box{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:12px;font-size:12px;margin-bottom:10px}
+.run-line{display:flex;justify-content:space-between;margin:3px 0}
+.run-lbl{color:#8b949e}
+
+/* Section toggle */
+.section-toggle{cursor:pointer;user-select:none;display:flex;align-items:center;gap:6px}
+.section-toggle .arrow{font-size:10px;color:#8b949e;transition:transform .2s}
+.section-toggle .arrow.open{transform:rotate(90deg)}
+
+/* Tabs */
+.tabs{display:flex;gap:0;margin-bottom:12px;background:#161b22;border-radius:8px;overflow:hidden;border:1px solid #30363d}
+.tab{flex:1;text-align:center;padding:10px 0;font-size:12px;font-weight:600;color:#8b949e;cursor:pointer;border-right:1px solid #30363d}
+.tab:last-child{border-right:none}
+.tab.active{background:#21262d;color:#58a6ff}
+.tab-content{display:none}
+.tab-content.active{display:block}
+
+#nodata{text-align:center;padding:60px 20px;color:#8b949e}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div style="display:flex;align-items:center;gap:8px">
+    <h1>TE v2</h1>
+    <span id="badge" class="badge badge-idle">IDLE</span>
+  </div>
+  <span class="ts" id="timestamp"></span>
+</div>
+
+<div class="tabs">
+  <div class="tab active" onclick="switchTab('overview')">Overview</div>
+  <div class="tab" onclick="switchTab('positions')">Positions</div>
+  <div class="tab" onclick="switchTab('watchlist')">Watchlist</div>
+  <div class="tab" onclick="switchTab('log')">Log</div>
+</div>
+
+<div id="nodata">
+  <p style="font-size:16px">No data loaded</p>
+  <p style="margin-top:8px;font-size:12px">Open from OneDrive after pipeline runs</p>
+</div>
+
+<!-- OVERVIEW TAB -->
+<div id="tab-overview" class="tab-content active">
+  <div class="cards" id="cards"></div>
+  <div id="pnlSection"></div>
+</div>
+
+<!-- POSITIONS TAB -->
+<div id="tab-positions" class="tab-content">
+  <h2 id="openHeader">Open Positions</h2>
+  <div id="openTrades"></div>
+  <div id="pendingSection"></div>
+  <h2 id="closedHeader" style="display:none">Closed Trades</h2>
+  <div id="closedTrades"></div>
+</div>
+
+<!-- WATCHLIST TAB -->
+<div id="tab-watchlist" class="tab-content">
+  <h2 id="wlHeader">Watchlist</h2>
+  <div id="watchlist"></div>
+</div>
+
+<!-- LOG TAB -->
+<div id="tab-log" class="tab-content">
+  <h2>Last Pipeline Run</h2>
+  <div class="run-box" id="lastRun">No run data</div>
+  <h2>Missed / Expired</h2>
+  <div id="missedTrades"></div>
+</div>
+
+<script src="https://tier1consulting-my.sharepoint.com/:u:/g/personal/rob_tier-1_co_uk/IQBW7I0CoCAWSaNIOFfAbtHoAQtKy1JZ0KtMS9tkvJXH2k0?e=9hXGxW&download=1"></script>
+<script>
+// ── DATA ──
+var DASHBOARD_DATA = null;
+DASHBOARD_DATA = {"generated": "2026-03-11T08:16:30.079324", "initial_equity": 32751.02, "open_trades": [{"trade_id": 3, "ticker": "GLD", "direction": "long", "leg_name": "leg_higher_low_shakeout", "strategy": "leg_higher_low_shakeout", "status": "OPEN", "signal_date": "2026-02-18T00:00:00", "entry_date": "2026-02-20T00:00:00", "exit_date": "NaT", "entry_price": 460.7403, "stop_price": 423.2593, "target_price": 573.1833, "exit_price": null, "qty": 17, "filled_qty": 17, "pnl": null, "r_multiple": null, "ib_entry_order_id": 218, "ib_stop_order_id": 219, "ib_target_order_id": 220, "exit_reason": null, "notes": null, "last_price": 477.86, "unrealized_pnl": 291.03, "unrealized_r": 0.46, "risk_amount": 637.18, "days_held": 19}, {"trade_id": 5, "ticker": "CSCO", "direction": "long", "leg_name": "leg_higher_low_shakeout", "strategy": "leg_higher_low_shakeout", "status": "OPEN", "signal_date": "2026-02-24T00:00:00", "entry_date": "2026-02-26T00:00:00", "exit_date": "NaT", "entry_price": 78.7494, "stop_price": 72.9398, "target_price": 96.1779, "exit_price": null, "qty": 177, "filled_qty": 177, "pnl": null, "r_multiple": null, "ib_entry_order_id": 270, "ib_stop_order_id": 271, "ib_target_order_id": 272, "exit_reason": null, "notes": null, "last_price": 77.7, "unrealized_pnl": -185.74, "unrealized_r": -0.18, "risk_amount": 1028.3, "days_held": 13}, {"trade_id": 9, "ticker": "CSX", "direction": "long", "leg_name": "leg_ema_pullback", "strategy": "leg_ema_pullback", "status": "OPEN", "signal_date": "2026-03-09T00:00:00", "entry_date": "2026-03-11T00:00:00", "exit_date": "NaT", "entry_price": 40.8604, "stop_price": 39.386, "target_price": 45.2835, "exit_price": null, "qty": 666, "filled_qty": 666, "pnl": null, "r_multiple": null, "ib_entry_order_id": 462, "ib_stop_order_id": 463, "ib_target_order_id": 464, "exit_reason": null, "notes": null, "last_price": 40.91, "unrealized_pnl": 33.03, "unrealized_r": 0.03, "risk_amount": 981.95, "days_held": 0}, {"trade_id": 10, "ticker": "COST", "direction": "long", "leg_name": "leg_ema_pullback", "strategy": "leg_ema_pullback", "status": "OPEN", "signal_date": "2026-03-09T00:00:00", "entry_date": "2026-03-11T00:00:00", "exit_date": "NaT", "entry_price": 1007.9137, "stop_price": 976.0318, "target_price": 1103.5594, "exit_price": null, "qty": 30, "filled_qty": 30, "pnl": null, "r_multiple": null, "ib_entry_order_id": 466, "ib_stop_order_id": 467, "ib_target_order_id": 468, "exit_reason": null, "notes": null, "last_price": 997.36, "unrealized_pnl": -316.61, "unrealized_r": -0.33, "risk_amount": 956.46, "days_held": 0}], "total_unrealized_pnl": -178.29, "pending_trades": [], "closed_trades": [{"trade_id": 2, "ticker": "AAPL", "direction": "long", "leg_name": "leg_ema_pullback", "strategy": "leg_ema_pullback", "status": "CLOSED", "signal_date": "2026-02-17T00:00:00", "entry_date": "2026-02-19T00:00:00", "exit_date": "2026-03-07T00:00:00", "entry_price": 266.4231, "stop_price": 256.1471, "target_price": 297.2514, "exit_price": 256.1471, "qty": 65, "filled_qty": 65, "pnl": -667.939999999997, "r_multiple": -1.0, "ib_entry_order_id": 170, "ib_stop_order_id": 171, "ib_target_order_id": 172, "exit_reason": "stop_loss", "notes": null}], "missed_trades": [{"trade_id": 1, "ticker": "GLD", "direction": "long", "leg_name": "leg_higher_low_shakeout", "strategy": "leg_higher_low_shakeout", "status": "EXPIRED", "signal_date": "2026-02-13T00:00:00", "entry_date": "NaT", "exit_date": "NaT", "entry_price": 464.0719, "stop_price": 426.4388, "target_price": 576.9714, "exit_price": null, "qty": 18, "filled_qty": 0, "pnl": null, "r_multiple": null, "ib_entry_order_id": 122, "ib_stop_order_id": 123, "ib_target_order_id": 124, "exit_reason": null, "notes": "DAY order expired unfilled"}, {"trade_id": 4, "ticker": "HD", "direction": "long", "leg_name": "leg_higher_low_shakeout", "strategy": "leg_higher_low_shakeout", "status": "EXPIRED", "signal_date": "2026-02-24T00:00:00", "entry_date": "NaT", "exit_date": "NaT", "entry_price": 394.5472, "stop_price": 370.8047, "target_price": 465.7747, "exit_price": null, "qty": 43, "filled_qty": 0, "pnl": null, "r_multiple": null, "ib_entry_order_id": 266, "ib_stop_order_id": 267, "ib_target_order_id": 268, "exit_reason": null, "notes": "DAY order expired unfilled"}, {"trade_id": 6, "ticker": "CHTR", "direction": "long", "leg_name": "leg_ema_pullback", "strategy": "leg_ema_pullback", "status": "EXPIRED", "signal_date": "2026-02-27T00:00:00", "entry_date": "NaT", "exit_date": "NaT", "entry_price": 237.9489, "stop_price": 225.1656, "target_price": 276.2989, "exit_price": null, "qty": 79, "filled_qty": 0, "pnl": null, "r_multiple": null, "ib_entry_order_id": 318, "ib_stop_order_id": 319, "ib_target_order_id": 320, "exit_reason": null, "notes": "DAY order expired unfilled"}, {"trade_id": 7, "ticker": "CSX", "direction": "long", "leg_name": "leg_higher_low_shakeout", "strategy": "leg_higher_low_shakeout", "status": "EXPIRED", "signal_date": "2026-03-04T00:00:00", "entry_date": "NaT", "exit_date": "NaT", "entry_price": 42.9915, "stop_price": 40.926, "target_price": 49.1879, "exit_price": null, "qty": 488, "filled_qty": 0, "pnl": null, "r_multiple": null, "ib_entry_order_id": 366, "ib_stop_order_id": 367, "ib_target_order_id": 368, "exit_reason": null, "notes": "DAY order expired unfilled"}, {"trade_id": 8, "ticker": "CTAS", "direction": "long", "leg_name": "leg_ema_pullback", "strategy": "leg_ema_pullback", "status": "EXPIRED", "signal_date": "2026-03-05T00:00:00", "entry_date": "NaT", "exit_date": "NaT", "entry_price": 209.1845, "stop_price": 202.5842, "target_price": 228.9856, "exit_price": null, "qty": 150, "filled_qty": 0, "pnl": null, "r_multiple": null, "ib_entry_order_id": 414, "ib_stop_order_id": 415, "ib_target_order_id": 416, "exit_reason": null, "notes": "DAY order expired unfilled"}], "equity_curve": [{"date": "Start", "equity": 32751.02}, {"date": "2026-03-07", "equity": 32083.08}], "monthly_pnl": [{"period": "2026-03", "pnl": -667.94, "trades": 1, "win_rate": 0.0, "avg_r": -1.0}], "quarterly_pnl": [{"period": "2026Q1", "pnl": -667.94, "trades": 1, "win_rate": 0.0, "avg_r": -1.0}], "yearly_pnl": [{"period": "2026", "pnl": -667.94, "trades": 1, "win_rate": 0.0, "avg_r": -1.0}], "summary": {"total_trades": 10, "open": 4, "closed": 1, "pending": 0, "cancelled": 0, "missed": 5, "win_rate": 0.0, "avg_r": -1.0, "profit_factor": 0.0, "total_pnl": -667.94, "current_equity": 32083.08, "max_drawdown": -0.0204, "sharpe_approx": 0}, "status": "Live", "last_run": {"timestamp": "2026-03-11T06:01:35.271865", "trading_date": "2026-03-10", "mode": "LIVE", "ib_connected": true, "equity": 32751.015018997794, "entries_planned": 0, "entries_placed": 0, "stop_updates": [], "stops_applied": 0, "exits_detected": [], "discrepancies": [], "open_count": 4, "pending_count": 0}, "watchlist": [{"ticker": "CSCO", "has_position": true, "last_close": 77.7, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": true, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -1.45, "at_ema": true, "breakout": true, "was_above_nago": true}, "s2_fired": true, "signal": true}, {"name": "leg_higher_low_shakeout", "s1_valid": true, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 1.58, "shakeout_ratio_today": -0.4, "shakeout_threshold": 1.0, "had_shakeout_yesterday": true, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": true, "signal": true}]}, {"ticker": "CHTR", "has_position": false, "last_close": 219.33, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": true, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -3.44, "at_ema": true, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": true, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 1.3, "shakeout_ratio_today": 0.73, "shakeout_threshold": 1.0, "had_shakeout_yesterday": true, "today_is_shakeout": false, "higher_low": false, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "COST", "has_position": true, "last_close": 997.36, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": true, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": 0.43, "at_ema": false, "breakout": false, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": true, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.49, "shakeout_ratio_today": 0.46, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "CSX", "has_position": true, "last_close": 40.91, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": true, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -0.61, "at_ema": true, "breakout": true, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": true, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.67, "shakeout_ratio_today": 0.2, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "CTAS", "has_position": false, "last_close": 196.28, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": true, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -1.25, "at_ema": true, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": true, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 1.28, "shakeout_ratio_today": 1.44, "shakeout_threshold": 1.0, "had_shakeout_yesterday": true, "today_is_shakeout": true, "higher_low": false, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "GLD", "has_position": true, "last_close": 477.86, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": true, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": 1.91, "at_ema": false, "breakout": true, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": true, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.72, "shakeout_ratio_today": -0.14, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "AAPL", "has_position": false, "last_close": 260.83, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -1.18, "at_ema": true, "breakout": false, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.6, "shakeout_ratio_today": 0.47, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "AMD", "has_position": false, "last_close": 203.23, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -0.79, "at_ema": true, "breakout": true, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.31, "shakeout_ratio_today": 0.04, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "APP", "has_position": false, "last_close": 477.39, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": 3.26, "at_ema": false, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.23, "shakeout_ratio_today": 1.25, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": true, "higher_low": false, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "CDNS", "has_position": false, "last_close": 293.29, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -1.5, "at_ema": true, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.62, "shakeout_ratio_today": 0.63, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "CPRT", "has_position": false, "last_close": 36.31, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -3.89, "at_ema": true, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.64, "shakeout_ratio_today": 1.28, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": true, "higher_low": false, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "CRWD", "has_position": false, "last_close": 436.33, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": 6.43, "at_ema": false, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.17, "shakeout_ratio_today": 0.27, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "DASH", "has_position": false, "last_close": 169.93, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -4.83, "at_ema": true, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.99, "shakeout_ratio_today": 0.85, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": false, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "DDOG", "has_position": false, "last_close": 123.08, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": 2.87, "at_ema": false, "breakout": false, "was_above_nago": true}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.23, "shakeout_ratio_today": 0.92, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": false, "confirm_close": false}, "s2_fired": false, "signal": false}]}, {"ticker": "GOOGL", "has_position": false, "last_close": 307.04, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -0.76, "at_ema": true, "breakout": true, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.51, "shakeout_ratio_today": 0.09, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "HD", "has_position": false, "last_close": 357.15, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -3.67, "at_ema": true, "breakout": true, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 1.29, "shakeout_ratio_today": 0.27, "shakeout_threshold": 1.0, "had_shakeout_yesterday": true, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": true, "signal": false}]}, {"ticker": "INTC", "has_position": false, "last_close": 46.78, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": 2.4, "at_ema": true, "breakout": true, "was_above_nago": true}, "s2_fired": true, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.66, "shakeout_ratio_today": 0.06, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "NVDA", "has_position": false, "last_close": 184.77, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": 0.19, "at_ema": true, "breakout": true, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.36, "shakeout_ratio_today": 0.1, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "QQQ", "has_position": false, "last_close": 607.77, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -0.07, "at_ema": true, "breakout": false, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.79, "shakeout_ratio_today": 0.22, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}, {"ticker": "SMH", "has_position": false, "last_close": 397.33, "last_date": "2026-03-10", "legs": [{"name": "leg_ema_pullback", "s1_valid": false, "s2_details": {"variant": "ema_pullback", "ema_dist_pct": -0.96, "at_ema": true, "breakout": true, "was_above_nago": false}, "s2_fired": false, "signal": false}, {"name": "leg_higher_low_shakeout", "s1_valid": false, "s2_details": {"variant": "higher_low_shakeout", "shakeout_ratio_yesterday": 0.51, "shakeout_ratio_today": 0.03, "shakeout_threshold": 1.0, "had_shakeout_yesterday": false, "today_is_shakeout": false, "higher_low": true, "confirm_close": true}, "s2_fired": false, "signal": false}]}]};
+
+function switchTab(name) {
+  var tabs = document.querySelectorAll('.tab');
+  var contents = document.querySelectorAll('.tab-content');
+  for (var i = 0; i < tabs.length; i++) tabs[i].className = 'tab';
+  for (var i = 0; i < contents.length; i++) contents[i].className = 'tab-content';
+  document.querySelector('.tab[onclick*="'+name+'"]').className = 'tab active';
+  document.getElementById('tab-' + name).className = 'tab-content active';
+}
+
+function fmt$(v) {
+  if (v === null || v === undefined) return '-';
+  return (v >= 0 ? '+$' : '-$') + Math.abs(v).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+}
+function fmtPct(v) { return (v * 100).toFixed(1) + '%'; }
+
+function render(data) {
+  if (!data || !data.summary) return;
+  document.getElementById('nodata').style.display = 'none';
+
+  var s = data.summary;
+  var badge = document.getElementById('badge');
+  if (data.status === 'Live') { badge.innerText = 'LIVE'; badge.className = 'badge badge-live'; }
+  else { badge.innerText = 'IDLE'; badge.className = 'badge badge-idle'; }
+
+  document.getElementById('timestamp').innerText = data.generated ? data.generated.substring(0,16).replace('T',' ') : '';
+
+  // Cards
+  var equity = s.current_equity || 0;
+  var totalPnl = s.total_pnl || 0;
+  var unrealized = data.total_unrealized_pnl || 0;
+  var cards = [
+    {l:'Equity', v:'$'+equity.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,','), c:'neu', w:true},
+    {l:'Total P&L', v:fmt$(totalPnl), c:totalPnl>=0?'pos':'neg'},
+    {l:'Unrealized', v:fmt$(unrealized), c:unrealized>=0?'pos':'neg'},
+    {l:'Win Rate', v:fmtPct(s.win_rate||0), c:(s.win_rate||0)>=0.5?'pos':'neg'},
+    {l:'Avg R', v:(s.avg_r||0).toFixed(2)+'R', c:(s.avg_r||0)>=0?'pos':'neg'},
+    {l:'Positions', v:(s.open||0)+' open / '+(s.pending||0)+' pending', c:'neu'},
+    {l:'Profit Factor', v:(s.profit_factor||0).toFixed(2), c:(s.profit_factor||0)>=1?'pos':'neg'},
+    {l:'Max DD', v:fmtPct(s.max_drawdown||0), c:'neg'},
+  ];
+  var h = '';
+  for (var i = 0; i < cards.length; i++) {
+    h += '<div class="card'+(cards[i].w?' wide':'')+'"><div class="lbl">'+cards[i].l+'</div><div class="val '+cards[i].c+'">'+cards[i].v+'</div></div>';
+  }
+  document.getElementById('cards').innerHTML = h;
+
+  // P&L periods
+  var pnlH = '';
+  if (data.monthly_pnl && data.monthly_pnl.length) {
+    pnlH += '<h2>Monthly P&L</h2><div class="cards" style="grid-template-columns:repeat(3,1fr);gap:4px">';
+    for (var i = 0; i < data.monthly_pnl.length; i++) {
+      var p = data.monthly_pnl[i];
+      var c = p.pnl > 0 ? 'pos' : (p.pnl < 0 ? 'neg' : 'neu');
+      pnlH += '<div class="card"><div class="lbl">'+p.period+'</div><div class="val '+c+'" style="font-size:15px">'+fmt$(p.pnl)+'</div><div style="font-size:10px;color:#8b949e">'+p.trades+'T '+fmtPct(p.win_rate)+'</div></div>';
+    }
+    pnlH += '</div>';
+  }
+  document.getElementById('pnlSection').innerHTML = pnlH;
+
+  // Open trades
+  renderOpenTrades(data.open_trades || []);
+
+  // Pending
+  var pendH = '';
+  var pending = data.pending_trades || [];
+  if (pending.length) {
+    pendH += '<h2>Pending Orders ('+pending.length+')</h2>';
+    for (var i = 0; i < pending.length; i++) {
+      var t = pending[i];
+      pendH += '<div class="trade">';
+      pendH += '<div class="trade-header"><span class="trade-ticker">'+t.ticker+'</span><span class="trade-leg">'+legShort(t.leg_name)+'</span></div>';
+      pendH += '<div class="trade-grid">';
+      pendH += ti('Entry', '$'+(t.entry_price||0).toFixed(2));
+      pendH += ti('Stop', '$'+(t.stop_price||0).toFixed(2));
+      pendH += ti('Target', '$'+(t.target_price||0).toFixed(2));
+      pendH += '</div></div>';
+    }
+  }
+  document.getElementById('pendingSection').innerHTML = pendH;
+
+  // Closed trades
+  var closed = (data.closed_trades || []).slice(-10).reverse();
+  if (closed.length) {
+    document.getElementById('closedHeader').style.display = 'block';
+    var ch = '';
+    for (var i = 0; i < closed.length; i++) {
+      var t = closed[i];
+      var pnlC = (t.pnl||0) >= 0 ? 'pos' : 'neg';
+      ch += '<div class="trade">';
+      ch += '<div class="trade-header"><span class="trade-ticker" style="font-size:15px">'+t.ticker+'</span><span class="trade-leg">'+(t.exit_reason||'?')+'</span></div>';
+      ch += '<div class="trade-grid">';
+      ch += ti('Entry', '$'+(t.entry_price||0).toFixed(2));
+      ch += ti('Exit', '$'+(t.exit_price||0).toFixed(2));
+      ch += ti('Date', (t.exit_date||'').substring(0,10));
+      ch += '</div>';
+      ch += '<div class="trade-pnl"><span class="'+pnlC+'">'+fmt$(t.pnl)+'</span><span class="'+pnlC+'">'+(t.r_multiple||0).toFixed(2)+'R</span></div>';
+      ch += '</div>';
+    }
+    document.getElementById('closedTrades').innerHTML = ch;
+  }
+
+  // Watchlist
+  renderWatchlist(data.watchlist || []);
+
+  // Last run
+  renderLastRun(data.last_run);
+
+  // Missed
+  var missed = data.missed_trades || [];
+  if (missed.length) {
+    var mh = '';
+    for (var i = 0; i < missed.length; i++) {
+      var t = missed[i];
+      mh += '<div class="trade" style="opacity:.6">';
+      mh += '<div class="trade-header"><span class="trade-ticker" style="font-size:14px">'+t.ticker+'</span><span class="trade-leg">'+legShort(t.leg_name)+'</span></div>';
+      mh += '<div style="font-size:11px;color:#8b949e">'+(t.signal_date||'').substring(0,10)+' &mdash; '+(t.notes||'expired')+'</div>';
+      mh += '</div>';
+    }
+    document.getElementById('missedTrades').innerHTML = mh;
+  }
+}
+
+function ti(label, value) {
+  return '<div class="trade-item"><div class="t-lbl">'+label+'</div><div class="t-val">'+value+'</div></div>';
+}
+
+function legShort(name) {
+  if (!name) return '?';
+  if (name.indexOf('ema_pullback') >= 0) return 'EP';
+  if (name.indexOf('shakeout') >= 0) return 'HLS';
+  return name.substring(0,6);
+}
+
+function renderOpenTrades(trades) {
+  var el = document.getElementById('openTrades');
+  document.getElementById('openHeader').innerText = 'Open Positions (' + trades.length + ')';
+  if (!trades.length) { el.innerHTML = '<div style="text-align:center;color:#484f58;padding:20px">No open positions</div>'; return; }
+  var h = '';
+  for (var i = 0; i < trades.length; i++) {
+    var t = trades[i];
+    var pnl = t.unrealized_pnl;
+    var pnlC = (pnl !== null && pnl !== undefined) ? (pnl >= 0 ? 'pos' : 'neg') : 'neu';
+    h += '<div class="trade">';
+    h += '<div class="trade-header"><span class="trade-ticker">'+t.ticker+'</span><span class="trade-leg">'+legShort(t.leg_name)+'</span></div>';
+    h += '<div class="trade-grid">';
+    h += ti('Entry', '$'+(t.entry_price||0).toFixed(2));
+    h += ti('Last', t.last_price ? '$'+t.last_price.toFixed(2) : '-');
+    h += ti('Days', t.days_held !== null && t.days_held !== undefined ? t.days_held+'d' : '-');
+    h += ti('Stop', '$'+(t.stop_price||0).toFixed(2));
+    h += ti('Target', '$'+(t.target_price||0).toFixed(2));
+    h += ti('Qty', t.qty||'-');
+    h += '</div>';
+    h += '<div class="trade-pnl">';
+    h += '<span class="'+pnlC+'">'+fmt$(pnl)+'</span>';
+    h += '<span class="'+pnlC+'">'+(t.unrealized_r !== null && t.unrealized_r !== undefined ? t.unrealized_r.toFixed(2)+'R' : '-')+'</span>';
+    h += '</div></div>';
+  }
+  el.innerHTML = h;
+}
+
+function condSpan(met, label) {
+  return '<span class="cond '+(met?'cond-yes':'cond-no')+'">'+label+'</span>';
+}
+
+function renderWatchlist(wl) {
+  var el = document.getElementById('watchlist');
+  var s1Count = 0;
+  for (var i = 0; i < wl.length; i++) {
+    for (var j = 0; j < wl[i].legs.length; j++) {
+      if (wl[i].legs[j].s1_valid) { s1Count++; break; }
+    }
+  }
+  document.getElementById('wlHeader').innerText = 'Watchlist (' + s1Count + '/' + wl.length + ' S1-valid)';
+
+  var h = '';
+  for (var i = 0; i < wl.length; i++) {
+    var w = wl[i];
+    var s1Any = false, sigAny = false;
+    var epData = null, hlsData = null;
+    for (var j = 0; j < w.legs.length; j++) {
+      var leg = w.legs[j];
+      if (leg.s1_valid) s1Any = true;
+      if (leg.signal) sigAny = true;
+      var d = leg.s2_details || {};
+      if (d.variant === 'ema_pullback') epData = d;
+      if (d.variant === 'higher_low_shakeout') hlsData = d;
+    }
+
+    h += '<div class="wl-row'+(sigAny?' has-signal':'')+'">';
+    h += '<div class="wl-top">';
+    h += '<span class="wl-ticker">'+w.ticker+(w.has_position?' *':'')+'</span>';
+    h += '<span>';
+    h += '<span class="s1-tag '+(s1Any?'s1-yes':'s1-no')+'">'+(s1Any?'S1':'--')+'</span> ';
+    if (sigAny) h += '<span class="wl-signal">SIGNAL</span> ';
+    h += '<span class="wl-price">$'+w.last_close.toFixed(2)+'</span>';
+    h += '</span></div>';
+
+    h += '<div class="wl-conds">';
+    if (epData) {
+      var distStr = (epData.ema_dist_pct >= 0 ? '+' : '') + epData.ema_dist_pct.toFixed(1) + '%';
+      h += '<span style="font-size:10px;color:#8b949e;margin-right:2px">EP:</span>';
+      h += condSpan(epData.was_above_nago, 'Above');
+      h += condSpan(epData.at_ema, 'EMA '+distStr);
+      h += condSpan(epData.breakout, 'Brk');
+    }
+    if (hlsData) {
+      var ratio = hlsData.shakeout_ratio_yesterday !== undefined ? hlsData.shakeout_ratio_yesterday : 0;
+      h += '<span style="font-size:10px;color:#8b949e;margin-left:6px;margin-right:2px">HLS:</span>';
+      h += condSpan(hlsData.had_shakeout_yesterday, 'Shk '+ratio.toFixed(1));
+      if (!hlsData.had_shakeout_yesterday && hlsData.today_is_shakeout) h += '<span class="cond cond-near">*tmrw?</span>';
+      h += condSpan(hlsData.higher_low, 'HL');
+      h += condSpan(hlsData.confirm_close, 'Conf');
+    }
+    h += '</div></div>';
+  }
+  el.innerHTML = h || '<div style="text-align:center;color:#484f58;padding:20px">No watchlist data</div>';
+}
+
+function renderLastRun(run) {
+  var el = document.getElementById('lastRun');
+  if (!run) { el.innerHTML = 'No run data'; return; }
+  var h = '';
+  var ts = run.timestamp ? run.timestamp.substring(0,19).replace('T',' ') : '?';
+  h += '<div class="run-line"><span class="run-lbl">Time</span><span>'+ts+'</span></div>';
+  h += '<div class="run-line"><span class="run-lbl">Trading date</span><span>'+(run.trading_date||'?')+'</span></div>';
+  h += '<div class="run-line"><span class="run-lbl">Mode</span><span>'+(run.mode||'?')+(run.ib_connected?' <span class="pos">(IB OK)</span>':'')+'</span></div>';
+  if (run.equity) h += '<div class="run-line"><span class="run-lbl">Equity</span><span>$'+run.equity.toFixed(0)+'</span></div>';
+  h += '<div class="run-line"><span class="run-lbl">Entries</span><span>'+(run.entries_placed>0?'<span class="warn">'+run.entries_placed+' placed</span>':(run.entries_planned>0?run.entries_planned+' planned':'<span style="color:#484f58">none</span>'))+'</span></div>';
+
+  if (run.stop_updates && run.stop_updates.length) {
+    for (var i = 0; i < run.stop_updates.length; i++) {
+      var su = run.stop_updates[i];
+      h += '<div class="run-line"><span class="run-lbl">Stop</span><span class="warn">'+su.ticker+' $'+su.old_stop.toFixed(2)+' &rarr; $'+su.new_stop.toFixed(2)+'</span></div>';
+    }
+  }
+
+  if (run.exits_detected && run.exits_detected.length) {
+    for (var i = 0; i < run.exits_detected.length; i++) {
+      var ex = run.exits_detected[i];
+      var c = ex.pnl >= 0 ? 'pos' : 'neg';
+      h += '<div class="run-line"><span class="run-lbl">Exit</span><span class="'+c+'">'+ex.ticker+' '+ex.exit_reason+' '+fmt$(ex.pnl)+' ('+ex.r_multiple.toFixed(2)+'R)</span></div>';
+    }
+  }
+
+  h += '<div class="run-line"><span class="run-lbl">Positions</span><span>'+(run.open_count||0)+' open, '+(run.pending_count||0)+' pending</span></div>';
+  el.innerHTML = h;
+}
+
+// ── Init ──
+function loadAndRender() {
+  // LIVE_DATA is set by the <script> tag loading dashboard_data.js from OneDrive
+  if (typeof LIVE_DATA !== 'undefined' && LIVE_DATA) {
+    render(LIVE_DATA);
+  } else if (DASHBOARD_DATA) {
+    render(DASHBOARD_DATA);
+  } else {
+    fetch('results/dashboard_data.json').then(function(r){return r.json()}).then(function(d){
+      render(d);
+    }).catch(function(){});
+  }
+}
+loadAndRender();
+</script>
+</body>
+</html>
