@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-15T06:02:39.514867",
+  "generated": "2026-04-15T07:02:13.939210",
   "initial_equity": 32072.19,
   "open_trades": [
     {
@@ -152,21 +152,21 @@
       "status": "CLOSED",
       "signal_date": "2026-02-24T00:00:00",
       "entry_date": "2026-02-26T00:00:00",
-      "exit_date": "2026-04-15T00:00:00",
+      "exit_date": "2026-04-14T00:00:00",
       "entry_price": 78.7494,
       "stop_price": 72.9398,
       "target_price": 96.1782,
-      "exit_price": 72.9398,
+      "exit_price": 82.1161,
       "qty": 118,
       "filled_qty": 118,
-      "pnl": -685.5327999999987,
-      "r_multiple": -1.0,
+      "pnl": 397.2706,
+      "r_multiple": 0.58,
       "ib_entry_order_id": 270.0,
       "ib_stop_order_id": 271.0,
       "ib_target_order_id": 272.0,
-      "exit_reason": "stop_loss",
-      "notes": "qty adjusted 177->118 (2% risk)",
-      "duration_days": 48
+      "exit_reason": "manual_close",
+      "notes": "qty adjusted 177->118 (2% risk); manual close VWAP of 100@82.09 (2026-04-13) + 77@82.15 (2026-04-14)",
+      "duration_days": 47
     },
     {
       "trade_id": 9,
@@ -469,8 +469,8 @@
       "equity": 29878.22
     },
     {
-      "date": "2026-04-15",
-      "equity": 29192.69
+      "date": "2026-04-14",
+      "equity": 30275.49
     }
   ],
   "monthly_pnl": [
@@ -483,10 +483,10 @@
     },
     {
       "period": "2026-04",
-      "pnl": -685.53,
+      "pnl": 397.27,
       "trades": 1,
-      "win_rate": 0.0,
-      "avg_r": -1.0
+      "win_rate": 1.0,
+      "avg_r": 0.58
     }
   ],
   "quarterly_pnl": [
@@ -499,19 +499,19 @@
     },
     {
       "period": "2026Q2",
-      "pnl": -685.53,
+      "pnl": 397.27,
       "trades": 1,
-      "win_rate": 0.0,
-      "avg_r": -1.0
+      "win_rate": 1.0,
+      "avg_r": 0.58
     }
   ],
   "yearly_pnl": [
     {
       "period": "2026",
-      "pnl": -2879.5,
+      "pnl": -1796.7,
       "trades": 7,
-      "win_rate": 0.0,
-      "avg_r": -1.0
+      "win_rate": 0.143,
+      "avg_r": -0.77
     }
   ],
   "summary": {
@@ -521,13 +521,13 @@
     "pending": 0,
     "cancelled": 0,
     "missed": 7,
-    "win_rate": 0.0,
-    "avg_r": -1.0,
-    "profit_factor": 0.0,
-    "total_pnl": -2879.5,
-    "current_equity": 29192.69,
-    "max_drawdown": -0.0898,
-    "sharpe_approx": 0
+    "win_rate": 0.143,
+    "avg_r": -0.77,
+    "profit_factor": 0.18,
+    "total_pnl": -1796.7,
+    "current_equity": 30275.49,
+    "max_drawdown": -0.0684,
+    "sharpe_approx": -3.71
   },
   "status": "Live",
   "last_run": {
