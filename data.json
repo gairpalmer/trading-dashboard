@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-23T06:02:30.426011",
+  "generated": "2026-04-23T08:13:46.244528",
   "initial_equity": 32903.86,
   "open_trades": [
     {
@@ -124,58 +124,7 @@
     }
   ],
   "total_unrealized_pnl": 2363.32,
-  "pending_trades": [
-    {
-      "trade_id": 19,
-      "ticker": "GLD",
-      "direction": "long",
-      "leg_name": "leg_higher_low_shakeout",
-      "strategy": "leg_higher_low_shakeout",
-      "status": "PENDING",
-      "signal_date": "2026-04-22T00:00:00",
-      "entry_date": "NaT",
-      "exit_date": "NaT",
-      "entry_price": 437.3886,
-      "stop_price": 413.2831,
-      "initial_stop_price": 413.2831,
-      "target_price": 509.705,
-      "exit_price": null,
-      "qty": 26,
-      "filled_qty": 0,
-      "pnl": null,
-      "r_multiple": null,
-      "ib_entry_order_id": 1653.0,
-      "ib_stop_order_id": 1654.0,
-      "ib_target_order_id": 1655.0,
-      "exit_reason": null,
-      "notes": null
-    },
-    {
-      "trade_id": 20,
-      "ticker": "AAPL",
-      "direction": "long",
-      "leg_name": "leg_higher_low_shakeout",
-      "strategy": "leg_higher_low_shakeout",
-      "status": "PENDING",
-      "signal_date": "2026-04-22T00:00:00",
-      "entry_date": "NaT",
-      "exit_date": "NaT",
-      "entry_price": 273.8769,
-      "stop_price": 258.4054,
-      "initial_stop_price": 258.4054,
-      "target_price": 320.2911,
-      "exit_price": null,
-      "qty": 42,
-      "filled_qty": 0,
-      "pnl": null,
-      "r_multiple": null,
-      "ib_entry_order_id": 1657.0,
-      "ib_stop_order_id": 1658.0,
-      "ib_target_order_id": 1659.0,
-      "exit_reason": null,
-      "notes": null
-    }
-  ],
+  "pending_trades": [],
   "closed_trades": [
     {
       "trade_id": 2,
@@ -616,8 +565,8 @@
     "total_trades": 20,
     "open": 4,
     "closed": 7,
-    "pending": 2,
-    "cancelled": 0,
+    "pending": 0,
+    "cancelled": 2,
     "missed": 7,
     "win_rate": 0.143,
     "avg_r": -0.77,
@@ -652,12 +601,12 @@
     "exits_detected": [],
     "discrepancies": [],
     "open_count": 4,
-    "pending_count": 2
+    "pending_count": 0
   },
   "watchlist": [
     {
       "ticker": "AAPL",
-      "has_position": true,
+      "has_position": false,
       "last_close": 273.17,
       "last_date": "2026-04-22",
       "legs": [
@@ -708,7 +657,7 @@
     },
     {
       "ticker": "GLD",
-      "has_position": true,
+      "has_position": false,
       "last_close": 435.26,
       "last_date": "2026-04-22",
       "legs": [
