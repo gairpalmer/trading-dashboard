@@ -1,5 +1,5 @@
 {
-  "generated": "2026-04-27T06:02:18.867695",
+  "generated": "2026-04-27T06:47:09.970439",
   "initial_equity": 34769.2,
   "open_trades": [
     {
@@ -292,7 +292,7 @@
       "qty": 23,
       "filled_qty": 23,
       "pnl": 2188.4891,
-      "r_multiple": 1.29,
+      "r_multiple": 3.0,
       "ib_entry_order_id": 918.0,
       "ib_stop_order_id": 919.0,
       "ib_target_order_id": 920.0,
@@ -559,7 +559,7 @@
       "pnl": 2805.64,
       "trades": 3,
       "win_rate": 1.0,
-      "avg_r": 1.0
+      "avg_r": 1.57
     }
   ],
   "quarterly_pnl": [
@@ -575,7 +575,7 @@
       "pnl": 2805.64,
       "trades": 3,
       "win_rate": 1.0,
-      "avg_r": 1.0
+      "avg_r": 1.57
     }
   ],
   "yearly_pnl": [
@@ -584,7 +584,7 @@
       "pnl": 611.67,
       "trades": 9,
       "win_rate": 0.333,
-      "avg_r": -0.33
+      "avg_r": -0.14
     }
   ],
   "summary": {
@@ -595,12 +595,12 @@
     "cancelled": 2,
     "missed": 7,
     "win_rate": 0.333,
-    "avg_r": -0.33,
+    "avg_r": -0.14,
     "profit_factor": 1.28,
     "total_pnl": 611.67,
     "current_equity": 35380.87,
     "max_drawdown": -0.0631,
-    "sharpe_approx": -1.04
+    "sharpe_approx": -0.32
   },
   "status": "Live",
   "last_run": {
@@ -631,7 +631,15 @@
         "exit_reason": "target",
         "exit_price": 492.4503,
         "pnl": 2188.49,
-        "r_multiple": 1.29
+        "r_multiple": 3.0
+      },
+      {
+        "ticker": "PG",
+        "trade_id": 16,
+        "exit_reason": "channel_envelope",
+        "exit_price": 150.1352,
+        "pnl": 219.88,
+        "r_multiple": 1.14
       }
     ],
     "discrepancies": [],
