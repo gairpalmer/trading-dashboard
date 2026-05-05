@@ -137,7 +137,7 @@
     <span class="pill mode-live">LIVE</span>
     <span class="pill ok">IB ✓</span>
     
-    <span class="pill code" title="Server render time — if this isn't current, the page is cached">07:15:34</span>
+    <span class="pill code" title="Server render time — if this isn't current, the page is cached">09:28:57</span>
   </div>
 </header>
 
@@ -192,14 +192,10 @@
 
   
   
-  <div class="banner warn">
-    <div class="title">⚠ Unattributed cash flow detected</div>
+  <div class="banner ok">
+    <div class="title">✓ Reconciliation balanced</div>
     <div class="body">
-      Observed ($34,320.63) − expected
-      ($34,441.71) =
-      <strong>$-121.08</strong>.
-      <br><span style="font-size: 11px;">committed $32,225 + realised $1,507 + unrealised $730 − trade fees $169.61 + interest $0.00 + dividends $0.00 + WHT $0.00 + acct fees $0.00 + FX $0.00 + imputed $149.57</span>
-      <br>Allocate via the desktop dashboard, or click <em>Re-read engine snapshot</em> there.
+      observed $34,321 = committed $32,225 + realised $1,507 + unrealised $730 − trade fees $169.61 + IB cash activity $28.49 · delta $-0.00
     </div>
   </div>
   
@@ -216,7 +212,7 @@
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">WHT</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Acct fees</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">FX P/L</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--pos);">$149.57</div></div>
+      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--pos);">$28.49</div></div>
     </div>
     <div style="font-size: 10px; color: var(--muted); margin-top: 8px; line-height: 1.4;">
       
@@ -419,6 +415,32 @@
 
 
 <section id="positions" class="panel" role="tabpanel">
+  
+  <div class="section-title">Pending <span class="count">1</span></div>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Ticker</th>
+        <th>Strat</th>
+        <th class="num">Qty</th>
+        <th class="num">Entry</th>
+        <th class="num">Stop</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><span class="ticker">CMCSA</span></td>
+        <td><span class="muted" style="font-size: 11px;">elder_macd_div</span></td>
+        <td class="num">306</td>
+        <td class="num">$27.07</td>
+        <td class="num muted">$26.51</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+
   <div class="section-title">Open positions <span class="count">1</span></div>
   
   <table class="list">
@@ -610,7 +632,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-05 06:15 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-05 08:28 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
