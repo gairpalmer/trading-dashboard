@@ -1,6 +1,6 @@
 {
-  "generated": "2026-05-05T06:02:07.959773",
-  "initial_equity": 34414.52,
+  "generated": "2026-05-05T06:54:04.662004",
+  "initial_equity": 32225.0,
   "open_trades": [
     {
       "trade_id": 17,
@@ -13,7 +13,7 @@
       "entry_date": "2026-04-13T00:00:00",
       "exit_date": "NaT",
       "entry_price": 345.62,
-      "stop_price": 362.6834,
+      "stop_price": 362.8987,
       "initial_stop_price": 336.2283,
       "target_price": 0.0,
       "exit_price": null,
@@ -33,42 +33,38 @@
       "unrealized_r": 4.99,
       "risk_amount": 150.27,
       "days_held": 22
-    },
+    }
+  ],
+  "total_unrealized_pnl": 750.24,
+  "pending_trades": [
     {
-      "trade_id": 23,
-      "ticker": "CTSH",
+      "trade_id": 24,
+      "ticker": "CMCSA",
       "direction": "long",
       "leg_name": "elder_macd_div",
       "strategy": "elder",
-      "status": "OPEN",
-      "signal_date": "2026-04-29T00:00:00",
-      "entry_date": "2026-05-01T00:00:00",
+      "status": "PENDING",
+      "signal_date": "2026-05-04T00:00:00",
+      "entry_date": "NaT",
       "exit_date": "NaT",
-      "entry_price": 54.7,
-      "stop_price": 52.2827,
-      "initial_stop_price": 52.2827,
+      "entry_price": 27.07,
+      "stop_price": 26.5102,
+      "initial_stop_price": 26.5102,
       "target_price": 0.0,
       "exit_price": null,
-      "qty": 71,
-      "filled_qty": 71,
+      "qty": 306,
+      "filled_qty": 0,
       "pnl": null,
       "r_multiple": null,
-      "entry_commission": 0.0,
+      "entry_commission": null,
       "exit_commission": null,
-      "ib_entry_order_id": 1957.0,
-      "ib_stop_order_id": 1958.0,
-      "ib_target_order_id": 1960.0,
+      "ib_entry_order_id": 2109.0,
+      "ib_stop_order_id": 2110.0,
+      "ib_target_order_id": 2112.0,
       "exit_reason": null,
-      "notes": null,
-      "last_price": 51.86,
-      "unrealized_pnl": -201.64,
-      "unrealized_r": -1.17,
-      "risk_amount": 171.63,
-      "days_held": 4
+      "notes": null
     }
   ],
-  "total_unrealized_pnl": 548.6,
-  "pending_trades": [],
   "closed_trades": [
     {
       "trade_id": 2,
@@ -405,6 +401,34 @@
       "exit_reason": "stop_loss",
       "notes": null,
       "duration_days": 1
+    },
+    {
+      "trade_id": 23,
+      "ticker": "CTSH",
+      "direction": "long",
+      "leg_name": "elder_macd_div",
+      "strategy": "elder",
+      "status": "CLOSED",
+      "signal_date": "2026-04-29T00:00:00",
+      "entry_date": "2026-05-01T00:00:00",
+      "exit_date": "2026-05-05T00:00:00",
+      "entry_price": 54.7,
+      "stop_price": 52.2827,
+      "initial_stop_price": 52.2827,
+      "target_price": 0.0,
+      "exit_price": 52.2827,
+      "qty": 71,
+      "filled_qty": 71,
+      "pnl": -171.6283000000003,
+      "r_multiple": -1.0,
+      "entry_commission": 0.0,
+      "exit_commission": 0.0,
+      "ib_entry_order_id": 1957.0,
+      "ib_stop_order_id": 1958.0,
+      "ib_target_order_id": 1960.0,
+      "exit_reason": "stop_loss",
+      "notes": null,
+      "duration_days": 4
     }
   ],
   "missed_trades": [
@@ -601,55 +625,59 @@
   "equity_curve": [
     {
       "date": "Start",
-      "equity": 34414.52
+      "equity": 32225.0
     },
     {
       "date": "2026-03-07",
-      "equity": 33962.38
+      "equity": 31772.86
     },
     {
       "date": "2026-03-13",
-      "equity": 33549.54
+      "equity": 31360.02
     },
     {
       "date": "2026-03-20",
-      "equity": 32912.37
+      "equity": 30722.85
     },
     {
       "date": "2026-03-20",
-      "equity": 32561.67
+      "equity": 30372.15
     },
     {
       "date": "2026-03-20",
-      "equity": 32411.92
+      "equity": 30222.4
     },
     {
       "date": "2026-03-23",
-      "equity": 32220.55
+      "equity": 30031.03
     },
     {
       "date": "2026-04-14",
-      "equity": 32617.82
+      "equity": 30428.3
     },
     {
       "date": "2026-04-27",
-      "equity": 34806.31
+      "equity": 32616.79
     },
     {
       "date": "2026-04-27",
-      "equity": 35026.19
+      "equity": 32836.67
     },
     {
       "date": "2026-04-30",
-      "equity": 36957.42
+      "equity": 34767.9
     },
     {
       "date": "2026-04-30",
-      "equity": 36786.16
+      "equity": 34596.64
     },
     {
       "date": "2026-05-04",
-      "equity": 36093.54
+      "equity": 33904.02
+    },
+    {
+      "date": "2026-05-05",
+      "equity": 33732.39
     }
   ],
   "monthly_pnl": [
@@ -669,8 +697,8 @@
     },
     {
       "period": "2026-05",
-      "pnl": -692.62,
-      "trades": 1,
+      "pnl": -864.24,
+      "trades": 2,
       "win_rate": 0.0,
       "avg_r": -1.0
     }
@@ -685,61 +713,67 @@
     },
     {
       "period": "2026Q2",
-      "pnl": 3872.99,
-      "trades": 6,
-      "win_rate": 0.667,
-      "avg_r": 0.95
+      "pnl": 3701.36,
+      "trades": 7,
+      "win_rate": 0.571,
+      "avg_r": 0.67
     }
   ],
   "yearly_pnl": [
     {
       "period": "2026",
-      "pnl": 1679.02,
-      "trades": 12,
-      "win_rate": 0.333,
-      "avg_r": -0.02
+      "pnl": 1507.39,
+      "trades": 13,
+      "win_rate": 0.308,
+      "avg_r": -0.1
     }
   ],
   "summary": {
-    "total_trades": 23,
-    "open": 2,
-    "closed": 12,
-    "pending": 0,
+    "total_trades": 24,
+    "open": 1,
+    "closed": 13,
+    "pending": 1,
     "cancelled": 2,
     "missed": 7,
-    "win_rate": 0.333,
-    "avg_r": -0.02,
-    "profit_factor": 1.55,
-    "total_pnl": 1679.02,
-    "current_equity": 34414.52,
-    "max_drawdown": -0.0638,
-    "sharpe_approx": -0.05
+    "win_rate": 0.308,
+    "avg_r": -0.1,
+    "profit_factor": 1.47,
+    "total_pnl": 1507.39,
+    "current_equity": 34320.63,
+    "max_drawdown": -0.0681,
+    "sharpe_approx": -0.24
   },
   "status": "Live",
   "last_run": {
-    "timestamp": "2026-05-04T06:03:39.902880",
-    "trading_date": "2026-05-01",
+    "timestamp": "2026-05-05T06:54:02.569849",
+    "trading_date": "2026-05-04",
     "mode": "LIVE",
     "ib_connected": true,
-    "equity": 34539.21781883214,
-    "entries_planned": 0,
-    "entries_placed": 0,
-    "stop_updates": [],
-    "stops_applied": 0,
+    "equity": 34320.632675312474,
+    "entries_planned": 1,
+    "entries_placed": 1,
+    "stop_updates": [
+      {
+        "ticker": "TSLA",
+        "old_stop": 362.68,
+        "new_stop": 362.9
+      }
+    ],
+    "stops_applied": 1,
     "exits_detected": [
       {
-        "ticker": "NVDA",
-        "trade_id": 21,
+        "ticker": "CTSH",
+        "trade_id": 23,
         "exit_reason": "stop_loss",
-        "exit_price": 197.4748,
-        "pnl": -692.62,
+        "exit_price": 52.2827,
+        "pnl": -171.63,
         "r_multiple": -1.0,
         "exit_commission": 0.0
       }
     ],
     "discrepancies": [],
-    "open_count": 2,
-    "pending_count": 0
+    "open_count": 1,
+    "pending_count": 1
   },
   "watchlist": [
     {
