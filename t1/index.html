@@ -137,7 +137,7 @@
     <span class="pill mode-live">LIVE</span>
     <span class="pill ok">IB ✓</span>
     
-    <span class="pill code" title="Server render time — if this isn't current, the page is cached">13:32:05</span>
+    <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:02:18</span>
   </div>
 </header>
 
@@ -192,10 +192,14 @@
 
   
   
-  <div class="banner ok">
-    <div class="title">✓ Reconciliation balanced</div>
+  <div class="banner warn">
+    <div class="title">⚠ Unattributed cash flow detected</div>
     <div class="body">
-      observed $34,415 = committed $32,225 + realised $1,679 + unrealised $559 − trade fees $169.61 + IB cash activity $121.08 · delta $-0.00
+      Observed ($34,414.52) − expected
+      ($34,535.60) =
+      <strong>$-121.08</strong>.
+      <br><span style="font-size: 11px;">committed $32,225 + realised $1,679 + unrealised $559 − trade fees $169.61 + interest $0.00 + dividends $0.00 + WHT $0.00 + acct fees $0.00 + FX $0.00 + imputed $242.16</span>
+      <br>Allocate via the desktop dashboard, or click <em>Re-read engine snapshot</em> there.
     </div>
   </div>
   
@@ -204,7 +208,7 @@
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin: 14px 0;">
     <div style="font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; margin-bottom: 8px;">
       IB cash activity (non-trading) · <span style="color: #f7d774;">PAPER</span>
-      <span style="color: var(--muted); font-weight: 500;"> · 1 events · last 2026-05-04</span>
+      <span style="color: var(--muted); font-weight: 500;"> · 2 events · last 2026-05-05</span>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; font-variant-numeric: tabular-nums;">
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Interest</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
@@ -212,11 +216,11 @@
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">WHT</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Acct fees</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">FX P/L</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--pos);">$121.08</div></div>
+      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--pos);">$242.16</div></div>
     </div>
     <div style="font-size: 10px; color: var(--muted); margin-top: 8px; line-height: 1.4;">
       
-      Source: engine-written <code>ib_account_state.json</code>, pulled 2026-05-04 13:13.
+      Source: engine-written <code>ib_account_state.json</code>, pulled 2026-05-04 13:13 <span style="color:var(--neg);">(stale &gt;12h)</span>.
       
     </div>
   </div>
@@ -232,9 +236,9 @@
     <svg viewBox="0 0 600 100" preserveAspectRatio="none">
       <line x1="0" y1="50" x2="600" y2="50" class="grid-line"/>
       <polyline fill="none" stroke="#58a6ff" stroke-width="2"
-        points="0.0,59.47912765216474 85.71428571428571,66.7130350599372 171.42857142857142,86.6467569503308 257.1428571428571,90.0 342.85714285714283,83.03891484379962 428.57142857142856,40.83872691710419 514.2857142857142,10.0 600.0,22.13629723081914 "/>
-      <text x="4" y="14" class="axis">$34,597</text>
-      <text x="4" y="96" class="axis">$30,031</text>
+        points="0.0,59.479127652164834 85.71428571428571,66.71303505993723 171.42857142857142,86.64675695033087 257.1428571428571,90.0 342.85714285714283,83.03891484379962 428.57142857142856,40.83872691710417 514.2857142857142,10.0 600.0,22.13629723081914 "/>
+      <text x="4" y="14" class="axis">$36,786</text>
+      <text x="4" y="96" class="axis">$32,221</text>
     </svg>
     <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums;">
       <span>2026-03-07</span>
@@ -435,9 +439,9 @@
         <td><span class="muted">L</span></td>
         <td class="num">16</td>
         <td class="num">$345.62</td>
-        <td class="num">$390.82</td>
+        <td class="num">$392.51</td>
         <td class="num pos">
-          $723
+          $750
         </td>
       </tr>
       
@@ -446,9 +450,9 @@
         <td><span class="muted">L</span></td>
         <td class="num">71</td>
         <td class="num">$54.70</td>
-        <td class="num">$52.43</td>
+        <td class="num">$51.86</td>
         <td class="num neg">
-          $-161
+          $-202
         </td>
       </tr>
       
@@ -614,7 +618,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-04 12:32 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-05 05:02 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
