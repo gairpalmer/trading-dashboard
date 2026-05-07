@@ -137,7 +137,7 @@
     <span class="pill mode-live">LIVE</span>
     <span class="pill ok">IB ✓</span>
     
-    <span class="pill code" title="Server render time — if this isn't current, the page is cached">07:28:24</span>
+    <span class="pill code" title="Server render time — if this isn't current, the page is cached">17:07:47</span>
   </div>
 </header>
 
@@ -164,15 +164,15 @@
     <div class="card">
       <div class="label">Realised lifetime</div>
       
-      <div class="value pos">$1,507</div>
-      <div class="sub">$1,507.39</div>
+      <div class="value pos">$548</div>
+      <div class="sub">$547.59</div>
       
     </div>
     <div class="card">
       <div class="label">Unrealised (open)</div>
       
-      <div class="value pos">$841</div>
-      <div class="sub">$840.68</div>
+      <div class="value pos">$975</div>
+      <div class="sub">$975.40</div>
       
     </div>
     <div class="card">
@@ -192,10 +192,14 @@
 
   
   
-  <div class="banner ok">
-    <div class="title">✓ Reconciliation balanced</div>
+  <div class="banner warn">
+    <div class="title">⚠ Unattributed cash flow detected</div>
     <div class="body">
-      observed $34,484 = committed $32,225 + realised $1,507 + unrealised $841 − trade fees $169.61 + IB cash activity $80.52 · delta $-0.00
+      Observed ($34,483.78) − expected
+      ($34,618.50) =
+      <strong>$-134.72</strong>.
+      <br><span style="font-size: 11px;">committed $32,225 + realised $548 + unrealised $975 − trade fees $169.61 + interest $0.00 + dividends $0.00 + WHT $0.00 + acct fees $0.00 + FX $0.00 + imputed $1,040.32</span>
+      <br>Allocate via the desktop dashboard, or click <em>Re-read engine snapshot</em> there.
     </div>
   </div>
   
@@ -212,7 +216,7 @@
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">WHT</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Acct fees</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">FX P/L</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--pos);">$80.52</div></div>
+      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--pos);">$1,040.32</div></div>
     </div>
     <div style="font-size: 10px; color: var(--muted); margin-top: 8px; line-height: 1.4;">
       
@@ -336,11 +340,11 @@
       <summary style="cursor: pointer; font-size: 11px; color: var(--muted); padding: 4px 0;">P&L breakdown · pre-tax</summary>
       <div class="pnl-row">
         <span class="lbl">· realised</span>
-        <span class="val pos">$602.96</span>
+        <span class="val pos">$219.04</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· unrealised</span>
-        <span class="val pos">$336.27</span>
+        <span class="val pos">$390.16</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· trade fees</span>
@@ -348,11 +352,11 @@
       </div>
       <div class="pnl-row">
         <span class="lbl">· est. tax (CT)</span>
-        <span class="val neg">−$101.67</span>
+        <span class="val neg">−$28.73</span>
       </div>
       <div class="pnl-row" style="border-top: 1px solid var(--accent); margin-top: 2px; padding-top: 6px;">
         <span class="lbl" style="color: var(--text);">Net after tax</span>
-        <span class="val pos">$801.93</span>
+        <span class="val pos">$874.87</span>
       </div>
     </details>
   </div>
@@ -384,11 +388,11 @@
       <summary style="cursor: pointer; font-size: 11px; color: var(--muted); padding: 4px 0;">P&L breakdown · pre-tax</summary>
       <div class="pnl-row">
         <span class="lbl">· realised</span>
-        <span class="val pos">$904.43</span>
+        <span class="val pos">$328.56</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· unrealised</span>
-        <span class="val pos">$504.41</span>
+        <span class="val pos">$585.24</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· trade fees</span>
@@ -396,18 +400,18 @@
       </div>
       <div class="pnl-row">
         <span class="lbl">· est. tax (CT)</span>
-        <span class="val neg">−$152.51</span>
+        <span class="val neg">−$43.09</span>
       </div>
       <div class="pnl-row" style="border-top: 1px solid var(--accent); margin-top: 2px; padding-top: 6px;">
         <span class="lbl" style="color: var(--text);">Net after tax</span>
-        <span class="val pos">$1,202.88</span>
+        <span class="val pos">$1,312.30</span>
       </div>
     </details>
   </div>
   
   
   <div style="font-size: 10px; color: var(--muted); padding: 8px 4px; line-height: 1.5;">
-    Tax estimate: CT @ 19.0% on £984 (≈ $1,338 × FX 0.7354). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Excludes other entity income / reliefs / pension contributions. Indicative only.
+    Tax estimate: CT @ 19.0% on £278 (≈ $378 × FX 0.7354). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Excludes other entity income / reliefs / pension contributions. Indicative only.
   </div>
   
   
@@ -531,7 +535,7 @@
         <td><span class="ticker">CCEP</span></td>
         <td><span class="pos">buy</span></td>
         <td class="num">80</td>
-        <td class="num">$7,483</td>
+        <td class="num">$7,639</td>
       </tr>
       
       <tr>
@@ -539,7 +543,7 @@
         <td><span class="ticker">AMD</span></td>
         <td><span class="pos">buy</span></td>
         <td class="num">16</td>
-        <td class="num">$5,756</td>
+        <td class="num">$6,575</td>
       </tr>
       
       <tr>
@@ -563,7 +567,7 @@
         <td><span class="ticker">CTSH</span></td>
         <td><span class="pos">buy</span></td>
         <td class="num">71</td>
-        <td class="num">$3,884</td>
+        <td class="num">$3,842</td>
       </tr>
       
       <tr>
@@ -587,7 +591,7 @@
         <td><span class="ticker">ALNY</span></td>
         <td><span class="pos">buy</span></td>
         <td class="num">22</td>
-        <td class="num">$6,787</td>
+        <td class="num">$6,615</td>
       </tr>
       
       <tr>
@@ -616,7 +620,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-07 06:28 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-07 16:07 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
