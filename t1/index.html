@@ -137,7 +137,7 @@
     <span class="pill mode-live">LIVE</span>
     <span class="pill ok">IB ✓</span>
     
-    <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:02:21</span>
+    <span class="pill code" title="Server render time — if this isn't current, the page is cached">07:02:08</span>
   </div>
 </header>
 
@@ -531,90 +531,493 @@
   </table>
   
 
-  <div class="section-title">Recent trades <span class="count">10</span></div>
+  <div class="section-title">Closed trades <span class="count">19</span></div>
   
   <table class="list">
-    <thead><tr><th>Date</th><th>Sym</th><th>Side</th><th class="num">Qty</th><th class="num">Amount</th></tr></thead>
+    <thead>
+      <tr>
+        <th>Sym</th>
+        <th>Entry</th>
+        <th>Exit</th>
+        <th class="num">R</th>
+        <th class="num">PnL</th>
+      </tr>
+    </thead>
     <tbody>
       
       <tr>
-        <td>2026-05-28</td>
-        <td><span class="ticker">APP</span></td>
-        <td><span class="neg">sell</span></td>
-        <td class="num">3</td>
-        <td class="num">$1,726</td>
+        <td>
+          <span class="ticker">APP</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">channel_envelope</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-28</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $522.48</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-28</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $575.29</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+0.84R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$158</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-28</td>
-        <td><span class="ticker">APP</span></td>
-        <td><span class="pos">buy</span></td>
-        <td class="num">3</td>
-        <td class="num">$1,567</td>
+        <td>
+          <span class="ticker">COST</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-14</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $1027.84</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-22</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $1055.08</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+0.90R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$300</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-22</td>
-        <td><span class="ticker">COST</span></td>
-        <td><span class="neg">sell</span></td>
-        <td class="num">11</td>
-        <td class="num">$11,606</td>
+        <td>
+          <span class="ticker">SMH</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-15</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $576.56</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-20</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $536.21</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$686</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-20</td>
-        <td><span class="ticker">SMH</span></td>
-        <td><span class="neg">sell</span></td>
-        <td class="num">17</td>
-        <td class="num">$9,116</td>
+        <td>
+          <span class="ticker">CCEP</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-07</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $95.49</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-14</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $91.41</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$326</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-15</td>
-        <td><span class="ticker">FAST</span></td>
-        <td><span class="pos">buy</span></td>
-        <td class="num">185</td>
-        <td class="num">$8,129</td>
+        <td>
+          <span class="ticker">AMD</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-07</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $410.93</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-13</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $435.80</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+0.27R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$398</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-15</td>
-        <td><span class="ticker">QQQ</span></td>
-        <td><span class="pos">buy</span></td>
-        <td class="num">16</td>
-        <td class="num">$11,473</td>
+        <td>
+          <span class="ticker">TSLA</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">channel_envelope</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-13</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $346.26</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-12</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $448.99</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+10.24R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$1,644</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-15</td>
-        <td><span class="ticker">SMH</span></td>
-        <td><span class="pos">buy</span></td>
-        <td class="num">17</td>
-        <td class="num">$9,801</td>
+        <td>
+          <span class="ticker">CTSH</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-01</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $54.11</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-05</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $52.28</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$130</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-14</td>
-        <td><span class="ticker">COST</span></td>
-        <td><span class="pos">buy</span></td>
-        <td class="num">11</td>
-        <td class="num">$11,306</td>
+        <td>
+          <span class="ticker">NVDA</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-28</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $211.06</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-04</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $197.47</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$693</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-14</td>
-        <td><span class="ticker">CCEP</span></td>
-        <td><span class="neg">sell</span></td>
-        <td class="num">80</td>
-        <td class="num">$7,313</td>
+        <td>
+          <span class="ticker">ALNY</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-29</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $300.68</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-30</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $300.73</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$1</span>
+        </td>
       </tr>
       
       <tr>
-        <td>2026-05-13</td>
-        <td><span class="ticker">AMD</span></td>
-        <td><span class="neg">sell</span></td>
-        <td class="num">16</td>
-        <td class="num">$6,973</td>
+        <td>
+          <span class="ticker">INTC</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">target</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-17</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $68.85</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-30</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $89.14</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+3.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$1,684</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">PG</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">channel_envelope</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-10</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $146.89</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-27</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $150.14</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+1.14R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$136</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">SMH</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">target</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-08</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $423.16</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-27</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $492.45</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+3.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$1,594</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">CSCO</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">manual_close</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-02-26</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $78.94</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-04-14</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $82.12</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+0.58R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$375</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">CEG</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-17</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $307.98</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-23</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $294.12</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$347</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">DASH</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-18</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $169.43</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-20</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $158.97</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$178</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">COST</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-11</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $1007.91</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-20</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $976.03</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$351</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">GLD</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-02-20</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $463.25</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-20</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $423.26</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$680</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">CSX</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-11</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $40.86</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-13</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $39.39</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$413</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">AAPL</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-02-19</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $266.42</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-03-07</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $256.15</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$452</span>
+        </td>
       </tr>
       
     </tbody>
@@ -627,7 +1030,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-28 05:02 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-05-28 06:02 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
