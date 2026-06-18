@@ -137,7 +137,7 @@
     <span class="pill mode-live">LIVE</span>
     <span class="pill ok">IB ✓</span>
     
-    <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:02:29</span>
+    <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:02:36</span>
   </div>
 </header>
 
@@ -155,37 +155,37 @@
     <div class="card full">
       <div class="label">Live equity (USD)</div>
       
-      <div class="value">$34,769.71</div>
+      <div class="value">$34,258.77</div>
       <div class="sub">
-        ≈ £25,887.47 GBP · observed 2026-06-17 06:02
+        ≈ £25,732.21 GBP · observed 2026-06-18 06:01
       </div>
       
     </div>
     <div class="card">
       <div class="label">Realised lifetime</div>
       
-      <div class="value pos">$2,144</div>
-      <div class="sub">$2,143.98</div>
+      <div class="value pos">$2,428</div>
+      <div class="sub">$2,427.66</div>
       
     </div>
     <div class="card">
       <div class="label">Unrealised (open)</div>
       
-      <div class="value pos">$415</div>
-      <div class="sub">$415.34</div>
+      <div class="value neg">$-102</div>
+      <div class="sub">$-101.80</div>
       
     </div>
     <div class="card">
       <div class="label">NAV / unit</div>
       
-      <div class="value">$1.0495</div>
+      <div class="value">$1.0341</div>
       <div class="sub">33,130.40 units</div>
       
     </div>
     <div class="card">
       <div class="label">Open / Pending</div>
       
-      <div class="value">3<span style="font-size:14px; color: var(--muted); font-weight: 500;"> / 0</span></div>
+      <div class="value">1<span style="font-size:14px; color: var(--muted); font-weight: 500;"> / 3</span></div>
       
     </div>
   </div>
@@ -195,7 +195,7 @@
   <div class="banner ok">
     <div class="title">✓ Reconciliation balanced</div>
     <div class="body">
-      observed $34,770 = committed $33,130 + realised $2,144 + unrealised $415 − trade fees $169.61 + IB cash activity $-750.40 · delta $-0.00
+      observed $34,259 = committed $33,130 + realised $2,428 + unrealised $-102 − trade fees $169.61 + IB cash activity $-1,027.88 · delta $-0.00
     </div>
   </div>
   
@@ -204,7 +204,7 @@
   <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin: 14px 0;">
     <div style="font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; margin-bottom: 8px;">
       IB cash activity (non-trading) · <span style="color: #f7d774;">PAPER</span>
-      <span style="color: var(--muted); font-weight: 500;"> · 29 events · last 2026-06-17</span>
+      <span style="color: var(--muted); font-weight: 500;"> · 30 events · last 2026-06-18</span>
     </div>
     <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; font-variant-numeric: tabular-nums;">
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Interest</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
@@ -212,18 +212,18 @@
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">WHT</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Acct fees</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
       <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">FX P/L</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--neg);">$-750.40</div></div>
+      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--neg);">$-1,027.88</div></div>
     </div>
     <div style="font-size: 10px; color: var(--muted); margin-top: 8px; line-height: 1.4;">
       
-      Source: engine-written <code>ib_account_state.json</code>, pulled 2026-06-17 06:02.
+      Source: engine-written <code>ib_account_state.json</code>, pulled 2026-06-18 06:02.
       
     </div>
   </div>
   
 
   
-  <div class="section-title">Equity curve <span class="count">20 pts</span></div>
+  <div class="section-title">Equity curve <span class="count">21 pts</span></div>
   <div class="sparkline">
     
     
@@ -232,13 +232,13 @@
     <svg viewBox="0 0 600 100" preserveAspectRatio="none">
       <line x1="0" y1="50" x2="600" y2="50" class="grid-line"/>
       <polyline fill="none" stroke="#58a6ff" stroke-width="2"
-        points="0.0,60.64989205132318 31.57894736842105,66.8074784755186 63.1578947368421,84.82994820700794 94.73684210526315,90.0 126.3157894736842,84.41008565047004 157.89473684210526,58.60710783308414 189.4736842105263,33.47307622034214 221.05263157894737,43.80348493379528 252.6315789473684,45.73858149099686 284.2105263157895,21.223530201392308 315.7894736842105,15.289224149181749 347.3684210526316,20.15470779281314 378.9473684210526,30.38443898382824 410.5263157894737,25.915848506430365 442.10526315789474,23.552984342780846 473.6842105263158,23.276009292162428 505.2631578947368,10.0 536.8421052631579,12.667432313010195 568.421052631579,14.881144591566226 600.0,21.928272858458556 "/>
+        points="0.0,60.64989205132318 30.0,66.8074784755186 60.0,84.82994820700794 90.0,90.0 120.0,84.41008565047004 150.0,58.60710783308414 180.0,33.47307622034214 210.0,43.80348493379528 240.0,45.73858149099686 270.0,21.223530201392308 300.0,15.289224149181749 330.0,20.15470779281314 360.0,30.38443898382824 390.0,25.915848506430365 420.0,23.552984342780846 450.0,23.276009292162428 480.0,10.0 510.0,12.667432313010195 540.0,14.881144591566226 570.0,21.928272858458556 600.0,17.697132182129337 "/>
       <text x="4" y="14" class="axis">$35,169</text>
       <text x="4" y="96" class="axis">$29,805</text>
     </svg>
     <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums;">
       <span>2026-03-07</span>
-      <span>2026-06-16</span>
+      <span>2026-06-18</span>
     </div>
   </div>
   
@@ -249,21 +249,21 @@
     <div class="card">
       <div class="label">Total P&L</div>
       <div class="value pos">
-        $2,144
+        $2,428
       </div>
     </div>
     <div class="card">
       <div class="label">Win rate</div>
       <div class="value">48%</div>
-      <div class="sub">25 closed</div>
+      <div class="sub">27 closed</div>
     </div>
     <div class="card">
       <div class="label">Avg R</div>
-      <div class="value">+0.32R</div>
+      <div class="value">+0.29R</div>
     </div>
     <div class="card">
       <div class="label">Profit factor</div>
-      <div class="value">1.42</div>
+      <div class="value">1.47</div>
     </div>
   </div>
   
@@ -300,10 +300,10 @@
       
       <tr>
         <td>2026-06</td>
-        <td class="num pos">$109</td>
-        <td class="num">6</td>
+        <td class="num pos">$393</td>
+        <td class="num">8</td>
         <td class="num">50%</td>
-        <td class="num">+0.12</td>
+        <td class="num">+0.05</td>
       </tr>
       
     </tbody>
@@ -329,26 +329,26 @@
     </div>
     <div class="pnl-row" style="padding: 6px 0; border-top: 1px solid var(--accent);">
       <span class="lbl" style="font-size: 13px; color: var(--text);">Available to withdraw</span>
-      <span class="val pos" style="font-size: 18px;">$13,907.89</span>
+      <span class="val pos" style="font-size: 18px;">$13,703.51</span>
     </div>
     
     <div class="pnl-row" style="padding: 4px 0; border-top: 1px solid var(--border);">
       <span class="lbl" style="font-size: 11px;">P&L</span>
       <span class="val pos" style="font-size: 12px;">
-        +$655.73 (+4.9%)
+        +$451.35 (+3.4%)
       </span>
     </div>
     
-    <div class="nav-meta" style="margin-top: 8px;">13,252.16 units @ $1.0495/unit</div>
+    <div class="nav-meta" style="margin-top: 8px;">13,252.16 units @ $1.0341/unit</div>
     <details style="margin-top: 8px;">
       <summary style="cursor: pointer; font-size: 11px; color: var(--muted); padding: 4px 0;">P&L breakdown · pre-tax</summary>
       <div class="pnl-row">
         <span class="lbl">· realised</span>
-        <span class="val pos">$857.59</span>
+        <span class="val pos">$971.07</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· unrealised</span>
-        <span class="val pos">$166.14</span>
+        <span class="val neg">$-40.72</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· trade fees</span>
@@ -356,11 +356,11 @@
       </div>
       <div class="pnl-row">
         <span class="lbl">· est. tax (CT)</span>
-        <span class="val neg">−$150.05</span>
+        <span class="val neg">−$171.61</span>
       </div>
       <div class="pnl-row" style="border-top: 1px solid var(--accent); margin-top: 2px; padding-top: 6px;">
         <span class="lbl" style="color: var(--text);">Net after tax</span>
-        <span class="val pos">$505.68</span>
+        <span class="val pos">$279.74</span>
       </div>
     </details>
   </div>
@@ -377,26 +377,26 @@
     </div>
     <div class="pnl-row" style="padding: 6px 0; border-top: 1px solid var(--accent);">
       <span class="lbl" style="font-size: 13px; color: var(--text);">Available to withdraw</span>
-      <span class="val pos" style="font-size: 18px;">$20,861.83</span>
+      <span class="val pos" style="font-size: 18px;">$20,555.27</span>
     </div>
     
     <div class="pnl-row" style="padding: 4px 0; border-top: 1px solid var(--border);">
       <span class="lbl" style="font-size: 11px;">P&L</span>
       <span class="val pos" style="font-size: 12px;">
-        +$983.59 (+4.9%)
+        +$677.03 (+3.4%)
       </span>
     </div>
     
-    <div class="nav-meta" style="margin-top: 8px;">19,878.24 units @ $1.0495/unit</div>
+    <div class="nav-meta" style="margin-top: 8px;">19,878.24 units @ $1.0341/unit</div>
     <details style="margin-top: 8px;">
       <summary style="cursor: pointer; font-size: 11px; color: var(--muted); padding: 4px 0;">P&L breakdown · pre-tax</summary>
       <div class="pnl-row">
         <span class="lbl">· realised</span>
-        <span class="val pos">$1,286.39</span>
+        <span class="val pos">$1,456.60</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· unrealised</span>
-        <span class="val pos">$249.20</span>
+        <span class="val neg">$-61.08</span>
       </div>
       <div class="pnl-row">
         <span class="lbl">· trade fees</span>
@@ -404,18 +404,18 @@
       </div>
       <div class="pnl-row">
         <span class="lbl">· est. tax (CT)</span>
-        <span class="val neg">−$225.08</span>
+        <span class="val neg">−$257.42</span>
       </div>
       <div class="pnl-row" style="border-top: 1px solid var(--accent); margin-top: 2px; padding-top: 6px;">
         <span class="lbl" style="color: var(--text);">Net after tax</span>
-        <span class="val pos">$758.51</span>
+        <span class="val pos">$419.61</span>
       </div>
     </details>
   </div>
   
   
   <div style="font-size: 10px; color: var(--muted); padding: 8px 4px; line-height: 1.5;">
-    Tax estimate: CT @ 19.0% on £1,470 (≈ $1,974 × FX 0.7445). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Excludes other entity income / reliefs / pension contributions. Indicative only.
+    Tax estimate: CT @ 19.0% on £1,696 (≈ $2,258 × FX 0.7511). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Excludes other entity income / reliefs / pension contributions. Indicative only.
   </div>
   
   
@@ -424,8 +424,48 @@
 
 <section id="positions" class="panel" role="tabpanel">
   
+  <div class="section-title">Pending <span class="count">3</span></div>
+  <table class="list">
+    <thead>
+      <tr>
+        <th>Ticker</th>
+        <th>Strat</th>
+        <th class="num">Qty</th>
+        <th class="num">Entry</th>
+        <th class="num">Stop</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td><span class="ticker">SMH</span></td>
+        <td><span class="muted" style="font-size: 11px;">leg_higher_low_shakeout</span></td>
+        <td class="num">9</td>
+        <td class="num">$643.82</td>
+        <td class="num muted">$574.45</td>
+      </tr>
+      
+      <tr>
+        <td><span class="ticker">AMD</span></td>
+        <td><span class="muted" style="font-size: 11px;">leg_higher_low_shakeout</span></td>
+        <td class="num">8</td>
+        <td class="num">$532.77</td>
+        <td class="num muted">$449.33</td>
+      </tr>
+      
+      <tr>
+        <td><span class="ticker">INTC</span></td>
+        <td><span class="muted" style="font-size: 11px;">leg_higher_low_shakeout</span></td>
+        <td class="num">28</td>
+        <td class="num">$125.26</td>
+        <td class="num muted">$101.48</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
 
-  <div class="section-title">Open positions <span class="count">3</span></div>
+  <div class="section-title">Open positions <span class="count">1</span></div>
   
   <table class="list">
     <thead>
@@ -441,35 +481,13 @@
     <tbody>
       
       <tr>
-        <td><span class="ticker">CSX</span></td>
-        <td><span class="muted">L</span></td>
-        <td class="num">277</td>
-        <td class="num">$45.04</td>
-        <td class="num">$46.90</td>
-        <td class="num pos">
-          $515
-        </td>
-      </tr>
-      
-      <tr>
-        <td><span class="ticker">CMCSA</span></td>
-        <td><span class="muted">L</span></td>
-        <td class="num">232</td>
-        <td class="num">$23.72</td>
-        <td class="num">$23.66</td>
-        <td class="num neg">
-          $-15
-        </td>
-      </tr>
-      
-      <tr>
         <td><span class="ticker">AZN</span></td>
         <td><span class="muted">L</span></td>
         <td class="num">21</td>
         <td class="num">$182.74</td>
-        <td class="num">$178.71</td>
+        <td class="num">$177.89</td>
         <td class="num neg">
-          $-85
+          $-102
         </td>
       </tr>
       
@@ -477,6 +495,26 @@
   </table>
   
 
+  
+  <div class="section-title">Last-run exits <span class="count">2</span></div>
+  <table class="list">
+    <thead><tr><th>Ticker</th><th>Reason</th><th class="num">P&L</th></tr></thead>
+    <tbody>
+      
+      <tr>
+        <td><span class="ticker">CSX</span></td>
+        <td><span class="muted">stop_loss</span></td>
+        <td class="num pos">$437.83</td>
+      </tr>
+      
+      <tr>
+        <td><span class="ticker">CMCSA</span></td>
+        <td><span class="muted">stop_loss</span></td>
+        <td class="num neg">$-154.14</td>
+      </tr>
+      
+    </tbody>
+  </table>
   
 </section>
 
@@ -488,12 +526,12 @@
   <div class="lastrun">
     <div style="display: flex; justify-content: space-between; align-items: baseline;">
       <span style="font-weight: 700; color: var(--text-strong);">LIVE</span>
-      <span style="font-size: 11px; color: var(--muted);">2026-06-17 06:02</span>
+      <span style="font-size: 11px; color: var(--muted);">2026-06-18 06:02</span>
     </div>
     <div class="grid">
-      <div class="item"><div class="lbl">Trading date</div><div class="val">2026-06-16</div></div>
-      <div class="item"><div class="lbl">Equity</div><div class="val">$34,770</div></div>
-      <div class="item"><div class="lbl">Entries placed</div><div class="val">0 / 0</div></div>
+      <div class="item"><div class="lbl">Trading date</div><div class="val">2026-06-17</div></div>
+      <div class="item"><div class="lbl">Equity</div><div class="val">$34,259</div></div>
+      <div class="item"><div class="lbl">Entries placed</div><div class="val">3 / 3</div></div>
       <div class="item"><div class="lbl">Stops applied</div><div class="val">0</div></div>
     </div>
     
@@ -538,6 +576,56 @@
       </tr>
     </thead>
     <tbody>
+      
+      <tr>
+        <td>
+          <span class="ticker">CMCSA</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-06-09</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $23.73</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-06-18</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $23.06</div>
+        </td>
+        <td class="num">
+          
+          <span class="neg">-1.00R</span>
+          
+        </td>
+        <td class="num">
+          <span class="neg">-$154</span>
+        </td>
+      </tr>
+      
+      <tr>
+        <td>
+          <span class="ticker">CSX</span>
+          
+          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
+          
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-05-12</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $45.04</div>
+        </td>
+        <td>
+          <div style="font-size: 11px;">2026-06-18</div>
+          <div style="font-size: 10px; color: var(--muted);">@ $46.62</div>
+        </td>
+        <td class="num">
+          
+          <span class="pos">+0.70R</span>
+          
+        </td>
+        <td class="num">
+          <span class="pos">+$438</span>
+        </td>
+      </tr>
       
       <tr>
         <td>
@@ -989,56 +1077,6 @@
         </td>
       </tr>
       
-      <tr>
-        <td>
-          <span class="ticker">CSCO</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">manual_close</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-02-26</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $78.94</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-04-14</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $82.12</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+0.58R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$375</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">CEG</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-03-17</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $307.98</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-03-23</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $294.12</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$347</span>
-        </td>
-      </tr>
-      
     </tbody>
   </table>
   
@@ -1049,7 +1087,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-06-17 05:02 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-06-18 05:02 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
