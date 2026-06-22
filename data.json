@@ -1,5 +1,5 @@
 {
-  "generated": "2026-06-19T06:02:07.190280",
+  "generated": "2026-06-22T06:02:08.698516",
   "initial_equity": 32225.0,
   "open_trades": [
     {
@@ -32,7 +32,7 @@
       "unrealized_pnl": 95.75,
       "unrealized_r": 0.14,
       "risk_amount": 673.1,
-      "days_held": 0
+      "days_held": 3
     },
     {
       "trade_id": 45,
@@ -64,7 +64,7 @@
       "unrealized_pnl": 32.52,
       "unrealized_r": 0.05,
       "risk_amount": 671.82,
-      "days_held": 0
+      "days_held": 3
     },
     {
       "trade_id": 46,
@@ -96,39 +96,11 @@
       "unrealized_pnl": 63.12,
       "unrealized_r": 0.07,
       "risk_amount": 847.05,
-      "days_held": 0
+      "days_held": 3
     }
   ],
   "total_unrealized_pnl": 191.39,
-  "pending_trades": [
-    {
-      "trade_id": 47,
-      "ticker": "HD",
-      "direction": "long",
-      "leg_name": "leg_higher_low_shakeout",
-      "strategy": "leg_higher_low_shakeout",
-      "status": "PENDING",
-      "signal_date": "2026-06-18T00:00:00",
-      "entry_date": "NaT",
-      "exit_date": "NaT",
-      "entry_price": 338.189,
-      "stop_price": 316.4742,
-      "initial_stop_price": 316.4742,
-      "target_price": 403.3334,
-      "exit_price": null,
-      "qty": 31,
-      "filled_qty": 0,
-      "pnl": null,
-      "r_multiple": null,
-      "entry_commission": null,
-      "exit_commission": null,
-      "ib_entry_order_id": 3498.0,
-      "ib_stop_order_id": 3499.0,
-      "ib_target_order_id": 3500.0,
-      "exit_reason": null,
-      "notes": null
-    }
-  ],
+  "pending_trades": [],
   "closed_trades": [
     {
       "trade_id": 2,
@@ -1266,6 +1238,33 @@
       "ib_target_order_id": 3038.0,
       "exit_reason": null,
       "notes": "DAY order expired unfilled"
+    },
+    {
+      "trade_id": 47,
+      "ticker": "HD",
+      "direction": "long",
+      "leg_name": "leg_higher_low_shakeout",
+      "strategy": "leg_higher_low_shakeout",
+      "status": "EXPIRED",
+      "signal_date": "2026-06-18T00:00:00",
+      "entry_date": "NaT",
+      "exit_date": "NaT",
+      "entry_price": 338.189,
+      "stop_price": 316.4742,
+      "initial_stop_price": 316.4742,
+      "target_price": 403.3334,
+      "exit_price": null,
+      "qty": 31,
+      "filled_qty": 0,
+      "pnl": null,
+      "r_multiple": null,
+      "entry_commission": null,
+      "exit_commission": null,
+      "ib_entry_order_id": 3498.0,
+      "ib_stop_order_id": 3499.0,
+      "ib_target_order_id": 3500.0,
+      "exit_reason": null,
+      "notes": "DAY order expired: signal from 2026-06-18"
     }
   ],
   "equity_curve": [
@@ -1445,42 +1444,32 @@
     "total_trades": 47,
     "open": 3,
     "closed": 28,
-    "pending": 1,
+    "pending": 0,
     "cancelled": 2,
-    "missed": 13,
+    "missed": 14,
     "win_rate": 0.464,
     "avg_r": 0.24,
     "profit_factor": 1.42,
     "total_pnl": 2245.77,
-    "current_equity": 34006.88,
+    "current_equity": 34106.73,
     "max_drawdown": -0.0751,
     "sharpe_approx": 0.58
   },
   "status": "Live",
   "last_run": {
-    "timestamp": "2026-06-19T06:02:05.220137",
-    "trading_date": "2026-06-18",
+    "timestamp": "2026-06-22T06:02:06.616750",
+    "trading_date": "2026-06-19",
     "mode": "LIVE",
     "ib_connected": true,
-    "equity": 34006.88210218855,
-    "entries_planned": 1,
-    "entries_placed": 1,
+    "equity": 34106.72958023369,
+    "entries_planned": 0,
+    "entries_placed": 0,
     "stop_updates": [],
     "stops_applied": 0,
-    "exits_detected": [
-      {
-        "ticker": "AZN",
-        "trade_id": 43,
-        "exit_reason": "stop_loss",
-        "exit_price": 174.0762,
-        "pnl": -181.89,
-        "r_multiple": -1.0,
-        "exit_commission": 0.0
-      }
-    ],
+    "exits_detected": [],
     "discrepancies": [],
     "open_count": 3,
-    "pending_count": 1
+    "pending_count": 0
   },
   "watchlist": [
     {
@@ -1536,7 +1525,7 @@
     },
     {
       "ticker": "HD",
-      "has_position": true,
+      "has_position": false,
       "last_close": 334.28,
       "last_date": "2026-06-18",
       "legs": [
@@ -1567,7 +1556,7 @@
             "confirm_close": true
           },
           "s2_fired": true,
-          "signal": false
+          "signal": true
         }
       ],
       "elder": {
