@@ -3,1112 +3,1048 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0d1117">
+<meta name="theme-color" content="#0D141B">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
 <title>Trading · t1_uk_trading_co</title>
 <style>
-  :root {
-    --bg: #0d1117;
-    --surface: #161b22;
-    --surface-2: #1c2128;
-    --border: #30363d;
-    --text: #c9d1d9;
-    --text-strong: #f0f6fc;
-    --muted: #8b949e;
-    --accent: #58a6ff;
-    --accent-2: #1f6feb;
-    --pos: #3fb950;
-    --neg: #f85149;
-    --warn: #d29922;
+  :root{
+    --bg:#0D141B; --backdrop:#0A0F15; --panel:#151E27; --raised:#1A2530; --line:#263442;
+    --text:#E6EDF3; --muted:#8DA3B5; --faint:#5E7385;
+    --steel:#1F4E6D; --steel-hi:#5C96C4; --steel-soft:#17334A;
+    --gain:#2FA57C; --gain-soft:rgba(47,165,124,.14);
+    --loss:#E25C6E; --loss-soft:rgba(226,92,110,.14);
+    --warn:#D9A13B; --warn-soft:rgba(217,161,59,.14);
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,monospace;
+    --sans:-apple-system,"Segoe UI",system-ui,sans-serif;
   }
-  * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; line-height: 1.4; -webkit-text-size-adjust: 100%; }
-  body { padding: max(env(safe-area-inset-top), 8px) max(env(safe-area-inset-right), 0px) max(env(safe-area-inset-bottom), 80px) max(env(safe-area-inset-left), 0px); }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--backdrop);color:var(--text);font-family:var(--sans);-webkit-text-size-adjust:100%}
+  body{display:flex;justify-content:center;min-height:100vh}
+  .phone{width:100%;max-width:420px;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;border-left:1px solid var(--line);border-right:1px solid var(--line)}
 
-  .topbar { display: flex; align-items: center; justify-content: space-between; padding: 8px 14px 12px 14px; }
-  .topbar .brand { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 16px; color: var(--text-strong); }
-  .topbar .brand .glyph { font-size: 18px; }
-  .topbar .meta { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
-  .pill { font-size: 10px; padding: 3px 8px; border-radius: 10px; font-weight: 600; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .02em; }
-  .pill.code { background: #21262d; color: var(--muted); }
-  .pill.juris { background: #0c2d6b; color: #79c0ff; }
-  .pill.mode-live { background: #5d0d12; color: #ff8b8b; }
-  .pill.mode-paper { background: #533c00; color: #f7d774; }
-  .pill.mode-dry { background: #0c2d6b; color: #79c0ff; }
-  .pill.mode-full { background: #4d2f00; color: #f7b173; }
-  .pill.mode-unknown { background: #21262d; color: var(--muted); }
-  .pill.ok { background: #033a16; color: var(--pos); }
-  .pill.err { background: #5d0d12; color: var(--neg); }
-  .pill.share { background: #21262d; color: var(--muted); border: 1px solid var(--border); }
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 88%,rgba(13,20,27,.92));padding:calc(max(env(safe-area-inset-top),0px) + 10px) 14px 8px;border-bottom:1px solid var(--line)}
+  .hrow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .brand{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .brand b{color:var(--text);font-weight:600}
+  .meta{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+  .pill{font-size:9.5px;padding:2px 7px;border-radius:9px;font-weight:600;font-family:var(--mono);letter-spacing:.02em}
+  .pill.code{background:var(--raised);color:var(--muted)}
+  .pill.share{background:var(--raised);color:var(--muted);border:1px solid var(--line)}
+  .strat-switch{display:flex;gap:6px;margin-top:8px}
+  .strat-switch .lane{flex:1;text-align:center;font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);text-decoration:none}
+  .strat-switch .lane.on{background:var(--steel);border-color:var(--steel);color:#fff}
+  .strat-switch .lane .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--warn);margin-right:5px;vertical-align:1px}
+  .status{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-family:var(--mono)}
+  .chip .d{width:6px;height:6px;border-radius:50%}
+  .d.ok{background:var(--gain)} .d.warn{background:var(--warn)} .d.info{background:var(--steel-hi)} .d.err{background:var(--loss)}
 
-  .tabs { display: flex; gap: 0; padding: 0 14px; border-bottom: 1px solid var(--border); position: sticky; top: 0; background: var(--bg); z-index: 10; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .tab { padding: 10px 14px; font-size: 13px; font-weight: 500; color: var(--muted); border-bottom: 2px solid transparent; background: none; border-left: none; border-right: none; border-top: none; cursor: pointer; white-space: nowrap; font-family: inherit; }
-  .tab.active { color: var(--accent); border-bottom-color: var(--accent); }
-  .tab:active { background: var(--surface); }
+  /* ---------- layout ---------- */
+  main{flex:1;overflow-y:auto;padding:14px 14px calc(max(env(safe-area-inset-bottom),0px) + 76px);display:flex;flex-direction:column;gap:12px}
+  section.tabpane{display:none;flex-direction:column;gap:12px}
+  section.tabpane.on{display:flex}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .eyebrow{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 6px}
+  h2.eyebrow{margin:2px 0 0}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .up{color:var(--gain)} .down{color:var(--loss)}
 
-  .panel { display: none; padding: 14px; }
-  .panel.active { display: block; }
+  /* hero */
+  .hero-val{font:600 34px/1.1 var(--mono);letter-spacing:-.01em}
+  .hero-sub{display:flex;gap:14px;margin-top:6px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+  .hero-sub .num{color:var(--text)}
+  .hero-sub .num.up{color:var(--gain)} .hero-sub .num.down{color:var(--loss)}
+  .spark{margin-top:12px}
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .statrow>div{background:var(--panel);padding:10px 8px;text-align:center}
+  .statrow .v{font:600 15px var(--mono)}
+  .statrow .k{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:3px}
 
-  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 14px; }
-  .hero-grid .card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px; }
-  .hero-grid .card.full { grid-column: 1 / -1; background: linear-gradient(135deg, #161b22 0%, #1c2128 100%); }
-  .hero-grid .label { font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin-bottom: 4px; font-weight: 600; }
-  .hero-grid .value { font-size: 22px; font-weight: 700; color: var(--text-strong); font-variant-numeric: tabular-nums; line-height: 1.05; }
-  .hero-grid .card.full .value { font-size: 30px; }
-  .hero-grid .sub { font-size: 11px; color: var(--muted); margin-top: 4px; font-variant-numeric: tabular-nums; }
-  .hero-grid .pos { color: var(--pos); }
-  .hero-grid .neg { color: var(--neg); }
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600}
+  td{padding:7px 6px;border-bottom:1px solid rgba(38,52,66,.5)}
+  tr:last-child td{border-bottom:none}
+  td.r,th.r{text-align:right}
+  .tick{font:600 12.5px var(--mono)}
 
-  .banner { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 10px 14px; margin-bottom: 14px; font-size: 12px; line-height: 1.5; }
-  .banner.warn { background: #2d1f00; border-color: #4d3700; color: #f7d774; }
-  .banner.warn .title { color: #f7d774; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
-  .banner.ok { background: #052e16; border-color: #0a4123; color: var(--pos); }
-  .banner.ok .title { color: var(--pos); font-weight: 700; font-size: 13px; margin-bottom: 4px; }
-  .banner.info { background: #0c2d6b; border-color: #1c3a73; color: #79c0ff; }
-  .banner.info .title { color: #79c0ff; font-weight: 700; font-size: 13px; margin-bottom: 4px; }
-  .banner .body { font-size: 12px; }
+  .banner{border-radius:10px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+  .banner.warn{background:var(--warn-soft);border:1px solid rgba(217,161,59,.35)}
+  .banner.err{background:var(--loss-soft);border:1px solid rgba(226,92,110,.35)}
+  .banner .t{font-weight:600;font-size:13px}
+  .banner p{margin:3px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
+  .cta{margin-top:8px;display:inline-block;background:var(--steel);color:#fff;border:none;border-radius:7px;font:600 12px var(--sans);padding:8px 14px;cursor:pointer;text-decoration:none}
 
-  .section-title { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin: 16px 0 8px 0; display: flex; align-items: center; justify-content: space-between; }
-  .section-title .count { font-size: 10px; color: var(--muted); font-weight: 500; }
+  /* positions */
+  .pos{padding:12px 14px}
+  .pos-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .stag{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:var(--steel-soft);color:var(--steel-hi);white-space:nowrap}
+  .pnl{font:600 14px var(--mono)}
+  .rbadge{font:600 10.5px var(--mono);padding:2px 6px;border-radius:5px;margin-left:6px}
+  .rbadge.up{background:var(--gain-soft)} .rbadge.down{background:var(--loss-soft)}
+  .pos-mid{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .rail{position:relative;height:34px;margin-top:12px}
+  .rail .bar{position:absolute;top:16px;left:0;right:0;height:2px;background:var(--line);border-radius:2px}
+  .rail .pt{position:absolute;top:13px;width:8px;height:8px;border-radius:50%;transform:translateX(-50%)}
+  .rail .lab{position:absolute;top:0;font:9px var(--mono);color:var(--faint);transform:translateX(-50%);white-space:nowrap}
+  .rail .lab.below{top:auto;bottom:0}
+  details.more{margin-top:8px}
+  details.more summary{cursor:pointer;font-size:11px;color:var(--steel-hi);list-style:none}
+  details.more summary::before{content:"▸ "} details.more[open] summary::before{content:"▾ "}
+  .kv{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;margin-top:8px;font-size:11.5px}
+  .kv .k{color:var(--faint)} .kv .v{font-family:var(--mono);text-align:right}
 
-  .pool-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; margin-bottom: 10px; }
-  .pool-card .head { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 8px; }
-  .pool-card .head .name { font-weight: 700; color: var(--text-strong); font-size: 15px; }
-  .pool-card .head .share-pct { font-size: 11px; padding: 2px 8px; border-radius: 10px; background: #21262d; color: #79c0ff; font-weight: 600; font-family: ui-monospace, monospace; }
-  .pool-card .nav { font-size: 24px; font-weight: 700; color: var(--text-strong); font-variant-numeric: tabular-nums; line-height: 1.05; }
-  .pool-card .nav-meta { font-size: 11px; color: var(--muted); font-family: ui-monospace, monospace; margin-top: 2px; margin-bottom: 10px; font-variant-numeric: tabular-nums; }
-  .pool-card .pnl-row { display: flex; justify-content: space-between; padding: 5px 0; font-size: 12px; border-top: 1px solid var(--border); }
-  .pool-card .pnl-row .lbl { color: var(--muted); }
-  .pool-card .pnl-row .val { font-variant-numeric: tabular-nums; font-weight: 600; }
-  .pool-card .pnl-row .val.pos { color: var(--pos); }
-  .pool-card .pnl-row .val.neg { color: var(--neg); }
+  /* ledger */
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .chipbtn{font:600 11px var(--sans);padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+  .chipbtn.on{background:var(--steel-soft);border-color:var(--steel);color:var(--steel-hi)}
+  .lrow summary{display:grid;grid-template-columns:64px 1fr auto auto;gap:8px;align-items:center;padding:9px 4px;cursor:pointer;list-style:none;border-bottom:1px solid rgba(38,52,66,.5)}
+  .lrow .dates{font-size:10.5px;color:var(--faint);font-family:var(--mono)}
+  .lrow .rr{font:600 11px var(--mono);padding:2px 7px;border-radius:5px}
+  .lrow .amt{font:600 12.5px var(--mono);text-align:right;min-width:70px}
+  .lrow .detail{padding:6px 4px 12px;border-bottom:1px solid rgba(38,52,66,.5)}
 
-  table.list { width: 100%; border-collapse: collapse; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; font-size: 12px; }
-  table.list th { text-align: left; font-size: 9px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 700; padding: 7px 8px; background: var(--surface-2); border-bottom: 1px solid var(--border); }
-  table.list th.num { text-align: right; }
-  table.list td { padding: 8px 8px; border-bottom: 1px solid var(--border); vertical-align: top; }
-  table.list td.num { text-align: right; font-variant-numeric: tabular-nums; }
-  table.list .ticker { font-weight: 700; color: var(--text-strong); font-family: ui-monospace, monospace; }
-  table.list .pos { color: var(--pos); font-weight: 600; }
-  table.list .neg { color: var(--neg); font-weight: 600; }
-  table.list .muted { color: var(--muted); }
-  table.list tr:last-child td { border-bottom: none; }
-  table.list .pool-tag { font-size: 10px; padding: 1px 6px; background: #21262d; border-radius: 6px; color: var(--muted); font-family: ui-monospace, monospace; }
+  /* pools */
+  .pool-top{display:flex;justify-content:space-between;align-items:baseline}
+  .pool-name{font-weight:600;font-size:14px}
+  .share-r{font:600 11px var(--mono);color:var(--steel-hi)}
+  .pool-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+  .pool-grid .k{font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+  .pool-grid .v{font:600 14px var(--mono);margin-top:2px}
 
-  .empty { font-size: 12px; color: var(--muted); padding: 14px; text-align: center; background: var(--surface); border: 1px dashed var(--border); border-radius: 8px; font-style: italic; }
+  /* settings */
+  .set h3{margin:0;font-size:13.5px;font-weight:600}
+  .set .sub{font-size:11px;color:var(--faint);margin-top:2px}
+  .param{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(38,52,66,.5);font-size:12px}
+  .param:last-child{border-bottom:none}
+  .param .k{color:var(--muted)} .param .v{font-family:var(--mono)}
+  .uni{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .uni span{font:11px var(--mono);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:3px 7px;color:var(--muted)}
+  .note{font-size:10.5px;color:var(--faint);margin-top:8px;line-height:1.5}
+  .empty{font-size:12px;color:var(--faint);padding:14px;text-align:center;background:var(--panel);border:1px dashed var(--line);border-radius:10px;font-style:italic}
 
-  .sparkline { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 14px; }
-  .sparkline svg { width: 100%; height: 100px; display: block; }
-  .sparkline .axis { fill: var(--muted); font-size: 10px; }
-  .sparkline .grid-line { stroke: var(--border); stroke-width: 1; stroke-dasharray: 2 3; }
+  /* bottom nav */
+  nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(21,30,39,.97);border-top:1px solid var(--line);display:flex;z-index:30;padding-bottom:max(env(safe-area-inset-bottom),0px)}
+  .tab{flex:1;background:none;border:none;color:var(--faint);padding:8px 0 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;font:600 9.5px var(--sans);letter-spacing:.05em;text-transform:uppercase}
+  .tab svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .tab.on{color:var(--steel-hi)}
+  .lane:focus-visible,.tab:focus-visible,.chipbtn:focus-visible{outline:2px solid var(--steel-hi);outline-offset:2px}
+  @media (prefers-reduced-motion:no-preference){ .lane,.tab,.chipbtn{transition:color .15s,background .15s} }
 
-  .lastrun { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; }
-  .lastrun .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
-  .lastrun .item .lbl { font-size: 9px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
-  .lastrun .item .val { font-size: 13px; font-weight: 700; color: var(--text-strong); font-variant-numeric: tabular-nums; }
-  .lastrun ul { margin: 6px 0 0 0; padding-left: 16px; font-size: 11px; color: var(--text); }
-  .lastrun ul li { margin: 2px 0; }
-
-  .footer-meta { padding: 14px; font-size: 10px; color: var(--muted); text-align: center; line-height: 1.6; }
-  .footer-meta a { color: var(--accent); text-decoration: none; }
-
-  /* Paper | Live strategy switcher (mirrors desktop .strat-switch) */
-  .strat-switch { display: flex; gap: 8px; padding: 10px 14px 0; }
-  .strat-switch .strat { flex: 1; display: block; text-decoration: none; background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 8px 12px; }
-  .strat-switch .strat .lbl { display: block; font-size: 12px; font-weight: 700; color: var(--text-strong); }
-  .strat-switch .strat .meta { display: block; font-size: 9.5px; color: var(--muted); font-variant-numeric: tabular-nums; margin-top: 1px; }
-  .strat-switch .strat.active { border-color: var(--accent); box-shadow: inset 0 0 0 1px var(--accent); }
-  .strat-switch .strat.live .lbl::after { content: " ·"; color: #d9a13b; }
-
-  /* Larger phones / small tablets */
-  @media (min-width: 600px) {
-    .panel { padding: 16px 20px; }
-    .hero-grid .card.full .value { font-size: 36px; }
-  }
+  .footer-meta{padding:10px 14px 14px;font-size:10px;color:var(--faint);text-align:center;line-height:1.6}
+  .footer-meta a{color:var(--steel-hi);text-decoration:none}
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="brand">
-    <span class="glyph">📈</span>
-    <span>Trading Engine v2</span>
-  </div>
-  <div class="meta">
+
+
+
+<div class="phone">
+
+<header>
+  <div class="hrow">
+    <div class="brand"><b>TIER 1</b> Trading</div>
+    <div class="meta">
     <span class="pill share">view-only</span>
+      
+      <span class="pill code">t1_uk_trading_co</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">14:06:42</span>
+    </div>
+  </div>
+  
+  <div class="status">
     
-    <span class="pill code">t1_uk_trading_co</span>
+    <span class="chip"><span class="d ok"></span>Run 06:02 · LIVE</span>
+    <span class="chip"><span class="d ok"></span>IB connected</span>
     
     
-    <span class="pill mode-live">LIVE</span>
-    <span class="pill ok">IB ✓</span>
+    <span class="chip"><span class="d info"></span>ib-paper-7497</span>
     
-    <span class="pill code" title="Server render time — if this isn't current, the page is cached">13:37:45</span>
+    
+    <span class="chip"><span class="d ok"></span>Reconciled</span>
+    
   </div>
 </header>
 
+<main>
+  
+  <section class="tabpane on" id="pane-overview">
 
-<nav class="tabs" role="tablist">
-  <button class="tab active" data-panel="overview" role="tab">Overview</button>
-  <button class="tab" data-panel="pools" role="tab">Pools</button>
-  <button class="tab" data-panel="positions" role="tab">Positions</button>
-  <button class="tab" data-panel="activity" role="tab">Activity</button>
+    
+
+    <div class="card">
+      <p class="eyebrow">IB equity · USD</p>
+      
+      <div class="hero-val num">$33,006.26</div>
+      <div class="hero-sub">
+        <span>Committed <span class="num">$33,130</span></span>
+        
+        <span>Lifetime P&amp;L <span class="num up">+1,879.30</span></span>
+        
+        
+        <span>Return <span class="num up">+2.3%</span></span>
+        
+      </div>
+      <div class="hero-sub">
+        <span>≈ <span class="num">£24,704</span> GBP</span>
+        <span>NAV/unit <span class="num">0.9963</span></span>
+        <span>observed <span class="num">03 Jul 06:02</span></span>
+      </div>
+      
+      
+      
+      
+      
+      
+      <div class="spark">
+        <svg width="100%" viewBox="0 0 372 74" preserveAspectRatio="none" role="img" aria-label="Equity curve">
+          <line x1="4" y1="37" x2="368" y2="37" stroke="#263442" stroke-dasharray="3 4" stroke-width="1"/>
+          <polygon fill="rgba(92,150,196,.10)" points="4,70 4.0,45.8 19.8,50.9 35.7,65.7 51.5,70.0 67.3,65.4 83.1,44.1 99.0,23.4 114.8,31.9 130.6,33.5 146.4,13.3 162.3,8.4 178.1,12.4 193.9,20.8 209.7,17.1 225.6,15.2 241.4,15.0 257.2,4.0 273.0,6.2 288.9,8.0 304.7,13.8 320.5,10.4 336.3,12.6 352.2,15.2 368.0,17.1 368,70"/>
+          <polyline fill="none" stroke="#5C96C4" stroke-width="1.8" points="4.0,45.8 19.8,50.9 35.7,65.7 51.5,70.0 67.3,65.4 83.1,44.1 99.0,23.4 114.8,31.9 130.6,33.5 146.4,13.3 162.3,8.4 178.1,12.4 193.9,20.8 209.7,17.1 225.6,15.2 241.4,15.0 257.2,4.0 273.0,6.2 288.9,8.0 304.7,13.8 320.5,10.4 336.3,12.6 352.2,15.2 368.0,17.1 "/>
+        </svg>
+        <div style="display:flex;justify-content:space-between;font:9.5px var(--mono);color:var(--faint);margin-top:2px">
+          <span>2026-03-07</span><span>2026-07-02 · 24 pts</span>
+        </div>
+      </div>
+      
+    </div>
+
+    
+    <div class="statrow">
+      <div><div class="v num">43%</div><div class="k">Win rate</div></div>
+      <div><div class="v num">1.33</div><div class="k">Profit factor</div></div>
+      <div><div class="v num">+0.16</div><div class="k">Avg R</div></div>
+      <div><div class="v num down">-7.5%</div><div class="k">Max DD</div></div>
+    </div>
+    
+
+    
+    <div class="card">
+      <p class="eyebrow">Monthly P&amp;L</p>
+      <table>
+        <tr><th>Period</th><th class="r">P&amp;L</th><th class="r">Trades</th><th class="r">Win %</th><th class="r">Avg R</th></tr>
+        
+        <tr>
+          <td class="num">2026-03</td>
+          <td class="r num down">-2,419.94</td>
+          <td class="r num">6</td>
+          <td class="r num">0</td>
+          <td class="r num">-1.00</td>
+        </tr>
+        
+        <tr>
+          <td class="num">2026-04</td>
+          <td class="r num up">+3,789.89</td>
+          <td class="r num">5</td>
+          <td class="r num">100</td>
+          <td class="r num">+1.02</td>
+        </tr>
+        
+        <tr>
+          <td class="num">2026-05</td>
+          <td class="r num up">+665.09</td>
+          <td class="r num">8</td>
+          <td class="r num">50</td>
+          <td class="r num">+1.03</td>
+        </tr>
+        
+        <tr>
+          <td class="num">2026-06</td>
+          <td class="r num down">-3.50</td>
+          <td class="r num">10</td>
+          <td class="r num">40</td>
+          <td class="r num">-0.16</td>
+        </tr>
+        
+        <tr>
+          <td class="num">2026-07</td>
+          <td class="r num down">-152.25</td>
+          <td class="r num">1</td>
+          <td class="r num">0</td>
+          <td class="r num">-1.00</td>
+        </tr>
+        
+      </table>
+    </div>
+    
+
+    
+    <div class="card">
+      <details class="more">
+        <summary>IB cash activity (non-trading) · 41 events</summary>
+        <div class="kv">
+          <span class="k">Interest</span><span class="v">$0.00</span>
+          <span class="k">Dividends</span><span class="v">$0.00</span>
+          <span class="k">Withholding tax</span><span class="v">$0.00</span>
+          <span class="k">Account fees</span><span class="v">$0.00</span>
+          <span class="k">FX P/L</span><span class="v">$0.00</span>
+          <span class="k">Trade fees</span><span class="v">$169.61</span>
+          <span class="k">Imputed (paper)</span><span class="v" style="color:var(--warn)">$-902.67</span>
+        </div>
+        <p class="note">
+          Source: engine-written <span class="num">ib_account_state.json</span>, pulled 2026-07-03 06:02.
+        </p>
+      </details>
+    </div>
+
+    <div class="card">
+      <details class="more">
+        <summary>Reconciliation — balanced</summary>
+        <div class="kv">
+          <span class="k">Observed equity</span><span class="v">$33,006.26</span>
+          <span class="k">Committed</span><span class="v">$33,130.40</span>
+          <span class="k">Realised lifetime</span><span class="v">$1,879.30</span>
+          <span class="k">Unrealised (open)</span><span class="v">$-931.16</span>
+          <span class="k">Expected equity</span><span class="v">$33,006.26</span>
+          <span class="k">Delta</span><span class="v ">$-0.00</span>
+        </div>
+      </details>
+    </div>
+    
+
+    
+    <div class="card">
+      <details class="more">
+        <summary>Last engine run — 2026-07-03 06:02</summary>
+        <div class="kv">
+          <span class="k">Mode</span><span class="v">LIVE</span>
+          <span class="k">Trading date</span><span class="v">2026-07-02</span>
+          <span class="k">Equity</span><span class="v">$33,006</span>
+          <span class="k">Entries placed</span><span class="v">0 / 0</span>
+          <span class="k">Stops applied</span><span class="v">0</span>
+          <span class="k">Open / pending</span><span class="v">4 / 0</span>
+        </div>
+        
+        
+      </details>
+    </div>
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-positions">
+    <h2 class="eyebrow">Open positions · 4</h2>
+    
+    <div class="card pos">
+      <div class="pos-top">
+        <span><span class="tick">SMH</span> <span class="stag">higher low shakeout</span></span>
+        <span>
+          <span class="pnl down">-512.56</span>
+          <span class="rbadge down">-0.76R</span>
+        </span>
+      </div>
+      <div class="pos-mid num">9 @ 649.24 · last 592.29 · 14 days</div>
+      
+      
+      
+      
+      
+      <div class="rail">
+        <div class="bar"></div>
+        <span class="lab" style="left:6.0%">stop 574.45</span>
+        <span class="pt" style="left:6.0%;background:var(--loss)"></span>
+        <span class="pt" style="left:29.7%;background:var(--steel-hi)"></span>
+        <span class="lab below" style="left:29.7%">entry</span>
+        <span class="pt" style="left:11.7%;background:var(--warn)"></span>
+        <span class="lab below" style="left:11.7%">last</span>
+        
+        <span class="lab" style="left:94.0%">tgt 851.93</span>
+        <span class="pt" style="left:94.0%;background:var(--gain)"></span>
+        
+      </div>
+      
+      
+      <details class="more"><summary>Detail</summary>
+        <div class="kv">
+          <span class="k">Entry date</span><span class="v">2026-06-19</span>
+          <span class="k">Direction</span><span class="v">long</span>
+          <span class="k">Initial stop</span><span class="v">574.45</span>
+          <span class="k">Current stop</span><span class="v">574.45</span>
+          <span class="k">Target</span><span class="v">851.93</span>
+          <span class="k">Risk at entry</span><span class="v">$673.10</span>
+          <span class="k">POOL_A share</span><span class="v">-205.02</span><span class="k">POOL_B share</span><span class="v">-307.54</span>
+        </div>
+      </details>
+    </div>
+    
+    <div class="card pos">
+      <div class="pos-top">
+        <span><span class="tick">AMD</span> <span class="stag">higher low shakeout</span></span>
+        <span>
+          <span class="pnl down">-123.88</span>
+          <span class="rbadge down">-0.18R</span>
+        </span>
+      </div>
+      <div class="pos-mid num">8 @ 533.30 · last 517.82 · 14 days</div>
+      
+      
+      
+      
+      
+      <div class="rail">
+        <div class="bar"></div>
+        <span class="lab" style="left:6.0%">stop 449.33</span>
+        <span class="pt" style="left:6.0%;background:var(--loss)"></span>
+        <span class="pt" style="left:28.1%;background:var(--steel-hi)"></span>
+        <span class="lab below" style="left:28.1%">entry</span>
+        <span class="pt" style="left:24.1%;background:var(--warn)"></span>
+        <span class="lab below" style="left:24.1%">last</span>
+        
+        <span class="lab" style="left:94.0%">tgt 783.08</span>
+        <span class="pt" style="left:94.0%;background:var(--gain)"></span>
+        
+      </div>
+      
+      
+      <details class="more"><summary>Detail</summary>
+        <div class="kv">
+          <span class="k">Entry date</span><span class="v">2026-06-19</span>
+          <span class="k">Direction</span><span class="v">long</span>
+          <span class="k">Initial stop</span><span class="v">449.33</span>
+          <span class="k">Current stop</span><span class="v">449.33</span>
+          <span class="k">Target</span><span class="v">783.08</span>
+          <span class="k">Risk at entry</span><span class="v">$671.82</span>
+          <span class="k">POOL_A share</span><span class="v">-49.55</span><span class="k">POOL_B share</span><span class="v">-74.33</span>
+        </div>
+      </details>
+    </div>
+    
+    <div class="card pos">
+      <div class="pos-top">
+        <span><span class="tick">INTC</span> <span class="stag">higher low shakeout</span></span>
+        <span>
+          <span class="pnl down">-318.80</span>
+          <span class="rbadge down">-0.38R</span>
+        </span>
+      </div>
+      <div class="pos-mid num">28 @ 131.74 · last 120.35 · 14 days</div>
+      
+      
+      
+      
+      
+      <div class="rail">
+        <div class="bar"></div>
+        <span class="lab" style="left:6.0%">stop 101.48</span>
+        <span class="pt" style="left:6.0%;background:var(--loss)"></span>
+        <span class="pt" style="left:34.0%;background:var(--steel-hi)"></span>
+        <span class="lab below" style="left:34.0%">entry</span>
+        <span class="pt" style="left:23.5%;background:var(--warn)"></span>
+        <span class="lab below" style="left:23.5%">last</span>
+        
+        <span class="lab" style="left:94.0%">tgt 196.60</span>
+        <span class="pt" style="left:94.0%;background:var(--gain)"></span>
+        
+      </div>
+      
+      
+      <details class="more"><summary>Detail</summary>
+        <div class="kv">
+          <span class="k">Entry date</span><span class="v">2026-06-19</span>
+          <span class="k">Direction</span><span class="v">long</span>
+          <span class="k">Initial stop</span><span class="v">101.48</span>
+          <span class="k">Current stop</span><span class="v">101.48</span>
+          <span class="k">Target</span><span class="v">196.60</span>
+          <span class="k">Risk at entry</span><span class="v">$847.05</span>
+          <span class="k">POOL_A share</span><span class="v">-127.52</span><span class="k">POOL_B share</span><span class="v">-191.28</span>
+        </div>
+      </details>
+    </div>
+    
+    <div class="card pos">
+      <div class="pos-top">
+        <span><span class="tick">CSGP</span> <span class="stag">elder</span></span>
+        <span>
+          <span class="pnl up">+24.08</span>
+          <span class="rbadge up">+0.11R</span>
+        </span>
+      </div>
+      <div class="pos-mid num">132 @ 29.82 · last 30.00 · 0 days</div>
+      
+      
+      
+      
+      
+      <div class="rail">
+        <div class="bar"></div>
+        <span class="lab" style="left:88.4%">stop 28.10</span>
+        <span class="pt" style="left:88.4%;background:var(--loss)"></span>
+        <span class="pt" style="left:93.5%;background:var(--steel-hi)"></span>
+        <span class="lab below" style="left:93.5%">entry</span>
+        <span class="pt" style="left:94.0%;background:var(--warn)"></span>
+        <span class="lab below" style="left:94.0%">last</span>
+        
+        <span class="lab" style="left:6.0%">tgt 0.00</span>
+        <span class="pt" style="left:6.0%;background:var(--gain)"></span>
+        
+      </div>
+      
+      
+      <details class="more"><summary>Detail</summary>
+        <div class="kv">
+          <span class="k">Entry date</span><span class="v">2026-07-03</span>
+          <span class="k">Direction</span><span class="v">long</span>
+          <span class="k">Initial stop</span><span class="v">28.10</span>
+          <span class="k">Current stop</span><span class="v">28.10</span>
+          <span class="k">Target</span><span class="v">0.00</span>
+          <span class="k">Risk at entry</span><span class="v">$227.32</span>
+          <span class="k">POOL_A share</span><span class="v">+9.63</span><span class="k">POOL_B share</span><span class="v">+14.45</span>
+        </div>
+      </details>
+    </div>
+    
+
+    <h2 class="eyebrow">Pending orders · 0</h2>
+    
+    <div class="card"><p style="margin:0;font-size:12px;color:var(--faint)">No brackets waiting. Next plan runs on the 06:00 pipeline.</p></div>
+    
+
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-ledger">
+    <h2 class="eyebrow">Closed trades · latest 20</h2>
+    
+    <div class="filters">
+      <button class="chipbtn on" data-f="all">All</button>
+      <button class="chipbtn" data-f="win">Wins</button>
+      <button class="chipbtn" data-f="loss">Losses</button>
+    </div>
+    <div class="card" style="padding:6px 10px" id="ledgerRows">
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">XLE</span>
+          <span class="dates">2026-06-29 → 2026-07-02</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-152.25</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">53.98 → 52.78</span>
+          <span class="k">Qty</span><span class="v">127</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">XOM</span>
+          <span class="dates">2026-06-24 → 2026-06-26</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-214.23</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">139.27 → 135.44</span>
+          <span class="k">Qty</span><span class="v">56</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">AZN</span>
+          <span class="dates">2026-06-15 → 2026-06-19</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-181.89</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">182.74 → 174.08</span>
+          <span class="k">Qty</span><span class="v">21</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">CMCSA</span>
+          <span class="dates">2026-06-09 → 2026-06-18</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-154.14</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">23.73 → 23.06</span>
+          <span class="k">Qty</span><span class="v">232</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">CSX</span>
+          <span class="dates">2026-05-12 → 2026-06-18</span>
+          <span class="rr up" style="background:var(--gain-soft)">+0.7R</span>
+          <span class="amt up">+437.83</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">45.04 → 46.62</span>
+          <span class="k">Qty</span><span class="v">277</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">+0.70</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">CTAS</span>
+          <span class="dates">2026-06-11 → 2026-06-16</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-472.48</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">180.59 → 173.75</span>
+          <span class="k">Qty</span><span class="v">69</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">NFLX</span>
+          <span class="dates">2026-06-09 → 2026-06-12</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-148.42</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">81.96 → 80.76</span>
+          <span class="k">Qty</span><span class="v">123</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">META</span>
+          <span class="dates">2026-06-05 → 2026-06-08</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-178.84</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">624.70 → 594.89</span>
+          <span class="k">Qty</span><span class="v">6</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">FAST</span>
+          <span class="dates">2026-05-15 → 2026-06-05</span>
+          <span class="rr up" style="background:var(--gain-soft)">+3.0R</span>
+          <span class="amt up">+622.41</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">43.94 → 47.31</span>
+          <span class="k">Qty</span><span class="v">185</span>
+          <span class="k">Exit reason</span><span class="v">channel_envelope</span>
+          <span class="k">R multiple</span><span class="v">+3.03</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">QQQ</span>
+          <span class="dates">2026-05-15 → 2026-06-05</span>
+          <span class="rr up" style="background:var(--gain-soft)">+0.6R</span>
+          <span class="amt up">+267.70</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">717.06 → 733.79</span>
+          <span class="k">Qty</span><span class="v">16</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">+0.63</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">ADBE</span>
+          <span class="dates">2026-06-02 → 2026-06-02</span>
+          <span class="rr up" style="background:var(--gain-soft)">+0.1R</span>
+          <span class="amt up">+18.57</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">271.45 → 274.11</span>
+          <span class="k">Qty</span><span class="v">7</span>
+          <span class="k">Exit reason</span><span class="v">channel_envelope</span>
+          <span class="k">R multiple</span><span class="v">+0.07</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">APP</span>
+          <span class="dates">2026-05-28 → 2026-05-28</span>
+          <span class="rr up" style="background:var(--gain-soft)">+0.8R</span>
+          <span class="amt up">+158.42</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">522.48 → 575.29</span>
+          <span class="k">Qty</span><span class="v">3</span>
+          <span class="k">Exit reason</span><span class="v">channel_envelope</span>
+          <span class="k">R multiple</span><span class="v">+0.84</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">COST</span>
+          <span class="dates">2026-05-14 → 2026-05-22</span>
+          <span class="rr up" style="background:var(--gain-soft)">+0.9R</span>
+          <span class="amt up">+299.59</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">1,027.84 → 1,055.08</span>
+          <span class="k">Qty</span><span class="v">11</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">+0.90</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">SMH</span>
+          <span class="dates">2026-05-15 → 2026-05-20</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-685.86</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">576.56 → 536.21</span>
+          <span class="k">Qty</span><span class="v">17</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">CCEP</span>
+          <span class="dates">2026-05-07 → 2026-05-14</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-326.21</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">95.49 → 91.41</span>
+          <span class="k">Qty</span><span class="v">80</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">AMD</span>
+          <span class="dates">2026-05-07 → 2026-05-13</span>
+          <span class="rr up" style="background:var(--gain-soft)">+0.3R</span>
+          <span class="amt up">+397.87</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">410.93 → 435.80</span>
+          <span class="k">Qty</span><span class="v">16</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">+0.27</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">TSLA</span>
+          <span class="dates">2026-04-13 → 2026-05-12</span>
+          <span class="rr up" style="background:var(--gain-soft)">+10.2R</span>
+          <span class="amt up">+1,643.63</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">346.26 → 448.99</span>
+          <span class="k">Qty</span><span class="v">16</span>
+          <span class="k">Exit reason</span><span class="v">channel_envelope</span>
+          <span class="k">R multiple</span><span class="v">+10.24</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">CTSH</span>
+          <span class="dates">2026-05-01 → 2026-05-05</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-129.74</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">54.11 → 52.28</span>
+          <span class="k">Qty</span><span class="v">71</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">NVDA</span>
+          <span class="dates">2026-04-28 → 2026-05-04</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt down">-692.62</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">211.06 → 197.47</span>
+          <span class="k">Qty</span><span class="v">51</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="win">
+        <summary>
+          <span class="tick">ALNY</span>
+          <span class="dates">2026-04-29 → 2026-04-30</span>
+          <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
+          <span class="amt up">+0.99</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">300.68 → 300.73</span>
+          <span class="k">Qty</span><span class="v">22</span>
+          <span class="k">Exit reason</span><span class="v">stop_loss</span>
+          <span class="k">R multiple</span><span class="v">-1.00</span>
+        </div>
+      </details>
+      
+    </div>
+    <p class="note">Latest 20 closed trades. Full history lives in the desktop Activity view and the engine ledger.</p>
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-pools">
+    <div class="card">
+      <div class="pool-top"><span class="pool-name">TC_MAIN · fund</span><span class="share-r num">ib-paper-7497</span></div>
+      <div class="pool-grid">
+        <div><div class="k">NAV / unit</div><div class="v">0.9963</div></div>
+        <div><div class="k">Units</div><div class="v">33,130</div></div>
+        <div><div class="k">Equity</div><div class="v">$33,006</div></div>
+      </div>
+    </div>
+
+    
+    <div class="card">
+      <div class="pool-top"><span class="pool-name">POOL_A</span><span class="share-r">40.0%</span></div>
+      <div class="pool-grid">
+        <div><div class="k">Put in</div><div class="v">$13,252</div></div>
+        <div><div class="k">Value now</div><div class="v down">$13,202</div></div>
+        <div><div class="k">Return</div><div class="v up">+2.3%</div></div>
+      </div>
+      <p class="note" style="margin-top:6px">13,252.16 units @ 0.9963/unit · +6.5% p.a.</p>
+      <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
+        <div class="kv">
+          <span class="k">Realised share</span><span class="v">+751.72</span>
+          <span class="k">Unrealised share</span><span class="v">-372.46</span>
+          <span class="k">Trade fees share</span><span class="v">−67.84</span>
+          <span class="k">Other (FX / imputed)</span><span class="v">-361.08</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−129.94</span>
+          <span class="k">Net after tax</span><span class="v down">-179.60</span>
+        </div>
+      </details>
+    </div>
+    
+    <div class="card">
+      <div class="pool-top"><span class="pool-name">POOL_B</span><span class="share-r">60.0%</span></div>
+      <div class="pool-grid">
+        <div><div class="k">Put in</div><div class="v">$19,878</div></div>
+        <div><div class="k">Value now</div><div class="v down">$19,804</div></div>
+        <div><div class="k">Return</div><div class="v up">+2.3%</div></div>
+      </div>
+      <p class="note" style="margin-top:6px">19,878.24 units @ 0.9963/unit · +6.5% p.a.</p>
+      <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
+        <div class="kv">
+          <span class="k">Realised share</span><span class="v">+1,127.58</span>
+          <span class="k">Unrealised share</span><span class="v">-558.70</span>
+          <span class="k">Trade fees share</span><span class="v">−101.77</span>
+          <span class="k">Other (FX / imputed)</span><span class="v">-541.60</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−194.90</span>
+          <span class="k">Net after tax</span><span class="v down">-269.39</span>
+        </div>
+      </details>
+    </div>
+    
+
+    
+    <p class="note">Tax estimate: CT @ 19.0% on £1,280 (≈ $1,710 × FX 0.7485). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Indicative only.</p>
+    
+
+    
+    <h2 class="eyebrow">Subscribe / redeem events</h2>
+    <div class="card" style="padding:6px 10px">
+      <table>
+        <tr><th>Date</th><th>Pool</th><th>Type</th><th class="r">Amount</th></tr>
+        
+        <tr><td class="num">2026-02-01</td><td>POOL_B</td><td class="up">subscribe</td><td class="r num">$19,878</td></tr>
+        
+        <tr><td class="num">2026-02-01</td><td>POOL_A</td><td class="up">subscribe</td><td class="r num">$13,252</td></tr>
+        
+      </table>
+    </div>
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-settings">
+    <h2 class="eyebrow">Trading settings · read-only</h2>
+    
+    
+
+    
+    
+    <div class="card set">
+      <h3>Ema Pullback <span class="stag">prod</span></h3>
+      <div class="sub">long · stop entry</div>
+      <div class="param"><span class="k">Risk per trade</span><span class="v">2.0% × VIX mult</span></div>
+      <div class="param"><span class="k">Initial stop</span><span class="v">1.5 × ATR(14)</span></div>
+      <div class="param"><span class="k">Target</span><span class="v">3.0 R</span></div>
+      <div class="param"><span class="k">Trail</span><span class="v">2.0 × ATR after +1.0R</span></div>
+      <div class="param"><span class="k">Time stop</span><span class="v">60 days</span></div>
+    </div>
+    
+    
+    <div class="card set">
+      <h3>Higher Low Shakeout <span class="stag">prod</span></h3>
+      <div class="sub">long · stop entry</div>
+      <div class="param"><span class="k">Risk per trade</span><span class="v">2.0% × VIX mult</span></div>
+      <div class="param"><span class="k">Initial stop</span><span class="v">2.5 × ATR(14)</span></div>
+      <div class="param"><span class="k">Target</span><span class="v">3.0 R</span></div>
+      <div class="param"><span class="k">Trail</span><span class="v">1.5 × ATR after +1.0R</span></div>
+      <div class="param"><span class="k">Time stop</span><span class="v">60 days</span></div>
+    </div>
+    
+
+    
+    
+    
+    <div class="card set">
+      <h3>Elder MACD Divergence <span class="stag">elder</span></h3>
+      <div class="sub">long · market entry · regime qqq above sma200</div>
+      <div class="param"><span class="k">Risk per trade</span><span class="v">0.5%</span></div>
+      <div class="param"><span class="k">Exit</span><span class="v">Chandelier 22 / 3.0 ATR</span></div>
+      <div class="param"><span class="k">Time stop</span><span class="v">60 days</span></div>
+      <div class="param"><span class="k">Sub-cap</span><span class="v">2 of the 4 slots</span></div>
+    </div>
+    
+
+    <div class="card set">
+      <h3>Risk &amp; caps</h3>
+      <div class="param"><span class="k">Max open positions</span><span class="v">4 (shared budget)</span></div>
+      <div class="param"><span class="k">Per-position notional cap</span><span class="v">35% of equity</span></div>
+      <div class="param"><span class="k">Max exposure</span><span class="v">90%</span></div>
+      <div class="param"><span class="k">Margin model</span><span class="v">Reg T</span></div>
+      <div class="param"><span class="k">Starting equity</span><span class="v">$32,225.00</span></div>
+      <div class="param"><span class="k">Kill switch (pause entries)</span><span class="v up">OFF</span></div>
+    </div>
+
+    
+    
+    <div class="card set">
+      <h3>VIX position-size multiplier</h3>
+      <div class="sub">Scales risk-per-trade by VIX band at plan time</div>
+      <table style="margin-top:8px">
+        <tr><th>VIX band</th><th class="r">Prod</th><th class="r">Elder</th></tr>
+        
+        
+        <tr>
+          <td class="num">22 – 25</td>
+          <td class="r num">×1.25</td>
+          <td class="r num">—</td>
+        </tr>
+        
+        <tr>
+          <td class="num">25 – 30</td>
+          <td class="r num">×1.50</td>
+          <td class="r num">×1.25</td>
+        </tr>
+        
+        <tr>
+          <td class="num">30 – 50</td>
+          <td class="r num">×2.00</td>
+          <td class="r num">×1.25</td>
+        </tr>
+        
+      </table>
+    </div>
+    
+
+    
+    
+    <div class="card set">
+      <h3>Throttle</h3>
+      <div class="param"><span class="k">Max new trades / day</span><span class="v">2</span></div>
+      <div class="param"><span class="k">Cooldown after entry</span><span class="v">3 days</span></div>
+      <div class="param"><span class="k">Per-ticker cooldown</span><span class="v">15 days</span></div>
+    </div>
+    
+
+    
+    
+    <div class="card set">
+      <h3>Universe · 20 tickers</h3>
+      <div class="uni"><span>AAPL</span><span>AMD</span><span>APP</span><span>CDNS</span><span>CHTR</span><span>COST</span><span>CPRT</span><span>CRWD</span><span>CSCO</span><span>CSX</span><span>CTAS</span><span>DASH</span><span>DDOG</span><span>GLD</span><span>GOOGL</span><span>HD</span><span>INTC</span><span>NVDA</span><span>QQQ</span><span>SMH</span></div>
+    </div>
+    
+    
+
+    <div class="card set">
+      <h3>Engine · this lane</h3>
+      <div class="param"><span class="k">Account</span><span class="v">ib-paper-7497</span></div>
+      <div class="param"><span class="k">Results dir</span><span class="v">results/</span></div>
+      <div class="param"><span class="k">Last run mode</span><span class="v ">LIVE</span></div>
+      <p class="note">Read-only page. Values above come from this lane's <span class="num">production_config.yaml</span>, read at page render.</p>
+    </div>
+  </section>
+</main>
+
+<nav>
+  <button class="tab on" data-t="overview" aria-label="Overview">
+    <svg viewBox="0 0 24 24"><path d="M3 13l4-4 4 3 5-6 5 5"/><path d="M3 20h18"/></svg>Overview</button>
+  <button class="tab" data-t="positions" aria-label="Positions">
+    <svg viewBox="0 0 24 24"><rect x="4" y="10" width="3.5" height="8"/><rect x="10.2" y="5" width="3.5" height="13"/><rect x="16.5" y="8" width="3.5" height="10"/></svg>Positions</button>
+  <button class="tab" data-t="ledger" aria-label="Ledger">
+    <svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Ledger</button>
+  <button class="tab" data-t="pools" aria-label="Pools">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M4 19c0-3 2.4-5 5-5s5 2 5 5"/><path d="M14.5 15.6c.8-.9 1.9-1.4 3-1.4 2 0 3.5 1.5 3.5 3.8"/></svg>Pools</button>
+  <button class="tab" data-t="settings" aria-label="Settings">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>Settings</button>
 </nav>
-
-
-<section id="overview" class="panel active" role="tabpanel">
-
-  <div class="hero-grid">
-    <div class="card full">
-      <div class="label">Live equity (USD)</div>
-      
-      <div class="value">$33,006.26</div>
-      <div class="sub">
-        ≈ £24,704.03 GBP · observed 2026-07-03 06:02
-      </div>
-      
-    </div>
-    <div class="card full">
-      <div class="label">Return (trading)</div>
-      
-      <div class="value pos">+2.35%</div>
-      <div class="sub">+6.5% p.a. · 134d since first trade</div>
-      
-    </div>
-    <div class="card">
-      <div class="label">Realised lifetime</div>
-      
-      <div class="value pos">$1,879</div>
-      <div class="sub">$1,879.30</div>
-      
-    </div>
-    <div class="card">
-      <div class="label">Unrealised (open)</div>
-      
-      <div class="value neg">$-931</div>
-      <div class="sub">$-931.16</div>
-      
-    </div>
-    <div class="card">
-      <div class="label">NAV / unit</div>
-      
-      <div class="value">$0.9963</div>
-      <div class="sub">33,130.40 units</div>
-      
-    </div>
-    <div class="card">
-      <div class="label">Open / Pending</div>
-      
-      <div class="value">4<span style="font-size:14px; color: var(--muted); font-weight: 500;"> / 0</span></div>
-      
-    </div>
-  </div>
-
-  
-  
-  <div class="banner ok">
-    <div class="title">✓ Reconciliation balanced</div>
-    <div class="body">
-      observed $33,006 = committed $33,130 + realised $1,879 + unrealised $-931 − trade fees $169.61 + IB cash activity $-902.67 · delta $-0.00
-    </div>
-  </div>
-  
-
-  
-  <div style="background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; margin: 14px 0;">
-    <div style="font-size: 10px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); font-weight: 700; margin-bottom: 8px;">
-      IB cash activity (non-trading) · <span style="color: #f7d774;">PAPER</span>
-      <span style="color: var(--muted); font-weight: 500;"> · 41 events · last 2026-07-03</span>
-    </div>
-    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 6px; font-variant-numeric: tabular-nums;">
-      <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Interest</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Dividends</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">WHT</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">Acct fees</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div><div style="font-size: 9px; text-transform: uppercase; color: var(--muted);">FX P/L</div><div style="font-size: 13px; font-weight: 600; color: var(--text);">$0.00</div></div>
-      <div title="IB-API imputed residual: paper interest + fees + FX P/L net, rolled up. Replace with itemised events when Flex Web Service token configured."><div style="font-size: 9px; text-transform: uppercase; color: var(--warn);">Imputed</div><div style="font-size: 13px; font-weight: 600; color: var(--neg);">$-902.67</div></div>
-    </div>
-    <div style="font-size: 10px; color: var(--muted); margin-top: 8px; line-height: 1.4;">
-      
-      Source: engine-written <code>ib_account_state.json</code>, pulled 2026-07-03 06:02.
-      
-    </div>
-  </div>
-  
-
-  
-  <div class="section-title">Equity curve <span class="count">24 pts</span></div>
-  <div class="sparkline">
-    
-    
-    
-    
-    <svg viewBox="0 0 600 100" preserveAspectRatio="none">
-      <line x1="0" y1="50" x2="600" y2="50" class="grid-line"/>
-      <polyline fill="none" stroke="#58a6ff" stroke-width="2"
-        points="0.0,60.64989205132318 26.08695652173913,66.8074784755186 52.17391304347826,84.82994820700794 78.26086956521739,90.0 104.34782608695652,84.41008565047004 130.43478260869566,58.60710783308414 156.52173913043478,33.47307622034214 182.60869565217394,43.80348493379528 208.69565217391303,45.73858149099686 234.7826086956522,21.223530201392308 260.8695652173913,15.289224149181749 286.95652173913044,20.15470779281314 313.04347826086956,30.38443898382824 339.1304347826087,25.915848506430365 365.21739130434787,23.552984342780846 391.30434782608694,23.276009292162428 417.39130434782606,10.0 443.4782608695652,12.667432313010195 469.5652173913044,14.881144591566226 495.6521739130435,21.928272858458556 521.7391304347826,17.697132182129337 547.8260869565217,20.410055820093064 573.9130434782609,23.60533665444865 600.0,25.876024953110345 "/>
-      <text x="4" y="14" class="axis">$35,169</text>
-      <text x="4" y="96" class="axis">$29,805</text>
-    </svg>
-    <div style="display: flex; justify-content: space-between; font-size: 10px; color: var(--muted); margin-top: 6px; font-variant-numeric: tabular-nums;">
-      <span>2026-03-07</span>
-      <span>2026-07-02</span>
-    </div>
-  </div>
-  
-
-  
-  <div class="section-title">Strategy stats</div>
-  <div class="hero-grid">
-    <div class="card">
-      <div class="label">Total P&L</div>
-      <div class="value pos">
-        $1,879
-      </div>
-    </div>
-    <div class="card">
-      <div class="label">Win rate</div>
-      <div class="value">43%</div>
-      <div class="sub">30 closed</div>
-    </div>
-    <div class="card">
-      <div class="label">Avg R</div>
-      <div class="value">+0.16R</div>
-    </div>
-    <div class="card">
-      <div class="label">Profit factor</div>
-      <div class="value">1.33</div>
-    </div>
-  </div>
-  
-
-  
-  <div class="section-title">Monthly P&L</div>
-  <table class="list">
-    <thead><tr><th>Period</th><th class="num">P&L</th><th class="num">Trades</th><th class="num">Win %</th><th class="num">Avg R</th></tr></thead>
-    <tbody>
-      
-      <tr>
-        <td>2026-03</td>
-        <td class="num neg">$-2,420</td>
-        <td class="num">6</td>
-        <td class="num">0%</td>
-        <td class="num">-1.00</td>
-      </tr>
-      
-      <tr>
-        <td>2026-04</td>
-        <td class="num pos">$3,790</td>
-        <td class="num">5</td>
-        <td class="num">100%</td>
-        <td class="num">+1.02</td>
-      </tr>
-      
-      <tr>
-        <td>2026-05</td>
-        <td class="num pos">$665</td>
-        <td class="num">8</td>
-        <td class="num">50%</td>
-        <td class="num">+1.03</td>
-      </tr>
-      
-      <tr>
-        <td>2026-06</td>
-        <td class="num neg">$-4</td>
-        <td class="num">10</td>
-        <td class="num">40%</td>
-        <td class="num">-0.16</td>
-      </tr>
-      
-      <tr>
-        <td>2026-07</td>
-        <td class="num neg">$-152</td>
-        <td class="num">1</td>
-        <td class="num">0%</td>
-        <td class="num">-1.00</td>
-      </tr>
-      
-    </tbody>
-  </table>
-  
-
-</section>
-
-
-<section id="pools" class="panel" role="tabpanel">
-  <div class="section-title">Investor pools <span class="count">2</span></div>
-  
-  
-  <div class="pool-card">
-    <div class="head">
-      <div class="name">POOL_A</div>
-      <div class="share-pct">40.0%</div>
-    </div>
-    
-    <div class="pnl-row" style="border-top: none; padding: 6px 0;">
-      <span class="lbl" style="font-size: 13px;">Put in</span>
-      <span class="val" style="font-size: 16px;">$13,252.16</span>
-    </div>
-    <div class="pnl-row" style="padding: 6px 0; border-top: 1px solid var(--accent);">
-      <span class="lbl" style="font-size: 13px; color: var(--text);">Available to withdraw</span>
-      <span class="val neg" style="font-size: 18px;">$13,202.50</span>
-    </div>
-    
-    <div class="pnl-row" style="padding: 4px 0; border-top: 1px solid var(--border);">
-      <span class="lbl" style="font-size: 11px;">Return (trading)</span>
-      <span class="val pos" style="font-size: 12px;">
-        +2.35% · +6.5% p.a.
-      </span>
-    </div>
-    
-    <div class="nav-meta" style="margin-top: 8px;">13,252.16 units @ $0.9963/unit</div>
-    <details style="margin-top: 8px;">
-      <summary style="cursor: pointer; font-size: 11px; color: var(--muted); padding: 4px 0;">P&L breakdown · pre-tax</summary>
-      <div class="pnl-row">
-        <span class="lbl">· realised</span>
-        <span class="val pos">$751.72</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· unrealised</span>
-        <span class="val neg">$-372.46</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· trade fees</span>
-        <span class="val neg">−$67.84</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· other (FX / imputed)</span>
-        <span class="val neg">−$361.08</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· est. tax (CT)</span>
-        <span class="val neg">−$129.94</span>
-      </div>
-      <div class="pnl-row" style="border-top: 1px solid var(--accent); margin-top: 2px; padding-top: 6px;">
-        <span class="lbl" style="color: var(--text);">Net after tax</span>
-        <span class="val neg">$-179.60</span>
-      </div>
-    </details>
-  </div>
-  
-  <div class="pool-card">
-    <div class="head">
-      <div class="name">POOL_B</div>
-      <div class="share-pct">60.0%</div>
-    </div>
-    
-    <div class="pnl-row" style="border-top: none; padding: 6px 0;">
-      <span class="lbl" style="font-size: 13px;">Put in</span>
-      <span class="val" style="font-size: 16px;">$19,878.24</span>
-    </div>
-    <div class="pnl-row" style="padding: 6px 0; border-top: 1px solid var(--accent);">
-      <span class="lbl" style="font-size: 13px; color: var(--text);">Available to withdraw</span>
-      <span class="val neg" style="font-size: 18px;">$19,803.75</span>
-    </div>
-    
-    <div class="pnl-row" style="padding: 4px 0; border-top: 1px solid var(--border);">
-      <span class="lbl" style="font-size: 11px;">Return (trading)</span>
-      <span class="val pos" style="font-size: 12px;">
-        +2.35% · +6.5% p.a.
-      </span>
-    </div>
-    
-    <div class="nav-meta" style="margin-top: 8px;">19,878.24 units @ $0.9963/unit</div>
-    <details style="margin-top: 8px;">
-      <summary style="cursor: pointer; font-size: 11px; color: var(--muted); padding: 4px 0;">P&L breakdown · pre-tax</summary>
-      <div class="pnl-row">
-        <span class="lbl">· realised</span>
-        <span class="val pos">$1,127.58</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· unrealised</span>
-        <span class="val neg">$-558.70</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· trade fees</span>
-        <span class="val neg">−$101.77</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· other (FX / imputed)</span>
-        <span class="val neg">−$541.60</span>
-      </div>
-      <div class="pnl-row">
-        <span class="lbl">· est. tax (CT)</span>
-        <span class="val neg">−$194.90</span>
-      </div>
-      <div class="pnl-row" style="border-top: 1px solid var(--accent); margin-top: 2px; padding-top: 6px;">
-        <span class="lbl" style="color: var(--text);">Net after tax</span>
-        <span class="val neg">$-269.39</span>
-      </div>
-    </details>
-  </div>
-  
-  
-  <div style="font-size: 10px; color: var(--muted); padding: 8px 4px; line-height: 1.5;">
-    Tax estimate: CT @ 19.0% on £1,280 (≈ $1,710 × FX 0.7485). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Excludes other entity income / reliefs / pension contributions. Indicative only.
-  </div>
-  
-  
-</section>
-
-
-<section id="positions" class="panel" role="tabpanel">
-  
-
-  <div class="section-title">Open positions <span class="count">4</span></div>
-  
-  <table class="list">
-    <thead>
-      <tr>
-        <th>Ticker</th>
-        <th>Dir</th>
-        <th class="num">Qty</th>
-        <th class="num">Entry</th>
-        <th class="num">Last</th>
-        <th class="num">Unr P&L</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <tr>
-        <td><span class="ticker">SMH</span></td>
-        <td><span class="muted">L</span></td>
-        <td class="num">9</td>
-        <td class="num">$649.24</td>
-        <td class="num">$592.29</td>
-        <td class="num neg">
-          $-513
-        </td>
-      </tr>
-      
-      <tr>
-        <td><span class="ticker">AMD</span></td>
-        <td><span class="muted">L</span></td>
-        <td class="num">8</td>
-        <td class="num">$533.30</td>
-        <td class="num">$517.82</td>
-        <td class="num neg">
-          $-124
-        </td>
-      </tr>
-      
-      <tr>
-        <td><span class="ticker">INTC</span></td>
-        <td><span class="muted">L</span></td>
-        <td class="num">28</td>
-        <td class="num">$131.74</td>
-        <td class="num">$120.35</td>
-        <td class="num neg">
-          $-319
-        </td>
-      </tr>
-      
-      <tr>
-        <td><span class="ticker">CSGP</span></td>
-        <td><span class="muted">L</span></td>
-        <td class="num">132</td>
-        <td class="num">$29.82</td>
-        <td class="num">$30.00</td>
-        <td class="num pos">
-          $24
-        </td>
-      </tr>
-      
-    </tbody>
-  </table>
-  
-
-  
-</section>
-
-
-<section id="activity" class="panel" role="tabpanel">
-
-  
-  <div class="section-title">Last engine run</div>
-  <div class="lastrun">
-    <div style="display: flex; justify-content: space-between; align-items: baseline;">
-      <span style="font-weight: 700; color: var(--text-strong);">LIVE</span>
-      <span style="font-size: 11px; color: var(--muted);">2026-07-03 06:02</span>
-    </div>
-    <div class="grid">
-      <div class="item"><div class="lbl">Trading date</div><div class="val">2026-07-02</div></div>
-      <div class="item"><div class="lbl">Equity</div><div class="val">$33,006</div></div>
-      <div class="item"><div class="lbl">Entries placed</div><div class="val">0 / 0</div></div>
-      <div class="item"><div class="lbl">Stops applied</div><div class="val">0</div></div>
-    </div>
-    
-    
-  </div>
-  
-
-  <div class="section-title">Recent ledger <span class="count">2</span></div>
-  
-  <table class="list">
-    <thead><tr><th>Date</th><th>Pool</th><th>Type</th><th class="num">Amount</th></tr></thead>
-    <tbody>
-      
-      <tr>
-        <td>2026-02-01</td>
-        <td><span class="pool-tag">POOL_B</span></td>
-        <td><span class="pos">subscribe</span></td>
-        <td class="num">$19,878</td>
-      </tr>
-      
-      <tr>
-        <td>2026-02-01</td>
-        <td><span class="pool-tag">POOL_A</span></td>
-        <td><span class="pos">subscribe</span></td>
-        <td class="num">$13,252</td>
-      </tr>
-      
-    </tbody>
-  </table>
-  
-
-  <div class="section-title">Closed trades <span class="count">20</span></div>
-  
-  <table class="list">
-    <thead>
-      <tr>
-        <th>Sym</th>
-        <th>Entry</th>
-        <th>Exit</th>
-        <th class="num">R</th>
-        <th class="num">PnL</th>
-      </tr>
-    </thead>
-    <tbody>
-      
-      <tr>
-        <td>
-          <span class="ticker">XLE</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-29</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $53.98</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-07-02</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $52.78</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$152</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">XOM</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-24</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $139.27</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-26</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $135.44</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$214</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">AZN</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-15</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $182.74</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-19</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $174.08</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$182</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">CMCSA</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-09</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $23.73</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-18</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $23.06</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$154</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">CSX</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-12</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $45.04</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-18</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $46.62</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+0.70R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$438</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">CTAS</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-11</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $180.59</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-16</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $173.75</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$472</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">NFLX</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-09</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $81.96</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-12</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $80.76</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$148</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">META</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-05</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $624.70</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-08</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $594.89</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$179</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">FAST</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">channel_envelope</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-15</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $43.94</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-05</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $47.31</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+3.03R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$622</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">QQQ</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-15</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $717.06</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-05</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $733.79</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+0.63R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$268</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">ADBE</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">channel_envelope</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-02</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $271.45</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-06-02</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $274.11</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+0.07R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$19</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">APP</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">channel_envelope</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-28</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $522.48</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-28</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $575.29</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+0.84R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$158</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">COST</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-14</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $1027.84</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-22</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $1055.08</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+0.90R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$300</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">SMH</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-15</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $576.56</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-20</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $536.21</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$686</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">CCEP</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-07</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $95.49</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-14</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $91.41</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$326</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">AMD</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-07</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $410.93</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-13</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $435.80</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+0.27R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$398</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">TSLA</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">channel_envelope</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-04-13</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $346.26</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-12</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $448.99</div>
-        </td>
-        <td class="num">
-          
-          <span class="pos">+10.24R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$1,644</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">CTSH</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-01</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $54.11</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-05</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $52.28</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$130</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">NVDA</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-04-28</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $211.06</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-05-04</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $197.47</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="neg">-$693</span>
-        </td>
-      </tr>
-      
-      <tr>
-        <td>
-          <span class="ticker">ALNY</span>
-          
-          <div style="font-size: 9px; color: var(--muted); margin-top: 2px;">stop_loss</div>
-          
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-04-29</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $300.68</div>
-        </td>
-        <td>
-          <div style="font-size: 11px;">2026-04-30</div>
-          <div style="font-size: 10px; color: var(--muted);">@ $300.73</div>
-        </td>
-        <td class="num">
-          
-          <span class="neg">-1.00R</span>
-          
-        </td>
-        <td class="num">
-          <span class="pos">+$1</span>
-        </td>
-      </tr>
-      
-    </tbody>
-  </table>
-  
-
-</section>
 
 <div class="footer-meta">
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-03 12:37 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-03 13:06 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
+  // bottom-nav tabs
   const tabs = document.querySelectorAll('.tab');
-  const panels = document.querySelectorAll('.panel');
-  tabs.forEach(t => {
-    t.addEventListener('click', function() {
-      const target = this.dataset.panel;
-      tabs.forEach(x => x.classList.remove('active'));
-      panels.forEach(x => x.classList.remove('active'));
-      this.classList.add('active');
-      const panel = document.getElementById(target);
-      if (panel) panel.classList.add('active');
-      window.scrollTo(0, 0);
+  const panes = document.querySelectorAll('.tabpane');
+  tabs.forEach(b => b.addEventListener('click', function() {
+    tabs.forEach(x => x.classList.toggle('on', x === this));
+    panes.forEach(p => p.classList.toggle('on', p.id === 'pane-' + this.dataset.t));
+    document.querySelector('main').scrollTop = 0;
+    window.scrollTo(0, 0);
+  }));
+
+  // ledger filters
+  document.querySelectorAll('.chipbtn').forEach(b => b.addEventListener('click', function() {
+    document.querySelectorAll('.chipbtn').forEach(x => x.classList.toggle('on', x === this));
+    const f = this.dataset.f;
+    document.querySelectorAll('.lrow').forEach(r => {
+      r.style.display = (f === 'all' || (r.dataset.k || '').split(' ').includes(f)) ? '' : 'none';
     });
-  });
+  }));
 
   // Safari/iOS bfcache: when restored from back-forward cache, force a
   // full reload so reconcile/snapshot/banner reflect current server state

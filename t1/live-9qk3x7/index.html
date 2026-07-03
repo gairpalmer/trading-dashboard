@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0D141B">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<title>Trading · t1_uk_trading_co</title>
+<style>
+  :root{
+    --bg:#0D141B; --backdrop:#0A0F15; --panel:#151E27; --raised:#1A2530; --line:#263442;
+    --text:#E6EDF3; --muted:#8DA3B5; --faint:#5E7385;
+    --steel:#1F4E6D; --steel-hi:#5C96C4; --steel-soft:#17334A;
+    --gain:#2FA57C; --gain-soft:rgba(47,165,124,.14);
+    --loss:#E25C6E; --loss-soft:rgba(226,92,110,.14);
+    --warn:#D9A13B; --warn-soft:rgba(217,161,59,.14);
+    --mono:ui-monospace,"Cascadia Code","SF Mono",Consolas,monospace;
+    --sans:-apple-system,"Segoe UI",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--backdrop);color:var(--text);font-family:var(--sans);-webkit-text-size-adjust:100%}
+  body{display:flex;justify-content:center;min-height:100vh}
+  .phone{width:100%;max-width:420px;background:var(--bg);min-height:100vh;display:flex;flex-direction:column;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+
+  /* ---------- header ---------- */
+  header{position:sticky;top:0;z-index:20;background:linear-gradient(var(--bg) 88%,rgba(13,20,27,.92));padding:calc(max(env(safe-area-inset-top),0px) + 10px) 14px 8px;border-bottom:1px solid var(--line)}
+  .hrow{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .brand{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+  .brand b{color:var(--text);font-weight:600}
+  .meta{display:flex;gap:5px;flex-wrap:wrap;justify-content:flex-end;align-items:center}
+  .pill{font-size:9.5px;padding:2px 7px;border-radius:9px;font-weight:600;font-family:var(--mono);letter-spacing:.02em}
+  .pill.code{background:var(--raised);color:var(--muted)}
+  .pill.share{background:var(--raised);color:var(--muted);border:1px solid var(--line)}
+  .strat-switch{display:flex;gap:6px;margin-top:8px}
+  .strat-switch .lane{flex:1;text-align:center;font:600 11px var(--sans);letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);text-decoration:none}
+  .strat-switch .lane.on{background:var(--steel);border-color:var(--steel);color:#fff}
+  .strat-switch .lane .dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--warn);margin-right:5px;vertical-align:1px}
+  .status{display:flex;gap:6px;margin-top:8px;flex-wrap:wrap}
+  .chip{display:inline-flex;align-items:center;gap:5px;font-size:10.5px;color:var(--muted);background:var(--panel);border:1px solid var(--line);border-radius:6px;padding:3px 8px;font-family:var(--mono)}
+  .chip .d{width:6px;height:6px;border-radius:50%}
+  .d.ok{background:var(--gain)} .d.warn{background:var(--warn)} .d.info{background:var(--steel-hi)} .d.err{background:var(--loss)}
+
+  /* ---------- layout ---------- */
+  main{flex:1;overflow-y:auto;padding:14px 14px calc(max(env(safe-area-inset-bottom),0px) + 76px);display:flex;flex-direction:column;gap:12px}
+  section.tabpane{display:none;flex-direction:column;gap:12px}
+  section.tabpane.on{display:flex}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px}
+  .eyebrow{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin:0 0 6px}
+  h2.eyebrow{margin:2px 0 0}
+  .num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+  .up{color:var(--gain)} .down{color:var(--loss)}
+
+  /* hero */
+  .hero-val{font:600 34px/1.1 var(--mono);letter-spacing:-.01em}
+  .hero-sub{display:flex;gap:14px;margin-top:6px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+  .hero-sub .num{color:var(--text)}
+  .hero-sub .num.up{color:var(--gain)} .hero-sub .num.down{color:var(--loss)}
+  .spark{margin-top:12px}
+  .statrow{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  .statrow>div{background:var(--panel);padding:10px 8px;text-align:center}
+  .statrow .v{font:600 15px var(--mono)}
+  .statrow .k{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);margin-top:3px}
+
+  table{width:100%;border-collapse:collapse;font-size:12.5px}
+  th{font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--faint);text-align:left;padding:4px 6px;border-bottom:1px solid var(--line);font-weight:600}
+  td{padding:7px 6px;border-bottom:1px solid rgba(38,52,66,.5)}
+  tr:last-child td{border-bottom:none}
+  td.r,th.r{text-align:right}
+  .tick{font:600 12.5px var(--mono)}
+
+  .banner{border-radius:10px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+  .banner.warn{background:var(--warn-soft);border:1px solid rgba(217,161,59,.35)}
+  .banner.err{background:var(--loss-soft);border:1px solid rgba(226,92,110,.35)}
+  .banner .t{font-weight:600;font-size:13px}
+  .banner p{margin:3px 0 0;font-size:12px;color:var(--muted);line-height:1.5}
+  .cta{margin-top:8px;display:inline-block;background:var(--steel);color:#fff;border:none;border-radius:7px;font:600 12px var(--sans);padding:8px 14px;cursor:pointer;text-decoration:none}
+
+  /* positions */
+  .pos{padding:12px 14px}
+  .pos-top{display:flex;align-items:baseline;justify-content:space-between;gap:8px}
+  .stag{font-size:9.5px;letter-spacing:.06em;text-transform:uppercase;padding:2px 7px;border-radius:5px;background:var(--steel-soft);color:var(--steel-hi);white-space:nowrap}
+  .pnl{font:600 14px var(--mono)}
+  .rbadge{font:600 10.5px var(--mono);padding:2px 6px;border-radius:5px;margin-left:6px}
+  .rbadge.up{background:var(--gain-soft)} .rbadge.down{background:var(--loss-soft)}
+  .pos-mid{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .rail{position:relative;height:34px;margin-top:12px}
+  .rail .bar{position:absolute;top:16px;left:0;right:0;height:2px;background:var(--line);border-radius:2px}
+  .rail .pt{position:absolute;top:13px;width:8px;height:8px;border-radius:50%;transform:translateX(-50%)}
+  .rail .lab{position:absolute;top:0;font:9px var(--mono);color:var(--faint);transform:translateX(-50%);white-space:nowrap}
+  .rail .lab.below{top:auto;bottom:0}
+  details.more{margin-top:8px}
+  details.more summary{cursor:pointer;font-size:11px;color:var(--steel-hi);list-style:none}
+  details.more summary::before{content:"▸ "} details.more[open] summary::before{content:"▾ "}
+  .kv{display:grid;grid-template-columns:1fr 1fr;gap:4px 14px;margin-top:8px;font-size:11.5px}
+  .kv .k{color:var(--faint)} .kv .v{font-family:var(--mono);text-align:right}
+
+  /* ledger */
+  .filters{display:flex;gap:6px;flex-wrap:wrap}
+  .chipbtn{font:600 11px var(--sans);padding:5px 11px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--muted);cursor:pointer}
+  .chipbtn.on{background:var(--steel-soft);border-color:var(--steel);color:var(--steel-hi)}
+  .lrow summary{display:grid;grid-template-columns:64px 1fr auto auto;gap:8px;align-items:center;padding:9px 4px;cursor:pointer;list-style:none;border-bottom:1px solid rgba(38,52,66,.5)}
+  .lrow .dates{font-size:10.5px;color:var(--faint);font-family:var(--mono)}
+  .lrow .rr{font:600 11px var(--mono);padding:2px 7px;border-radius:5px}
+  .lrow .amt{font:600 12.5px var(--mono);text-align:right;min-width:70px}
+  .lrow .detail{padding:6px 4px 12px;border-bottom:1px solid rgba(38,52,66,.5)}
+
+  /* pools */
+  .pool-top{display:flex;justify-content:space-between;align-items:baseline}
+  .pool-name{font-weight:600;font-size:14px}
+  .share-r{font:600 11px var(--mono);color:var(--steel-hi)}
+  .pool-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:10px}
+  .pool-grid .k{font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;color:var(--faint)}
+  .pool-grid .v{font:600 14px var(--mono);margin-top:2px}
+
+  /* settings */
+  .set h3{margin:0;font-size:13.5px;font-weight:600}
+  .set .sub{font-size:11px;color:var(--faint);margin-top:2px}
+  .param{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(38,52,66,.5);font-size:12px}
+  .param:last-child{border-bottom:none}
+  .param .k{color:var(--muted)} .param .v{font-family:var(--mono)}
+  .uni{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}
+  .uni span{font:11px var(--mono);background:var(--raised);border:1px solid var(--line);border-radius:5px;padding:3px 7px;color:var(--muted)}
+  .note{font-size:10.5px;color:var(--faint);margin-top:8px;line-height:1.5}
+  .empty{font-size:12px;color:var(--faint);padding:14px;text-align:center;background:var(--panel);border:1px dashed var(--line);border-radius:10px;font-style:italic}
+
+  /* bottom nav */
+  nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:100%;max-width:420px;background:rgba(21,30,39,.97);border-top:1px solid var(--line);display:flex;z-index:30;padding-bottom:max(env(safe-area-inset-bottom),0px)}
+  .tab{flex:1;background:none;border:none;color:var(--faint);padding:8px 0 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:3px;font:600 9.5px var(--sans);letter-spacing:.05em;text-transform:uppercase}
+  .tab svg{width:19px;height:19px;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+  .tab.on{color:var(--steel-hi)}
+  .lane:focus-visible,.tab:focus-visible,.chipbtn:focus-visible{outline:2px solid var(--steel-hi);outline-offset:2px}
+  @media (prefers-reduced-motion:no-preference){ .lane,.tab,.chipbtn{transition:color .15s,background .15s} }
+
+  .footer-meta{padding:10px 14px 14px;font-size:10px;color:var(--faint);text-align:center;line-height:1.6}
+  .footer-meta a{color:var(--steel-hi);text-decoration:none}
+</style>
+</head>
+<body>
+
+
+
+
+<div class="phone">
+
+<header>
+  <div class="hrow">
+    <div class="brand"><b>TIER 1</b> Trading</div>
+    <div class="meta">
+    <span class="pill share">view-only</span>
+      
+      <span class="pill code">t1_uk_trading_co</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">14:06:47</span>
+    </div>
+  </div>
+  
+  <div class="status">
+    
+    <span class="chip"><span class="d warn"></span>No engine run yet</span>
+    
+    
+    <span class="chip"><span class="d info"></span>U25599624</span>
+    
+    
+  </div>
+</header>
+
+<main>
+  
+  <section class="tabpane on" id="pane-overview">
+
+    
+
+    <div class="card">
+      <p class="eyebrow">IB equity · USD · live</p>
+      
+      <div class="hero-val num" style="color:var(--faint)">—</div>
+      <div class="hero-sub"><span>No engine data yet for this lane</span></div>
+      
+      
+    </div>
+
+    
+    <div class="card">
+      <p class="eyebrow">First month — live</p>
+      <p style="font-size:12.5px;color:var(--muted);margin:0;line-height:1.6">No closed trades yet. Entries begin after the go-live gate (orders flag on + read-only API off). The paper lane keeps running in parallel as the benchmark mirror.</p>
+    </div>
+    
+
+    
+
+    
+
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-positions">
+    <h2 class="eyebrow">Open positions · 0</h2>
+    
+    <div class="empty">No open positions.</div>
+    
+
+    <h2 class="eyebrow">Pending orders · 0</h2>
+    
+    <div class="card"><p style="margin:0;font-size:12px;color:var(--faint)">No brackets waiting. Next plan runs on the 06:00 pipeline.</p></div>
+    
+
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-ledger">
+    <h2 class="eyebrow">Closed trades · latest 0</h2>
+    
+    <div class="empty">No closed trades yet.</div>
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-pools">
+    <div class="card">
+      <div class="pool-top"><span class="pool-name">TC_LIVE · fund</span><span class="share-r num">U25599624</span></div>
+      <div class="pool-grid">
+        <div><div class="k">NAV / unit</div><div class="v">—</div></div>
+        <div><div class="k">Units</div><div class="v">—</div></div>
+        <div><div class="k">Equity</div><div class="v">—</div></div>
+      </div>
+    </div>
+
+    
+    <div class="card">
+      <div class="pool-top"><span class="pool-name">LIVE_CRAIG</span><span class="share-r"></span></div>
+      <div class="pool-grid">
+        <div><div class="k">Put in</div><div class="v">$0</div></div>
+        <div><div class="k">Value now</div><div class="v ">—</div></div>
+        <div><div class="k">Return</div><div class="v ">—</div></div>
+      </div>
+      <p class="note" style="margin-top:6px">0.00 units</p>
+      <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
+        <div class="kv">
+          <span class="k">Realised share</span><span class="v">—</span>
+          <span class="k">Unrealised share</span><span class="v">—</span>
+          <span class="k">Trade fees share</span><span class="v">—</span>
+          <span class="k">Other (FX / imputed)</span><span class="v">—</span>
+          <span class="k">Est. tax (CT)</span><span class="v">—</span>
+          <span class="k">Net after tax</span><span class="v ">—</span>
+        </div>
+      </details>
+    </div>
+    
+    <div class="card">
+      <div class="pool-top"><span class="pool-name">LIVE_KYE</span><span class="share-r"></span></div>
+      <div class="pool-grid">
+        <div><div class="k">Put in</div><div class="v">$0</div></div>
+        <div><div class="k">Value now</div><div class="v ">—</div></div>
+        <div><div class="k">Return</div><div class="v ">—</div></div>
+      </div>
+      <p class="note" style="margin-top:6px">0.00 units</p>
+      <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
+        <div class="kv">
+          <span class="k">Realised share</span><span class="v">—</span>
+          <span class="k">Unrealised share</span><span class="v">—</span>
+          <span class="k">Trade fees share</span><span class="v">—</span>
+          <span class="k">Other (FX / imputed)</span><span class="v">—</span>
+          <span class="k">Est. tax (CT)</span><span class="v">—</span>
+          <span class="k">Net after tax</span><span class="v ">—</span>
+        </div>
+      </details>
+    </div>
+    
+    <div class="card">
+      <div class="pool-top"><span class="pool-name">LIVE_RWP</span><span class="share-r"></span></div>
+      <div class="pool-grid">
+        <div><div class="k">Put in</div><div class="v">$0</div></div>
+        <div><div class="k">Value now</div><div class="v ">—</div></div>
+        <div><div class="k">Return</div><div class="v ">—</div></div>
+      </div>
+      <p class="note" style="margin-top:6px">0.00 units</p>
+      <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
+        <div class="kv">
+          <span class="k">Realised share</span><span class="v">—</span>
+          <span class="k">Unrealised share</span><span class="v">—</span>
+          <span class="k">Trade fees share</span><span class="v">—</span>
+          <span class="k">Other (FX / imputed)</span><span class="v">—</span>
+          <span class="k">Est. tax (CT)</span><span class="v">—</span>
+          <span class="k">Net after tax</span><span class="v ">—</span>
+        </div>
+      </details>
+    </div>
+    
+
+    
+
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-settings">
+    <h2 class="eyebrow">Trading settings · read-only</h2>
+    
+    
+
+    
+    
+    <div class="card set">
+      <h3>Ema Pullback <span class="stag">prod</span></h3>
+      <div class="sub">long · stop entry</div>
+      <div class="param"><span class="k">Risk per trade</span><span class="v">2.0% × VIX mult</span></div>
+      <div class="param"><span class="k">Initial stop</span><span class="v">1.5 × ATR(14)</span></div>
+      <div class="param"><span class="k">Target</span><span class="v">3.0 R</span></div>
+      <div class="param"><span class="k">Trail</span><span class="v">2.0 × ATR after +1.0R</span></div>
+      <div class="param"><span class="k">Time stop</span><span class="v">60 days</span></div>
+    </div>
+    
+    
+    <div class="card set">
+      <h3>Higher Low Shakeout <span class="stag">prod</span></h3>
+      <div class="sub">long · stop entry</div>
+      <div class="param"><span class="k">Risk per trade</span><span class="v">2.0% × VIX mult</span></div>
+      <div class="param"><span class="k">Initial stop</span><span class="v">2.5 × ATR(14)</span></div>
+      <div class="param"><span class="k">Target</span><span class="v">3.0 R</span></div>
+      <div class="param"><span class="k">Trail</span><span class="v">1.5 × ATR after +1.0R</span></div>
+      <div class="param"><span class="k">Time stop</span><span class="v">60 days</span></div>
+    </div>
+    
+
+    
+    
+    
+    <div class="card set">
+      <h3>Elder MACD Divergence <span class="stag">elder</span></h3>
+      <div class="sub">long · market entry · regime qqq above sma200</div>
+      <div class="param"><span class="k">Risk per trade</span><span class="v">0.5%</span></div>
+      <div class="param"><span class="k">Exit</span><span class="v">Chandelier 22 / 3.0 ATR</span></div>
+      <div class="param"><span class="k">Time stop</span><span class="v">60 days</span></div>
+      <div class="param"><span class="k">Sub-cap</span><span class="v">2 of the 4 slots</span></div>
+    </div>
+    
+
+    <div class="card set">
+      <h3>Risk &amp; caps</h3>
+      <div class="param"><span class="k">Max open positions</span><span class="v">4 (shared budget)</span></div>
+      <div class="param"><span class="k">Per-position notional cap</span><span class="v">35% of equity</span></div>
+      <div class="param"><span class="k">Max exposure</span><span class="v">90%</span></div>
+      <div class="param"><span class="k">Margin model</span><span class="v">Reg T</span></div>
+      <div class="param"><span class="k">Starting equity</span><span class="v">$6,608.25</span></div>
+      <div class="param"><span class="k">Kill switch (pause entries)</span><span class="v up">OFF</span></div>
+    </div>
+
+    
+    
+    <div class="card set">
+      <h3>VIX position-size multiplier</h3>
+      <div class="sub">Scales risk-per-trade by VIX band at plan time</div>
+      <table style="margin-top:8px">
+        <tr><th>VIX band</th><th class="r">Prod</th><th class="r">Elder</th></tr>
+        
+        
+        <tr>
+          <td class="num">22 – 25</td>
+          <td class="r num">×1.25</td>
+          <td class="r num">—</td>
+        </tr>
+        
+        <tr>
+          <td class="num">25 – 30</td>
+          <td class="r num">×1.50</td>
+          <td class="r num">×1.25</td>
+        </tr>
+        
+        <tr>
+          <td class="num">30 – 50</td>
+          <td class="r num">×2.00</td>
+          <td class="r num">×1.25</td>
+        </tr>
+        
+      </table>
+    </div>
+    
+
+    
+    
+    <div class="card set">
+      <h3>Throttle</h3>
+      <div class="param"><span class="k">Max new trades / day</span><span class="v">2</span></div>
+      <div class="param"><span class="k">Cooldown after entry</span><span class="v">3 days</span></div>
+      <div class="param"><span class="k">Per-ticker cooldown</span><span class="v">15 days</span></div>
+    </div>
+    
+
+    
+    
+    <div class="card set">
+      <h3>Universe · 20 tickers</h3>
+      <div class="uni"><span>AAPL</span><span>AMD</span><span>APP</span><span>CDNS</span><span>CHTR</span><span>COST</span><span>CPRT</span><span>CRWD</span><span>CSCO</span><span>CSX</span><span>CTAS</span><span>DASH</span><span>DDOG</span><span>GLD</span><span>GOOGL</span><span>HD</span><span>INTC</span><span>NVDA</span><span>QQQ</span><span>SMH</span></div>
+    </div>
+    
+    
+
+    <div class="card set">
+      <h3>Engine · this lane</h3>
+      <div class="param"><span class="k">Account</span><span class="v">U25599624</span></div>
+      <div class="param"><span class="k">Results dir</span><span class="v">results_live/</span></div>
+      
+      <p class="note">Read-only page. Values above come from this lane's <span class="num">production_config.yaml</span>, read at page render.</p>
+    </div>
+  </section>
+</main>
+
+<nav>
+  <button class="tab on" data-t="overview" aria-label="Overview">
+    <svg viewBox="0 0 24 24"><path d="M3 13l4-4 4 3 5-6 5 5"/><path d="M3 20h18"/></svg>Overview</button>
+  <button class="tab" data-t="positions" aria-label="Positions">
+    <svg viewBox="0 0 24 24"><rect x="4" y="10" width="3.5" height="8"/><rect x="10.2" y="5" width="3.5" height="13"/><rect x="16.5" y="8" width="3.5" height="10"/></svg>Positions</button>
+  <button class="tab" data-t="ledger" aria-label="Ledger">
+    <svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Ledger</button>
+  <button class="tab" data-t="pools" aria-label="Pools">
+    <svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M4 19c0-3 2.4-5 5-5s5 2 5 5"/><path d="M14.5 15.6c.8-.9 1.9-1.4 3-1.4 2 0 3.5 1.5 3.5 3.8"/></svg>Pools</button>
+  <button class="tab" data-t="settings" aria-label="Settings">
+    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9L17 7M7 17l-2.1 2.1"/></svg>Settings</button>
+</nav>
+
+<div class="footer-meta">
+  
+  Tier 1 UK Trading Co Ltd
+  
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-03 13:06 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+
+<script>
+(function() {
+  // bottom-nav tabs
+  const tabs = document.querySelectorAll('.tab');
+  const panes = document.querySelectorAll('.tabpane');
+  tabs.forEach(b => b.addEventListener('click', function() {
+    tabs.forEach(x => x.classList.toggle('on', x === this));
+    panes.forEach(p => p.classList.toggle('on', p.id === 'pane-' + this.dataset.t));
+    document.querySelector('main').scrollTop = 0;
+    window.scrollTo(0, 0);
+  }));
+
+  // ledger filters
+  document.querySelectorAll('.chipbtn').forEach(b => b.addEventListener('click', function() {
+    document.querySelectorAll('.chipbtn').forEach(x => x.classList.toggle('on', x === this));
+    const f = this.dataset.f;
+    document.querySelectorAll('.lrow').forEach(r => {
+      r.style.display = (f === 'all' || (r.dataset.k || '').split(' ').includes(f)) ? '' : 'none';
+    });
+  }));
+
+  // Safari/iOS bfcache: when restored from back-forward cache, force a
+  // full reload so reconcile/snapshot/banner reflect current server state
+  // instead of the page snapshot taken when we navigated away.
+  window.addEventListener('pageshow', function(e) {
+    if (e.persisted) {
+      location.reload();
+    }
+  });
+
+  // Periodic refresh — keeps a left-open mobile tab from sitting frozen
+  // for hours. Skips while the tab is backgrounded. 60s cadence matches
+  // engine-pipeline + dashboard latency; bump higher if it gets noisy.
+  setInterval(function() {
+    if (!document.hidden) location.reload();
+  }, 60000);
+
+  // When tab regains focus after being hidden, reload immediately rather
+  // than waiting for the next 60s tick.
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) location.reload();
+  });
+})();
+</script>
+
+</body>
+</html>
