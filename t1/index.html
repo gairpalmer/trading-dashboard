@@ -151,7 +151,7 @@
     <span class="pill share">view-only</span>
       
       <span class="pill code">t1_uk_trading_co</span>
-      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:02:15</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">12:39:33</span>
     </div>
   </div>
   
@@ -182,10 +182,10 @@
       <div class="hero-sub">
         <span>Committed <span class="num">$33,130</span></span>
         
-        <span>Lifetime P&amp;L <span class="num up">+1,879.30</span></span>
+        <span>Trading P&amp;L <span class="num up">+778.53</span></span>
         
         
-        <span>Return <span class="num up">+2.3%</span></span>
+        <span>Return <span class="num up">+2.3%</span> <span class="num up">(+6.4% p.a.)</span></span>
         
       </div>
       <div class="hero-sub">
@@ -193,6 +193,9 @@
         <span>NAV/unit <span class="num">0.9948</span></span>
         <span>observed <span class="num">06 Jul 06:01</span></span>
       </div>
+      
+      <p class="note" style="margin-top:6px">Equity also carries <span class="num">-951</span> of account-level FX / interest since inception (GBP-base paper account), outside the trading return. That is why equity and NAV/unit can sit below committed while the return is positive.</p>
+      
       
       
       
@@ -365,7 +368,7 @@
           <span class="k">Current stop</span><span class="v">574.45</span>
           <span class="k">Target</span><span class="v">851.93</span>
           <span class="k">Risk at entry</span><span class="v">$673.10</span>
-          <span class="k">POOL_A share</span><span class="v">-205.02</span><span class="k">POOL_B share</span><span class="v">-307.54</span>
+          <span class="k">Pool A (trial 40%) share</span><span class="v">-205.02</span><span class="k">Pool B (trial 60%) share</span><span class="v">-307.54</span>
         </div>
       </details>
     </div>
@@ -407,7 +410,7 @@
           <span class="k">Current stop</span><span class="v">449.33</span>
           <span class="k">Target</span><span class="v">783.08</span>
           <span class="k">Risk at entry</span><span class="v">$671.82</span>
-          <span class="k">POOL_A share</span><span class="v">-49.55</span><span class="k">POOL_B share</span><span class="v">-74.33</span>
+          <span class="k">Pool A (trial 40%) share</span><span class="v">-49.55</span><span class="k">Pool B (trial 60%) share</span><span class="v">-74.33</span>
         </div>
       </details>
     </div>
@@ -449,7 +452,7 @@
           <span class="k">Current stop</span><span class="v">101.48</span>
           <span class="k">Target</span><span class="v">196.60</span>
           <span class="k">Risk at entry</span><span class="v">$847.05</span>
-          <span class="k">POOL_A share</span><span class="v">-127.52</span><span class="k">POOL_B share</span><span class="v">-191.28</span>
+          <span class="k">Pool A (trial 40%) share</span><span class="v">-127.52</span><span class="k">Pool B (trial 60%) share</span><span class="v">-191.28</span>
         </div>
       </details>
     </div>
@@ -470,15 +473,12 @@
       
       <div class="rail">
         <div class="bar"></div>
-        <span class="lab" style="left:88.4%">stop 28.10</span>
-        <span class="pt" style="left:88.4%;background:var(--loss)"></span>
-        <span class="pt" style="left:93.5%;background:var(--steel-hi)"></span>
-        <span class="lab below" style="left:93.5%">entry</span>
+        <span class="lab" style="left:6.0%">stop 28.10</span>
+        <span class="pt" style="left:6.0%;background:var(--loss)"></span>
+        <span class="pt" style="left:85.6%;background:var(--steel-hi)"></span>
+        <span class="lab below" style="left:85.6%">entry</span>
         <span class="pt" style="left:94.0%;background:var(--warn)"></span>
         <span class="lab below" style="left:94.0%">last</span>
-        
-        <span class="lab" style="left:6.0%">tgt 0.00</span>
-        <span class="pt" style="left:6.0%;background:var(--gain)"></span>
         
       </div>
       
@@ -489,9 +489,9 @@
           <span class="k">Direction</span><span class="v">long</span>
           <span class="k">Initial stop</span><span class="v">28.10</span>
           <span class="k">Current stop</span><span class="v">28.10</span>
-          <span class="k">Target</span><span class="v">0.00</span>
+          
           <span class="k">Risk at entry</span><span class="v">$227.32</span>
-          <span class="k">POOL_A share</span><span class="v">+9.63</span><span class="k">POOL_B share</span><span class="v">+14.45</span>
+          <span class="k">Pool A (trial 40%) share</span><span class="v">+9.63</span><span class="k">Pool B (trial 60%) share</span><span class="v">+14.45</span>
         </div>
       </details>
     </div>
@@ -824,7 +824,7 @@
   
   <section class="tabpane" id="pane-pools">
     <div class="card">
-      <div class="pool-top"><span class="pool-name">TC_MAIN · fund</span><span class="share-r num">ib-paper-7497</span></div>
+      <div class="pool-top"><span class="pool-name">Paper fund</span><span class="share-r num">ib-paper-7497</span></div>
       <div class="pool-grid">
         <div><div class="k">NAV / unit</div><div class="v">0.9948</div></div>
         <div><div class="k">Units</div><div class="v">33,130</div></div>
@@ -834,7 +834,7 @@
 
     
     <div class="card">
-      <div class="pool-top"><span class="pool-name">POOL_A</span><span class="share-r">40.0%</span></div>
+      <div class="pool-top"><span class="pool-name">Pool A (trial 40%)</span><span class="share-r">40.0%</span></div>
       <div class="pool-grid">
         <div><div class="k">Put in</div><div class="v">$13,252</div></div>
         <div><div class="k">Value now</div><div class="v down">$13,183</div></div>
@@ -854,7 +854,7 @@
     </div>
     
     <div class="card">
-      <div class="pool-top"><span class="pool-name">POOL_B</span><span class="share-r">60.0%</span></div>
+      <div class="pool-top"><span class="pool-name">Pool B (trial 60%)</span><span class="share-r">60.0%</span></div>
       <div class="pool-grid">
         <div><div class="k">Put in</div><div class="v">$19,878</div></div>
         <div><div class="k">Value now</div><div class="v down">$19,775</div></div>
@@ -884,9 +884,9 @@
       <table>
         <tr><th>Date</th><th>Pool</th><th>Type</th><th class="r">Amount</th></tr>
         
-        <tr><td class="num">2026-02-01</td><td>POOL_B</td><td class="up">subscribe</td><td class="r num">$19,878</td></tr>
+        <tr><td class="num">2026-02-01</td><td>Pool B (trial 60%)</td><td class="up">subscribe</td><td class="r num">$19,878</td></tr>
         
-        <tr><td class="num">2026-02-01</td><td>POOL_A</td><td class="up">subscribe</td><td class="r num">$13,252</td></tr>
+        <tr><td class="num">2026-02-01</td><td>Pool A (trial 40%)</td><td class="up">subscribe</td><td class="r num">$13,252</td></tr>
         
       </table>
     </div>
@@ -1023,7 +1023,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-06 05:02 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-06 11:39 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
