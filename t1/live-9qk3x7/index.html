@@ -151,17 +151,20 @@
     <span class="pill share">view-only</span>
       
       <span class="pill code">t1_uk_trading_co</span>
-      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:03:08</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">10:37:19</span>
     </div>
   </div>
   
   <div class="status">
     
-    <span class="chip"><span class="d warn"></span>No engine run yet</span>
+    <span class="chip"><span class="d ok"></span>Run 10:36 · DRY RUN</span>
+    <span class="chip"><span class="d ok"></span>IB connected</span>
     
     
     <span class="chip"><span class="d info"></span>U25599624</span>
     
+    
+    <span class="chip"><span class="d ok"></span>Reconciled</span>
     
   </div>
 </header>
@@ -175,23 +178,87 @@
     <div class="card">
       <p class="eyebrow">IB equity · USD · live</p>
       
-      <div class="hero-val num" style="color:var(--faint)">—</div>
-      <div class="hero-sub"><span>No engine data yet for this lane</span></div>
+      <div class="hero-val num">$39,889.75</div>
+      <div class="hero-sub">
+        <span>Committed <span class="num">$0</span></span>
+        
+        <span>Trading P&amp;L <span class="num ">+0.00</span></span>
+        
+        
+      </div>
+      <div class="hero-sub">
+        <span>≈ <span class="num">£39,890</span> USD</span>
+        
+        <span>observed <span class="num">08 Jul 10:36</span></span>
+      </div>
+      
+      <p class="note" style="margin-top:6px">Equity also carries <span class="num">+39,890</span> of account-level FX / interest since inception (live account), outside the trading return. That is why equity and NAV/unit can sit below committed while the return is positive.</p>
+      
       
       
     </div>
+
+    
+    <div class="statrow">
+      <div><div class="v num">0%</div><div class="k">Win rate</div></div>
+      <div><div class="v num">0.00</div><div class="k">Profit factor</div></div>
+      <div><div class="v num">+0.00</div><div class="k">Avg R</div></div>
+      <div><div class="v num ">0.0%</div><div class="k">Max DD</div></div>
+    </div>
+    
+
+    
 
     
     <div class="card">
-      <p class="eyebrow">First month — live</p>
-      <p style="font-size:12.5px;color:var(--muted);margin:0;line-height:1.6">No closed trades yet. Entries begin after the go-live gate (orders flag on + read-only API off). The paper lane keeps running in parallel as the benchmark mirror.</p>
+      <details class="more">
+        <summary>IB cash activity (non-trading) · 1 events</summary>
+        <div class="kv">
+          <span class="k">Interest</span><span class="v">$0.00</span>
+          <span class="k">Dividends</span><span class="v">$0.00</span>
+          <span class="k">Withholding tax</span><span class="v">$0.00</span>
+          <span class="k">Account fees</span><span class="v">$0.00</span>
+          <span class="k">FX P/L</span><span class="v">$0.00</span>
+          <span class="k">Trade fees</span><span class="v">$0.00</span>
+          
+        </div>
+        <p class="note">
+          Source: engine-written <span class="num">ib_account_state.json</span>, pulled 2026-07-08 10:36.
+        </p>
+      </details>
+    </div>
+
+    <div class="card">
+      <details class="more">
+        <summary>Reconciliation — balanced</summary>
+        <div class="kv">
+          <span class="k">Observed equity</span><span class="v">$39,889.75</span>
+          <span class="k">Committed</span><span class="v">$0.00</span>
+          <span class="k">Realised lifetime</span><span class="v">$0.00</span>
+          <span class="k">Unrealised (open)</span><span class="v">$0.00</span>
+          <span class="k">Expected equity</span><span class="v">$39,889.75</span>
+          <span class="k">Delta</span><span class="v ">$0.00</span>
+        </div>
+      </details>
     </div>
     
 
     
-
-    
-
+    <div class="card">
+      <details class="more">
+        <summary>Last engine run — 2026-07-08 10:36</summary>
+        <div class="kv">
+          <span class="k">Mode</span><span class="v">DRY RUN</span>
+          <span class="k">Trading date</span><span class="v">2026-07-07</span>
+          <span class="k">Equity</span><span class="v">$39,890</span>
+          <span class="k">Entries placed</span><span class="v">0 / 2</span>
+          <span class="k">Stops applied</span><span class="v">0</span>
+          <span class="k">Open / pending</span><span class="v">0 / 0</span>
+        </div>
+        
+        
+      </details>
+    </div>
     
   </section>
 
@@ -202,9 +269,33 @@
     <div class="empty">No open positions.</div>
     
 
-    <h2 class="eyebrow">Pending orders · 0</h2>
+    <h2 class="eyebrow">Pending orders · 2</h2>
     
-    <div class="card"><p style="margin:0;font-size:12px;color:var(--faint)">No brackets waiting. Next plan runs on the 06:00 pipeline.</p></div>
+    <div class="card pos">
+      <div class="pos-top">
+        <span><span class="tick">DDOG</span> <span class="stag">higher low shakeout</span></span>
+        <span class="pos-mid num" style="margin:0">25 @ 270.08</span>
+      </div>
+      <div class="kv">
+        <span class="k">Signal date</span><span class="v">2026-07-07</span>
+        <span class="k">Stop</span><span class="v">238.63</span>
+        <span class="k">Target</span><span class="v">364.44</span>
+        
+      </div>
+    </div>
+    
+    <div class="card pos">
+      <div class="pos-top">
+        <span><span class="tick">CSGP</span> <span class="stag">elder</span></span>
+        <span class="pos-mid num" style="margin:0">112 @ 29.87</span>
+      </div>
+      <div class="kv">
+        <span class="k">Signal date</span><span class="v">2026-07-07</span>
+        <span class="k">Stop</span><span class="v">28.10</span>
+        
+        
+      </div>
+    </div>
     
 
     
@@ -224,8 +315,8 @@
       <div class="pool-top"><span class="pool-name">Live fund</span><span class="share-r num">U25599624</span></div>
       <div class="pool-grid">
         <div><div class="k">NAV / unit</div><div class="v">—</div></div>
-        <div><div class="k">Units</div><div class="v">—</div></div>
-        <div><div class="k">Equity</div><div class="v">—</div></div>
+        <div><div class="k">Units</div><div class="v">0</div></div>
+        <div><div class="k">Equity</div><div class="v">$39,890</div></div>
       </div>
     </div>
 
@@ -240,11 +331,11 @@
       <p class="note" style="margin-top:6px">0.00 units</p>
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">—</span>
-          <span class="k">Unrealised share</span><span class="v">—</span>
-          <span class="k">Trade fees share</span><span class="v">—</span>
+          <span class="k">Realised share</span><span class="v">+0.00</span>
+          <span class="k">Unrealised share</span><span class="v">+0.00</span>
+          <span class="k">Trade fees share</span><span class="v">−0.00</span>
           <span class="k">Other (FX / imputed)</span><span class="v">—</span>
-          <span class="k">Est. tax (CT)</span><span class="v">—</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−0.00</span>
           <span class="k">Net after tax</span><span class="v ">—</span>
         </div>
       </details>
@@ -260,11 +351,11 @@
       <p class="note" style="margin-top:6px">0.00 units</p>
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">—</span>
-          <span class="k">Unrealised share</span><span class="v">—</span>
-          <span class="k">Trade fees share</span><span class="v">—</span>
+          <span class="k">Realised share</span><span class="v">+0.00</span>
+          <span class="k">Unrealised share</span><span class="v">+0.00</span>
+          <span class="k">Trade fees share</span><span class="v">−0.00</span>
           <span class="k">Other (FX / imputed)</span><span class="v">—</span>
-          <span class="k">Est. tax (CT)</span><span class="v">—</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−0.00</span>
           <span class="k">Net after tax</span><span class="v ">—</span>
         </div>
       </details>
@@ -280,17 +371,19 @@
       <p class="note" style="margin-top:6px">0.00 units</p>
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">—</span>
-          <span class="k">Unrealised share</span><span class="v">—</span>
-          <span class="k">Trade fees share</span><span class="v">—</span>
+          <span class="k">Realised share</span><span class="v">+0.00</span>
+          <span class="k">Unrealised share</span><span class="v">+0.00</span>
+          <span class="k">Trade fees share</span><span class="v">−0.00</span>
           <span class="k">Other (FX / imputed)</span><span class="v">—</span>
-          <span class="k">Est. tax (CT)</span><span class="v">—</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−0.00</span>
           <span class="k">Net after tax</span><span class="v ">—</span>
         </div>
       </details>
     </div>
     
 
+    
+    <p class="note">Tax estimate: No CT (realised-net-of-fees is non-positive). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Indicative only.</p>
     
 
     
@@ -403,7 +496,7 @@
       <h3>Engine · this lane</h3>
       <div class="param"><span class="k">Account</span><span class="v">U25599624</span></div>
       <div class="param"><span class="k">Results dir</span><span class="v">results_live/</span></div>
-      
+      <div class="param"><span class="k">Last run mode</span><span class="v ">DRY RUN</span></div>
       <p class="note">Read-only page. Values above come from this lane's <span class="num">production_config.yaml</span>, read at page render.</p>
     </div>
   </section>
@@ -426,7 +519,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-08 05:03 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-08 09:37 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
