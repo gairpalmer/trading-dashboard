@@ -151,7 +151,7 @@
     <span class="pill share">view-only</span>
       
       <span class="pill code">t1_uk_trading_co</span>
-      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:12:32</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">07:31:38</span>
     </div>
   </div>
   
@@ -326,6 +326,312 @@
         
       </details>
     </div>
+    
+  </section>
+
+  
+  <section class="tabpane" id="pane-equity">
+    
+    
+
+    <div class="filters" id="eqRange" role="tablist" aria-label="Equity time range" style="margin-bottom:2px">
+      <button class="chipbtn" data-r="7">1W</button>
+      <button class="chipbtn" data-r="30">1M</button>
+      <button class="chipbtn on" data-r="90">3M</button>
+      <button class="chipbtn" data-r="0">All</button>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Equity curve · USD <span id="eqRangeLbl" style="color:var(--faint)"></span></p>
+      <div class="hero-val num">$31,508.86</div>
+      <div class="hero-sub">
+        <span>Committed <span class="num">$33,130</span></span>
+        
+        <span>vs committed <span class="num down">-1,621.54 (-4.9%)</span></span>
+        
+      </div>
+
+      <div class="spark" style="margin-top:14px">
+        
+        <svg id="eqCurve" width="100%" viewBox="0 0 372 150" preserveAspectRatio="none" role="img" aria-label="Equity curve"></svg>
+        <div style="display:flex;justify-content:space-between;font:9.5px var(--mono);color:var(--faint);margin-top:3px">
+          <span>low <span id="eqLow" class="num">$31,509</span></span><span>high <span id="eqHigh" class="num">$35,780</span></span>
+        </div>
+        <div style="display:flex;justify-content:space-between;font:9.5px var(--mono);color:var(--faint);margin-top:1px">
+          <span id="eqStart">29 Apr</span><span><span id="eqEnd">28 Jul</span> · <span id="eqCount">64</span> days</span>
+        </div>
+        <div style="font:9px var(--mono);color:var(--faint);margin-top:4px"><span style="color:#5E7385">– – –</span> committed baseline $33,130</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <p class="eyebrow">Daily P&amp;L</p>
+      <div class="hero-sub" style="margin:0 0 10px">
+        <span>Best day <span id="eqBest" class="num up">+1,283.56</span></span>
+        <span>Worst day <span id="eqWorst" class="num down">-882.03</span></span>
+      </div>
+      <svg id="eqBars" width="100%" viewBox="0 0 372 100" preserveAspectRatio="none" role="img" aria-label="Daily profit and loss"></svg>
+      <p class="note">Change in account equity between daily observations — the paper account is GBP-base, so this also carries daily GBP/USD revaluation. Bars sum to the curve's total move.</p>
+    </div>
+
+    <div class="card" style="padding:6px 10px">
+      <table>
+        <tr><th>Date</th><th class="r">Equity</th><th class="r">Day P&amp;L</th></tr>
+        
+        
+        <tr>
+          <td class="num">28 Jul</td>
+          <td class="r num">$31,508.86</td>
+          <td class="r num down">-765.22</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">27 Jul</td>
+          <td class="r num">$32,274.08</td>
+          <td class="r num up">+6.71</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">24 Jul</td>
+          <td class="r num">$32,267.37</td>
+          <td class="r num down">-52.41</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">23 Jul</td>
+          <td class="r num">$32,319.78</td>
+          <td class="r num up">+641.15</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">22 Jul</td>
+          <td class="r num">$31,678.63</td>
+          <td class="r num up">+121.33</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">21 Jul</td>
+          <td class="r num">$31,557.30</td>
+          <td class="r num down">-355.12</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">20 Jul</td>
+          <td class="r num">$31,912.42</td>
+          <td class="r num down">-286.07</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">17 Jul</td>
+          <td class="r num">$32,198.49</td>
+          <td class="r num down">-321.11</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">16 Jul</td>
+          <td class="r num">$32,519.60</td>
+          <td class="r num up">+75.74</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">15 Jul</td>
+          <td class="r num">$32,443.86</td>
+          <td class="r num up">+452.28</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">14 Jul</td>
+          <td class="r num">$31,991.58</td>
+          <td class="r num down">-690.08</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">13 Jul</td>
+          <td class="r num">$32,681.66</td>
+          <td class="r num down">-279.83</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">10 Jul</td>
+          <td class="r num">$32,961.49</td>
+          <td class="r num up">+410.01</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">09 Jul</td>
+          <td class="r num">$32,551.48</td>
+          <td class="r num up">+141.24</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">08 Jul</td>
+          <td class="r num">$32,410.24</td>
+          <td class="r num down">-882.03</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">07 Jul</td>
+          <td class="r num">$33,292.27</td>
+          <td class="r num up">+334.54</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">06 Jul</td>
+          <td class="r num">$32,957.73</td>
+          <td class="r num down">-48.53</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">03 Jul</td>
+          <td class="r num">$33,006.26</td>
+          <td class="r num down">-451.18</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">02 Jul</td>
+          <td class="r num">$33,457.44</td>
+          <td class="r num down">-862.05</td>
+        </tr>
+        
+        
+        
+        <tr>
+          <td class="num">01 Jul</td>
+          <td class="r num">$34,319.49</td>
+          <td class="r num up">+735.05</td>
+        </tr>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </table>
+      <p class="note">Latest 20 of 64 days · source: daily account equity (IB NetLiq).</p>
+    </div>
+
+    <script type="application/json" id="eq-data">{"committed": 33130.3969, "points": [{"day_change": null, "equity": 34837.62, "iso": "2026-04-29", "label": "29 Apr"}, {"day_change": -68.0, "equity": 34769.62, "iso": "2026-04-30", "label": "30 Apr"}, {"day_change": -355.1000000000058, "equity": 34414.52, "iso": "2026-05-04", "label": "04 May"}, {"day_change": -93.88999999999942, "equity": 34320.63, "iso": "2026-05-05", "label": "05 May"}, {"day_change": -44.70999999999913, "equity": 34275.92, "iso": "2026-05-06", "label": "06 May"}, {"day_change": 207.86000000000058, "equity": 34483.78, "iso": "2026-05-07", "label": "07 May"}, {"day_change": -126.47999999999593, "equity": 34357.3, "iso": "2026-05-08", "label": "08 May"}, {"day_change": 1283.5599999999977, "equity": 35640.86, "iso": "2026-05-11", "label": "11 May"}, {"day_change": 26.0199999999968, "equity": 35666.88, "iso": "2026-05-12", "label": "12 May"}, {"day_change": -613.2599999999948, "equity": 35053.62, "iso": "2026-05-13", "label": "13 May"}, {"day_change": -250.3199999999997, "equity": 34803.3, "iso": "2026-05-14", "label": "14 May"}, {"day_change": 263.8799999999974, "equity": 35067.18, "iso": "2026-05-15", "label": "15 May"}, {"day_change": -821.8600000000006, "equity": 34245.32, "iso": "2026-05-18", "label": "18 May"}, {"day_change": 464.48999999999796, "equity": 34709.81, "iso": "2026-05-19", "label": "19 May"}, {"day_change": -61.19999999999709, "equity": 34648.61, "iso": "2026-05-20", "label": "20 May"}, {"day_change": -152.9300000000003, "equity": 34495.68, "iso": "2026-05-21", "label": "21 May"}, {"day_change": -78.55000000000291, "equity": 34417.13, "iso": "2026-05-22", "label": "22 May"}, {"day_change": 139.5699999999997, "equity": 34556.7, "iso": "2026-05-25", "label": "25 May"}, {"day_change": 17.950000000004366, "equity": 34574.65, "iso": "2026-05-26", "label": "26 May"}, {"day_change": 488.7099999999991, "equity": 35063.36, "iso": "2026-05-27", "label": "27 May"}, {"day_change": 217.1999999999971, "equity": 35280.56, "iso": "2026-05-28", "label": "28 May"}, {"day_change": -249.18999999999505, "equity": 35031.37, "iso": "2026-05-29", "label": "29 May"}, {"day_change": -184.56000000000495, "equity": 34846.81, "iso": "2026-06-01", "label": "01 Jun"}, {"day_change": 153.58000000000175, "equity": 35000.39, "iso": "2026-06-02", "label": "02 Jun"}, {"day_change": 313.8700000000026, "equity": 35314.26, "iso": "2026-06-03", "label": "03 Jun"}, {"day_change": 465.7699999999968, "equity": 35780.03, "iso": "2026-06-04", "label": "04 Jun"}, {"day_change": -228.40999999999622, "equity": 35551.62, "iso": "2026-06-05", "label": "05 Jun"}, {"day_change": -281.08000000000175, "equity": 35270.54, "iso": "2026-06-08", "label": "08 Jun"}, {"day_change": 285.6999999999971, "equity": 35556.24, "iso": "2026-06-09", "label": "09 Jun"}, {"day_change": 4.650000000001455, "equity": 35560.89, "iso": "2026-06-10", "label": "10 Jun"}, {"day_change": -180.0500000000029, "equity": 35380.84, "iso": "2026-06-11", "label": "11 Jun"}, {"day_change": 299.7800000000061, "equity": 35680.62, "iso": "2026-06-12", "label": "12 Jun"}, {"day_change": -229.06000000000495, "equity": 35451.56, "iso": "2026-06-15", "label": "15 Jun"}, {"day_change": -568.4199999999983, "equity": 34883.14, "iso": "2026-06-16", "label": "16 Jun"}, {"day_change": -113.43000000000029, "equity": 34769.71, "iso": "2026-06-17", "label": "17 Jun"}, {"day_change": -510.9400000000023, "equity": 34258.77, "iso": "2026-06-18", "label": "18 Jun"}, {"day_change": -251.88999999999942, "equity": 34006.88, "iso": "2026-06-19", "label": "19 Jun"}, {"day_change": 99.85000000000582, "equity": 34106.73, "iso": "2026-06-22", "label": "22 Jun"}, {"day_change": 353.2099999999991, "equity": 34459.94, "iso": "2026-06-23", "label": "23 Jun"}, {"day_change": -832.9700000000012, "equity": 33626.97, "iso": "2026-06-24", "label": "24 Jun"}, {"day_change": 263.8399999999965, "equity": 33890.81, "iso": "2026-06-25", "label": "25 Jun"}, {"day_change": -388.75999999999476, "equity": 33502.05, "iso": "2026-06-26", "label": "26 Jun"}, {"day_change": -269.6800000000003, "equity": 33232.37, "iso": "2026-06-29", "label": "29 Jun"}, {"day_change": 352.0699999999997, "equity": 33584.44, "iso": "2026-06-30", "label": "30 Jun"}, {"day_change": 735.0499999999956, "equity": 34319.49, "iso": "2026-07-01", "label": "01 Jul"}, {"day_change": -862.0499999999956, "equity": 33457.44, "iso": "2026-07-02", "label": "02 Jul"}, {"day_change": -451.1800000000003, "equity": 33006.26, "iso": "2026-07-03", "label": "03 Jul"}, {"day_change": -48.529999999998836, "equity": 32957.73, "iso": "2026-07-06", "label": "06 Jul"}, {"day_change": 334.5399999999936, "equity": 33292.27, "iso": "2026-07-07", "label": "07 Jul"}, {"day_change": -882.0299999999952, "equity": 32410.24, "iso": "2026-07-08", "label": "08 Jul"}, {"day_change": 141.23999999999796, "equity": 32551.48, "iso": "2026-07-09", "label": "09 Jul"}, {"day_change": 410.0099999999984, "equity": 32961.49, "iso": "2026-07-10", "label": "10 Jul"}, {"day_change": -279.8299999999981, "equity": 32681.66, "iso": "2026-07-13", "label": "13 Jul"}, {"day_change": -690.0799999999981, "equity": 31991.58, "iso": "2026-07-14", "label": "14 Jul"}, {"day_change": 452.27999999999884, "equity": 32443.86, "iso": "2026-07-15", "label": "15 Jul"}, {"day_change": 75.73999999999796, "equity": 32519.6, "iso": "2026-07-16", "label": "16 Jul"}, {"day_change": -321.10999999999694, "equity": 32198.49, "iso": "2026-07-17", "label": "17 Jul"}, {"day_change": -286.07000000000335, "equity": 31912.42, "iso": "2026-07-20", "label": "20 Jul"}, {"day_change": -355.119999999999, "equity": 31557.3, "iso": "2026-07-21", "label": "21 Jul"}, {"day_change": 121.33000000000175, "equity": 31678.63, "iso": "2026-07-22", "label": "22 Jul"}, {"day_change": 641.1499999999978, "equity": 32319.78, "iso": "2026-07-23", "label": "23 Jul"}, {"day_change": -52.409999999999854, "equity": 32267.37, "iso": "2026-07-24", "label": "24 Jul"}, {"day_change": 6.710000000002765, "equity": 32274.08, "iso": "2026-07-27", "label": "27 Jul"}, {"day_change": -765.2200000000012, "equity": 31508.86, "iso": "2026-07-28", "label": "28 Jul"}]}</script>
+
     
   </section>
 
@@ -976,6 +1282,8 @@
 <nav>
   <button class="tab on" data-t="overview" aria-label="Overview">
     <svg viewBox="0 0 24 24"><path d="M3 13l4-4 4 3 5-6 5 5"/><path d="M3 20h18"/></svg>Overview</button>
+  <button class="tab" data-t="equity" aria-label="Equity">
+    <svg viewBox="0 0 24 24"><path d="M4 4v16h16"/><path d="M7 14l3-3 3 2 5-6"/><path d="M15 7h3v3"/></svg>Equity</button>
   <button class="tab" data-t="positions" aria-label="Positions">
     <svg viewBox="0 0 24 24"><rect x="4" y="10" width="3.5" height="8"/><rect x="10.2" y="5" width="3.5" height="13"/><rect x="16.5" y="8" width="3.5" height="10"/></svg>Positions</button>
   <button class="tab" data-t="ledger" aria-label="Ledger">
@@ -990,28 +1298,133 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-28 05:12 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-07-28 06:31 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
-  // bottom-nav tabs
+  // bottom-nav tabs (with last-tab persistence so the 60s auto-reload below
+  // doesn't bounce the user off whichever tab they're reading)
   const tabs = document.querySelectorAll('.tab');
   const panes = document.querySelectorAll('.tabpane');
+  function activateTab(name) {
+    tabs.forEach(x => x.classList.toggle('on', x.dataset.t === name));
+    panes.forEach(p => p.classList.toggle('on', p.id === 'pane-' + name));
+  }
   tabs.forEach(b => b.addEventListener('click', function() {
-    tabs.forEach(x => x.classList.toggle('on', x === this));
-    panes.forEach(p => p.classList.toggle('on', p.id === 'pane-' + this.dataset.t));
+    activateTab(this.dataset.t);
+    try { localStorage.setItem('t1Tab', this.dataset.t); } catch (e) {}
     document.querySelector('main').scrollTop = 0;
     window.scrollTo(0, 0);
   }));
+  try {
+    const savedTab = localStorage.getItem('t1Tab');
+    if (savedTab && document.getElementById('pane-' + savedTab)) activateTab(savedTab);
+  } catch (e) {}
 
-  // ledger filters
-  document.querySelectorAll('.chipbtn').forEach(b => b.addEventListener('click', function() {
-    document.querySelectorAll('.chipbtn').forEach(x => x.classList.toggle('on', x === this));
+  // ledger filters (scoped to the ledger pane — the equity range chips reuse
+  // the same .chipbtn class, so an unscoped selector would cross-fire)
+  document.querySelectorAll('#pane-ledger .chipbtn').forEach(b => b.addEventListener('click', function() {
+    document.querySelectorAll('#pane-ledger .chipbtn').forEach(x => x.classList.toggle('on', x === this));
     const f = this.dataset.f;
     document.querySelectorAll('.lrow').forEach(r => {
       r.style.display = (f === 'all' || (r.dataset.k || '').split(' ').includes(f)) ? '' : 'none';
     });
   }));
+
+  // ---- Equity tab: time-range chips + client-side chart drawing ----------
+  // The full daily series is baked into #eq-data; the 1W/1M/3M/All chips just
+  // re-window it and redraw the two SVGs, no reload. Choice persists in
+  // localStorage so it survives the periodic auto-reload. The server-rendered
+  // table remains the no-JS fallback.
+  const eqDataEl = document.getElementById('eq-data');
+  if (eqDataEl) {
+    let eqCfg = null;
+    try { eqCfg = JSON.parse(eqDataEl.textContent); } catch (e) {}
+    if (eqCfg && eqCfg.points && eqCfg.points.length > 1) {
+      const ALL = eqCfg.points;
+      const committed = (eqCfg.committed === null || eqCfg.committed === undefined)
+        ? null : eqCfg.committed;
+      const lastMs = Date.parse(ALL[ALL.length - 1].iso);
+      const fmt0 = v => '$' + Math.round(v).toLocaleString('en-US');
+      const fmt2s = v => (v >= 0 ? '+' : '') + v.toLocaleString('en-US',
+        { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      const setTxt = (id, t) => { const el = document.getElementById(id); if (el) el.textContent = t; };
+
+      function windowPoints(days) {
+        if (!days) return ALL;                    // 0 = All
+        const cutoff = lastMs - days * 86400000;
+        const w = ALL.filter(p => Date.parse(p.iso) >= cutoff);
+        return w.length >= 2 ? w : ALL.slice(-2); // never fewer than 2 points
+      }
+
+      function drawCurve(pts) {
+        const N = pts.length;
+        const eqs = pts.map(p => p.equity);
+        let lo = Math.min.apply(null, eqs), hi = Math.max.apply(null, eqs);
+        if (committed !== null) { lo = Math.min(lo, committed); hi = Math.max(hi, committed); }
+        const range = (hi - lo) || 1;
+        const X = i => 4 + i * 364 / (N - 1);
+        const Y = v => 142 - ((v - lo) / range * 130);
+        let pts_str = '';
+        pts.forEach((p, i) => { pts_str += X(i).toFixed(1) + ',' + Y(p.equity).toFixed(1) + ' '; });
+        let svg = '';
+        if (committed !== null) {
+          const cy = Y(committed).toFixed(1);
+          svg += '<line x1="4" y1="' + cy + '" x2="368" y2="' + cy + '" stroke="#5E7385" stroke-dasharray="2 4" stroke-width="1"/>';
+        }
+        svg += '<polygon fill="rgba(92,150,196,.12)" points="4,146 ' + pts_str + '368,146"/>';
+        svg += '<polyline fill="none" stroke="#5C96C4" stroke-width="1.8" points="' + pts_str.trim() + '"/>';
+        document.getElementById('eqCurve').innerHTML = svg;
+        setTxt('eqLow', fmt0(lo)); setTxt('eqHigh', fmt0(hi));
+        setTxt('eqStart', pts[0].label); setTxt('eqEnd', pts[N - 1].label);
+        setTxt('eqCount', String(N));
+      }
+
+      function drawBars(pts) {
+        const N = pts.length;
+        const changes = pts.map(p => p.day_change).filter(v => v !== null && v !== undefined);
+        const lo = Math.min.apply(null, changes.concat([0]));
+        const hi = Math.max.apply(null, changes.concat([0]));
+        const range = (hi - lo) || 1;
+        const Y = v => 92 - ((v - lo) / range * 84);
+        const zy = Y(0), slotW = 364 / N, bw = slotW * 0.6;
+        let svg = '<line x1="4" y1="' + zy.toFixed(1) + '" x2="368" y2="' + zy.toFixed(1) + '" stroke="#263442" stroke-width="1"/>';
+        pts.forEach((p, i) => {
+          const v = p.day_change;
+          if (v === null || v === undefined) return;
+          const bx = 4 + (i + 0.5) * slotW, vy = Y(v);
+          const y0 = Math.min(zy, vy), h = Math.abs(zy - vy);
+          svg += '<rect x="' + (bx - bw / 2).toFixed(1) + '" y="' + y0.toFixed(1) + '" width="' + bw.toFixed(1) + '" height="' + h.toFixed(1) + '" fill="' + (v >= 0 ? '#2FA57C' : '#E25C6E') + '" rx="0.5"/>';
+        });
+        document.getElementById('eqBars').innerHTML = svg;
+        const best = changes.length ? Math.max.apply(null, changes) : null;
+        const worst = changes.length ? Math.min.apply(null, changes) : null;
+        setTxt('eqBest', best === null ? '—' : fmt2s(best));
+        setTxt('eqWorst', worst === null ? '—' : fmt2s(worst));
+      }
+
+      const RLABEL = { 7: '· 1W', 30: '· 1M', 90: '· 3M', 0: '· all' };
+      function applyRange(days) {
+        const pts = windowPoints(days);
+        drawCurve(pts); drawBars(pts);
+        setTxt('eqRangeLbl', RLABEL[days] || '');
+      }
+
+      const rangeWrap = document.getElementById('eqRange');
+      let saved = parseInt(localStorage.getItem('t1EqRange'), 10);
+      if (isNaN(saved)) saved = 90;                 // default 3M
+      rangeWrap.querySelectorAll('.chipbtn').forEach(b => {
+        b.classList.toggle('on', parseInt(b.dataset.r, 10) === saved);
+        b.addEventListener('click', function() {
+          rangeWrap.querySelectorAll('.chipbtn').forEach(x => x.classList.toggle('on', x === this));
+          const dd = parseInt(this.dataset.r, 10);
+          try { localStorage.setItem('t1EqRange', String(dd)); } catch (e) {}
+          applyRange(dd);
+        });
+      });
+      applyRange(saved);
+    }
+  }
 
   // Safari/iOS bfcache: when restored from back-forward cache, force a
   // full reload so reconcile/snapshot/banner reflect current server state
