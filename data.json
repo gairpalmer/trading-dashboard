@@ -1,5 +1,5 @@
 {
-  "generated": "2026-08-10T06:02:25.240917",
+  "generated": "2026-08-11T06:03:46.937340",
   "initial_equity": 32225.0,
   "open_trades": [
     {
@@ -28,11 +28,11 @@
       "ib_target_order_id": 3956.0,
       "exit_reason": null,
       "notes": null,
-      "last_price": 269.89,
-      "unrealized_pnl": 178.01,
-      "unrealized_r": 0.89,
+      "last_price": 270.43,
+      "unrealized_pnl": 182.87,
+      "unrealized_r": 0.92,
       "risk_amount": 199.5,
-      "days_held": 31
+      "days_held": 32
     },
     {
       "trade_id": 58,
@@ -60,43 +60,47 @@
       "ib_target_order_id": 4872.0,
       "exit_reason": null,
       "notes": null,
-      "last_price": 41.7,
-      "unrealized_pnl": 22.78,
-      "unrealized_r": 0.42,
+      "last_price": 42.11,
+      "unrealized_pnl": 56.4,
+      "unrealized_r": 1.03,
       "risk_amount": 54.51,
-      "days_held": 5
-    }
-  ],
-  "total_unrealized_pnl": 200.79,
-  "pending_trades": [
+      "days_held": 6
+    },
     {
       "trade_id": 59,
       "ticker": "DDOG",
       "direction": "long",
       "leg_name": "leg_higher_low_shakeout",
       "strategy": "leg_higher_low_shakeout",
-      "status": "PENDING",
+      "status": "OPEN",
       "signal_date": "2026-08-07T00:00:00",
-      "entry_date": "NaT",
+      "entry_date": "2026-08-11T00:00:00",
       "exit_date": "NaT",
-      "entry_price": 248.4742,
+      "entry_price": 248.9467,
       "stop_price": 207.1188,
       "initial_stop_price": 207.1188,
       "target_price": 372.5402,
       "exit_price": null,
       "qty": 15,
-      "filled_qty": 0,
+      "filled_qty": 15,
       "pnl": null,
       "r_multiple": null,
-      "entry_commission": null,
+      "entry_commission": 0.0,
       "exit_commission": null,
       "ib_entry_order_id": 5023.0,
       "ib_stop_order_id": 5024.0,
       "ib_target_order_id": 5025.0,
       "exit_reason": null,
-      "notes": null
+      "notes": null,
+      "last_price": 260.78,
+      "unrealized_pnl": 177.5,
+      "unrealized_r": 0.28,
+      "risk_amount": 627.42,
+      "days_held": 0
     }
   ],
+  "total_unrealized_pnl": 416.77,
+  "pending_trades": [],
   "closed_trades": [
     {
       "trade_id": 2,
@@ -1828,83 +1832,83 @@
   ],
   "summary": {
     "total_trades": 59,
-    "open": 2,
+    "open": 3,
     "closed": 37,
-    "pending": 1,
+    "pending": 0,
     "cancelled": 2,
     "missed": 17,
     "win_rate": 0.378,
     "avg_r": -0.02,
     "profit_factor": 0.89,
     "total_pnl": -1010.07,
-    "current_equity": 31370.07,
+    "current_equity": 31640.98,
     "max_drawdown": -0.1124,
     "sharpe_approx": -0.07
   },
   "status": "Live",
   "last_run": {
-    "timestamp": "2026-08-10T06:02:23.313175",
-    "trading_date": "2026-08-07",
+    "timestamp": "2026-08-11T06:03:37.449553",
+    "trading_date": "2026-08-10",
     "mode": "LIVE",
     "ib_connected": true,
-    "equity": 31370.065111967924,
-    "entries_planned": 1,
-    "entries_placed": 1,
+    "equity": 31640.984623200173,
+    "entries_planned": 0,
+    "entries_placed": 0,
     "stop_updates": [],
     "stops_applied": 0,
     "exits_detected": [],
     "discrepancies": [],
-    "open_count": 2,
-    "pending_count": 1
+    "open_count": 3,
+    "pending_count": 0
   },
   "watchlist": [
     {
       "ticker": "DDOG",
       "has_position": true,
-      "last_close": 233.93,
-      "last_date": "2026-08-07",
+      "last_close": 260.78,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": true,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": -8.94,
+            "ema_dist_pct": 1.37,
             "at_ema": true,
-            "breakout": false,
+            "breakout": true,
             "was_above_nago": true
           },
-          "s2_fired": false,
-          "signal": false
+          "s2_fired": true,
+          "signal": true
         },
         {
           "name": "leg_higher_low_shakeout",
           "s1_valid": true,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 3.81,
-            "shakeout_ratio_today": -0.25,
+            "shakeout_ratio_yesterday": -0.25,
+            "shakeout_ratio_today": 0.26,
             "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": true,
+            "had_shakeout_yesterday": false,
             "today_is_shakeout": false,
-            "higher_low": true,
+            "higher_low": false,
             "confirm_close": true
           },
-          "s2_fired": true,
+          "s2_fired": false,
           "signal": false
         }
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": -3.2153,
-        "macd_h_prev": -1.3961,
+        "macd_h_current": -2.5272,
+        "macd_h_prev": -3.2153,
         "below_zero": true,
-        "rising": false,
-        "last_trough_bars_ago": 10,
-        "last_trough_val": -3.5554,
+        "rising": true,
+        "last_trough_bars_ago": 1,
+        "last_trough_val": -3.2153,
         "shallower_trough": true,
-        "price_lower_low": false,
-        "potential_divergence": false,
+        "price_lower_low": true,
+        "potential_divergence": true,
         "signal_today": false,
         "regime_ok": true
       }
@@ -1912,15 +1916,15 @@
     {
       "ticker": "AAPL",
       "has_position": false,
-      "last_close": 313.33,
-      "last_date": "2026-08-07",
+      "last_close": 308.26,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": true,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": -1.41,
+            "ema_dist_pct": -2.72,
             "at_ema": true,
             "breakout": false,
             "was_above_nago": false
@@ -1933,13 +1937,13 @@
           "s1_valid": true,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.2,
-            "shakeout_ratio_today": 0.19,
+            "shakeout_ratio_yesterday": 0.19,
+            "shakeout_ratio_today": 1.0,
             "shakeout_threshold": 1.0,
             "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
+            "today_is_shakeout": true,
+            "higher_low": false,
+            "confirm_close": false
           },
           "s2_fired": false,
           "signal": false
@@ -1947,11 +1951,11 @@
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": -3.1807,
-        "macd_h_prev": -3.4762,
+        "macd_h_current": -3.1894,
+        "macd_h_prev": -3.1807,
         "below_zero": true,
-        "rising": true,
-        "last_trough_bars_ago": 2,
+        "rising": false,
+        "last_trough_bars_ago": 3,
         "last_trough_val": -3.6338,
         "shallower_trough": false,
         "price_lower_low": false,
@@ -1963,18 +1967,18 @@
     {
       "ticker": "AMD",
       "has_position": false,
-      "last_close": 483.36,
-      "last_date": "2026-08-07",
+      "last_close": 469.56,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": true,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": -3.1,
+            "ema_dist_pct": -5.34,
             "at_ema": true,
             "breakout": false,
-            "was_above_nago": true
+            "was_above_nago": false
           },
           "s2_fired": false,
           "signal": false
@@ -1984,12 +1988,12 @@
           "s1_valid": true,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.33,
-            "shakeout_ratio_today": 0.35,
+            "shakeout_ratio_yesterday": 0.35,
+            "shakeout_ratio_today": 0.39,
             "shakeout_threshold": 1.0,
             "had_shakeout_yesterday": false,
             "today_is_shakeout": false,
-            "higher_low": true,
+            "higher_low": false,
             "confirm_close": false
           },
           "s2_fired": false,
@@ -1998,11 +2002,11 @@
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": -2.2585,
-        "macd_h_prev": -2.5708,
+        "macd_h_current": -2.7697,
+        "macd_h_prev": -2.2585,
         "below_zero": true,
-        "rising": true,
-        "last_trough_bars_ago": 7,
+        "rising": false,
+        "last_trough_bars_ago": 8,
         "last_trough_val": -12.1306,
         "shallower_trough": false,
         "price_lower_low": true,
@@ -2012,17 +2016,17 @@
       }
     },
     {
-      "ticker": "CSCO",
+      "ticker": "CHTR",
       "has_position": false,
-      "last_close": 121.43,
-      "last_date": "2026-08-07",
+      "last_close": 153.29,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": true,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": 3.94,
+            "ema_dist_pct": 7.07,
             "at_ema": false,
             "breakout": false,
             "was_above_nago": true
@@ -2035,8 +2039,8 @@
           "s1_valid": true,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.44,
-            "shakeout_ratio_today": 0.39,
+            "shakeout_ratio_yesterday": 0.73,
+            "shakeout_ratio_today": 0.62,
             "shakeout_threshold": 1.0,
             "had_shakeout_yesterday": false,
             "today_is_shakeout": false,
@@ -2049,11 +2053,62 @@
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": 1.0092,
-        "macd_h_prev": 0.9958,
+        "macd_h_current": 2.4303,
+        "macd_h_prev": 2.7641,
+        "below_zero": false,
+        "rising": false,
+        "last_trough_bars_ago": 11,
+        "last_trough_val": -0.3001,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "potential_divergence": true,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "CSCO",
+      "has_position": false,
+      "last_close": 122.57,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 4.43,
+            "at_ema": false,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": 0.39,
+            "shakeout_ratio_today": -0.23,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": true,
+            "confirm_close": true
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 1.0346,
+        "macd_h_prev": 1.0092,
         "below_zero": false,
         "rising": true,
-        "last_trough_bars_ago": 7,
+        "last_trough_bars_ago": 8,
         "last_trough_val": -0.0125,
         "shallower_trough": true,
         "price_lower_low": false,
@@ -2065,15 +2120,15 @@
     {
       "ticker": "CSX",
       "has_position": false,
-      "last_close": 50.27,
-      "last_date": "2026-08-07",
+      "last_close": 50.12,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": true,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": -0.12,
+            "ema_dist_pct": -0.38,
             "at_ema": true,
             "breakout": false,
             "was_above_nago": true
@@ -2086,160 +2141,7 @@
           "s1_valid": true,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.46,
-            "shakeout_ratio_today": 0.58,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": false,
-            "confirm_close": false
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": -0.2063,
-        "macd_h_prev": -0.1754,
-        "below_zero": true,
-        "rising": false,
-        "last_trough_bars_ago": 4,
-        "last_trough_val": -0.2309,
-        "shallower_trough": false,
-        "price_lower_low": false,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "CTAS",
-      "has_position": false,
-      "last_close": 203.05,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": true,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 1.38,
-            "at_ema": true,
-            "breakout": false,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": true,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.37,
-            "shakeout_ratio_today": 0.36,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": -1.4489,
-        "macd_h_prev": -1.3362,
-        "below_zero": true,
-        "rising": false,
-        "last_trough_bars_ago": 28,
-        "last_trough_val": -0.7172,
-        "shallower_trough": true,
-        "price_lower_low": false,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "DASH",
-      "has_position": false,
-      "last_close": 216.26,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": true,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 10.78,
-            "at_ema": false,
-            "breakout": false,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": true,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.01,
-            "shakeout_ratio_today": 0.43,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 2.4542,
-        "macd_h_prev": 2.1068,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 10,
-        "last_trough_val": -2.9456,
-        "shallower_trough": false,
-        "price_lower_low": false,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "GOOGL",
-      "has_position": false,
-      "last_close": 354.3,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": true,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 0.55,
-            "at_ema": false,
-            "breakout": false,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": true,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.43,
+            "shakeout_ratio_yesterday": 0.58,
             "shakeout_ratio_today": 0.32,
             "shakeout_threshold": 1.0,
             "had_shakeout_yesterday": false,
@@ -2253,12 +2155,471 @@
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": 2.9861,
-        "macd_h_prev": 3.7381,
+        "macd_h_current": -0.2316,
+        "macd_h_prev": -0.2063,
+        "below_zero": true,
+        "rising": false,
+        "last_trough_bars_ago": 5,
+        "last_trough_val": -0.2309,
+        "shallower_trough": false,
+        "price_lower_low": false,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "CTAS",
+      "has_position": false,
+      "last_close": 202.71,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 1.09,
+            "at_ema": false,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": 0.36,
+            "shakeout_ratio_today": 0.41,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": true,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": -1.5292,
+        "macd_h_prev": -1.4489,
+        "below_zero": true,
+        "rising": false,
+        "last_trough_bars_ago": 29,
+        "last_trough_val": -0.7172,
+        "shallower_trough": true,
+        "price_lower_low": false,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "DASH",
+      "has_position": false,
+      "last_close": 209.86,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 6.74,
+            "at_ema": false,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": 0.43,
+            "shakeout_ratio_today": 1.03,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": true,
+            "higher_low": false,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 2.083,
+        "macd_h_prev": 2.4542,
         "below_zero": false,
         "rising": false,
-        "last_trough_bars_ago": 10,
+        "last_trough_bars_ago": 11,
+        "last_trough_val": -2.9456,
+        "shallower_trough": false,
+        "price_lower_low": false,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "GLD",
+      "has_position": false,
+      "last_close": 402.54,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 5.62,
+            "at_ema": false,
+            "breakout": true,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": -0.95,
+            "shakeout_ratio_today": 0.33,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": false,
+            "confirm_close": true
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 4.0847,
+        "macd_h_prev": 3.5022,
+        "below_zero": false,
+        "rising": true,
+        "last_trough_bars_ago": 31,
+        "last_trough_val": -1.7444,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "potential_divergence": true,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "GOOGL",
+      "has_position": false,
+      "last_close": 357.52,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 1.32,
+            "at_ema": true,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": 0.32,
+            "shakeout_ratio_today": 0.13,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": false,
+            "confirm_close": true
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 2.5824,
+        "macd_h_prev": 2.9861,
+        "below_zero": false,
+        "rising": false,
+        "last_trough_bars_ago": 11,
         "last_trough_val": -3.8029,
+        "shallower_trough": false,
+        "price_lower_low": true,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "HD",
+      "has_position": false,
+      "last_close": 350.78,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 2.41,
+            "at_ema": false,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": 0.09,
+            "shakeout_ratio_today": 0.98,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": false,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 1.6427,
+        "macd_h_prev": 1.7902,
+        "below_zero": false,
+        "rising": false,
+        "last_trough_bars_ago": 6,
+        "last_trough_val": -0.9682,
+        "shallower_trough": true,
+        "price_lower_low": false,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "INTC",
+      "has_position": false,
+      "last_close": 97.52,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": -1.85,
+            "at_ema": true,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": 0.21,
+            "shakeout_ratio_today": 0.66,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": false,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 1.524,
+        "macd_h_prev": 1.614,
+        "below_zero": false,
+        "rising": false,
+        "last_trough_bars_ago": 8,
+        "last_trough_val": -2.2992,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "potential_divergence": true,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "NVDA",
+      "has_position": false,
+      "last_close": 217.55,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 4.19,
+            "at_ema": false,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": -0.22,
+            "shakeout_ratio_today": 0.95,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": false,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 2.2882,
+        "macd_h_prev": 2.5005,
+        "below_zero": false,
+        "rising": false,
+        "last_trough_bars_ago": 7,
+        "last_trough_val": -1.3649,
+        "shallower_trough": true,
+        "price_lower_low": false,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "QQQ",
+      "has_position": false,
+      "last_close": 720.87,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 2.11,
+            "at_ema": false,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": -0.13,
+            "shakeout_ratio_today": 0.19,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": true,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 4.5542,
+        "macd_h_prev": 4.442,
+        "below_zero": false,
+        "rising": true,
+        "last_trough_bars_ago": 8,
+        "last_trough_val": -4.9555,
+        "shallower_trough": false,
+        "price_lower_low": true,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "SMH",
+      "has_position": false,
+      "last_close": 569.41,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 0.23,
+            "at_ema": false,
+            "breakout": false,
+            "was_above_nago": true
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": true,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": -0.03,
+            "shakeout_ratio_today": 0.53,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": false,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 4.124,
+        "macd_h_prev": 4.1341,
+        "below_zero": false,
+        "rising": false,
+        "last_trough_bars_ago": 8,
+        "last_trough_val": -8.2116,
         "shallower_trough": false,
         "price_lower_low": true,
         "potential_divergence": false,
@@ -2269,15 +2630,15 @@
     {
       "ticker": "APP",
       "has_position": false,
-      "last_close": 346.8,
-      "last_date": "2026-08-07",
+      "last_close": 339.0,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": false,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": -16.19,
+            "ema_dist_pct": -16.64,
             "at_ema": true,
             "breakout": false,
             "was_above_nago": false
@@ -2290,25 +2651,25 @@
           "s1_valid": false,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 2.87,
-            "shakeout_ratio_today": -0.03,
+            "shakeout_ratio_yesterday": -0.03,
+            "shakeout_ratio_today": 0.29,
             "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": true,
+            "had_shakeout_yesterday": false,
             "today_is_shakeout": false,
             "higher_low": true,
-            "confirm_close": true
+            "confirm_close": false
           },
-          "s2_fired": true,
+          "s2_fired": false,
           "signal": false
         }
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": -3.9589,
-        "macd_h_prev": -2.3187,
+        "macd_h_current": -5.0474,
+        "macd_h_prev": -3.9589,
         "below_zero": true,
         "rising": false,
-        "last_trough_bars_ago": 11,
+        "last_trough_bars_ago": 12,
         "last_trough_val": -9.1985,
         "shallower_trough": true,
         "price_lower_low": false,
@@ -2320,15 +2681,15 @@
     {
       "ticker": "CDNS",
       "has_position": false,
-      "last_close": 339.24,
-      "last_date": "2026-08-07",
+      "last_close": 331.91,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": false,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": -1.66,
+            "ema_dist_pct": -3.44,
             "at_ema": true,
             "breakout": false,
             "was_above_nago": false
@@ -2341,8 +2702,59 @@
           "s1_valid": false,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.28,
-            "shakeout_ratio_today": 0.2,
+            "shakeout_ratio_yesterday": 0.2,
+            "shakeout_ratio_today": 0.54,
+            "shakeout_threshold": 1.0,
+            "had_shakeout_yesterday": false,
+            "today_is_shakeout": false,
+            "higher_low": false,
+            "confirm_close": false
+          },
+          "s2_fired": false,
+          "signal": false
+        }
+      ],
+      "elder": {
+        "has_data": true,
+        "macd_h_current": 0.8027,
+        "macd_h_prev": 1.0446,
+        "below_zero": false,
+        "rising": false,
+        "last_trough_bars_ago": 12,
+        "last_trough_val": -5.1886,
+        "shallower_trough": true,
+        "price_lower_low": false,
+        "potential_divergence": false,
+        "signal_today": false,
+        "regime_ok": true
+      }
+    },
+    {
+      "ticker": "COST",
+      "has_position": false,
+      "last_close": 952.75,
+      "last_date": "2026-08-10",
+      "legs": [
+        {
+          "name": "leg_ema_pullback",
+          "s1_valid": false,
+          "s2_details": {
+            "variant": "ema_pullback",
+            "ema_dist_pct": 0.55,
+            "at_ema": true,
+            "breakout": true,
+            "was_above_nago": false
+          },
+          "s2_fired": false,
+          "signal": false
+        },
+        {
+          "name": "leg_higher_low_shakeout",
+          "s1_valid": false,
+          "s2_details": {
+            "variant": "higher_low_shakeout",
+            "shakeout_ratio_yesterday": 0.59,
+            "shakeout_ratio_today": 0.37,
             "shakeout_threshold": 1.0,
             "had_shakeout_yesterday": false,
             "today_is_shakeout": false,
@@ -2355,12 +2767,12 @@
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": 1.0446,
-        "macd_h_prev": 0.7317,
+        "macd_h_current": 1.6099,
+        "macd_h_prev": 1.6073,
         "below_zero": false,
         "rising": true,
-        "last_trough_bars_ago": 11,
-        "last_trough_val": -5.1886,
+        "last_trough_bars_ago": 18,
+        "last_trough_val": -1.2084,
         "shallower_trough": true,
         "price_lower_low": false,
         "potential_divergence": false,
@@ -2369,20 +2781,20 @@
       }
     },
     {
-      "ticker": "CHTR",
+      "ticker": "CPRT",
       "has_position": false,
-      "last_close": 152.57,
-      "last_date": "2026-08-07",
+      "last_close": 29.59,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": false,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": 7.37,
-            "at_ema": false,
+            "ema_dist_pct": 1.67,
+            "at_ema": true,
             "breakout": false,
-            "was_above_nago": true
+            "was_above_nago": false
           },
           "s2_fired": false,
           "signal": false
@@ -2392,7 +2804,7 @@
           "s1_valid": false,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.17,
+            "shakeout_ratio_yesterday": 0.31,
             "shakeout_ratio_today": 0.73,
             "shakeout_threshold": 1.0,
             "had_shakeout_yesterday": false,
@@ -2406,113 +2818,11 @@
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": 2.7641,
-        "macd_h_prev": 3.1125,
+        "macd_h_current": 0.1622,
+        "macd_h_prev": 0.1708,
         "below_zero": false,
         "rising": false,
-        "last_trough_bars_ago": 10,
-        "last_trough_val": -0.3001,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "potential_divergence": true,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "COST",
-      "has_position": false,
-      "last_close": 947.82,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 0.09,
-            "at_ema": true,
-            "breakout": false,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.01,
-            "shakeout_ratio_today": 0.59,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": false,
-            "confirm_close": false
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 1.6073,
-        "macd_h_prev": 1.9961,
-        "below_zero": false,
-        "rising": false,
-        "last_trough_bars_ago": 17,
-        "last_trough_val": -1.2084,
-        "shallower_trough": true,
-        "price_lower_low": false,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "CPRT",
-      "has_position": false,
-      "last_close": 29.66,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 2.08,
-            "at_ema": true,
-            "breakout": true,
-            "was_above_nago": true
-          },
-          "s2_fired": true,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.36,
-            "shakeout_ratio_today": 0.31,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 0.1708,
-        "macd_h_prev": 0.165,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 13,
+        "last_trough_bars_ago": 14,
         "last_trough_val": -0.0111,
         "shallower_trough": true,
         "price_lower_low": true,
@@ -2524,15 +2834,15 @@
     {
       "ticker": "CRWD",
       "has_position": false,
-      "last_close": 214.42,
-      "last_date": "2026-08-07",
+      "last_close": 225.16,
+      "last_date": "2026-08-10",
       "legs": [
         {
           "name": "leg_ema_pullback",
           "s1_valid": false,
           "s2_details": {
             "variant": "ema_pullback",
-            "ema_dist_pct": -7.06,
+            "ema_dist_pct": -2.18,
             "at_ema": true,
             "breakout": true,
             "was_above_nago": false
@@ -2545,8 +2855,8 @@
           "s1_valid": false,
           "s2_details": {
             "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.34,
-            "shakeout_ratio_today": -0.04,
+            "shakeout_ratio_yesterday": -0.04,
+            "shakeout_ratio_today": -0.01,
             "shakeout_threshold": 1.0,
             "had_shakeout_yesterday": false,
             "today_is_shakeout": false,
@@ -2559,318 +2869,12 @@
       ],
       "elder": {
         "has_data": true,
-        "macd_h_current": 19.0915,
-        "macd_h_prev": 18.914,
+        "macd_h_current": 19.5263,
+        "macd_h_prev": 19.0915,
         "below_zero": false,
         "rising": true,
-        "last_trough_bars_ago": 23,
+        "last_trough_bars_ago": 24,
         "last_trough_val": -65.7262,
-        "shallower_trough": false,
-        "price_lower_low": true,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "GLD",
-      "has_position": false,
-      "last_close": 398.47,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 5.17,
-            "at_ema": false,
-            "breakout": true,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.32,
-            "shakeout_ratio_today": -0.95,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 3.5022,
-        "macd_h_prev": 2.7207,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 30,
-        "last_trough_val": -1.7444,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "potential_divergence": true,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "HD",
-      "has_position": false,
-      "last_close": 355.62,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 4.09,
-            "at_ema": false,
-            "breakout": true,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.64,
-            "shakeout_ratio_today": 0.09,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 1.7902,
-        "macd_h_prev": 1.3552,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 5,
-        "last_trough_val": -0.9682,
-        "shallower_trough": true,
-        "price_lower_low": false,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "INTC",
-      "has_position": false,
-      "last_close": 101.65,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 2.11,
-            "at_ema": true,
-            "breakout": false,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.65,
-            "shakeout_ratio_today": 0.21,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 1.614,
-        "macd_h_prev": 1.2814,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 7,
-        "last_trough_val": -2.2992,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "potential_divergence": true,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "NVDA",
-      "has_position": false,
-      "last_close": 223.96,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 7.73,
-            "at_ema": false,
-            "breakout": true,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.29,
-            "shakeout_ratio_today": -0.22,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 2.5005,
-        "macd_h_prev": 1.9694,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 6,
-        "last_trough_val": -1.3649,
-        "shallower_trough": true,
-        "price_lower_low": false,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "QQQ",
-      "has_position": false,
-      "last_close": 723.03,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 2.65,
-            "at_ema": false,
-            "breakout": true,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.58,
-            "shakeout_ratio_today": -0.13,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 4.442,
-        "macd_h_prev": 3.7344,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 7,
-        "last_trough_val": -4.9555,
-        "shallower_trough": false,
-        "price_lower_low": true,
-        "potential_divergence": false,
-        "signal_today": false,
-        "regime_ok": true
-      }
-    },
-    {
-      "ticker": "SMH",
-      "has_position": false,
-      "last_close": 582.7,
-      "last_date": "2026-08-07",
-      "legs": [
-        {
-          "name": "leg_ema_pullback",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "ema_pullback",
-            "ema_dist_pct": 2.59,
-            "at_ema": false,
-            "breakout": true,
-            "was_above_nago": true
-          },
-          "s2_fired": false,
-          "signal": false
-        },
-        {
-          "name": "leg_higher_low_shakeout",
-          "s1_valid": false,
-          "s2_details": {
-            "variant": "higher_low_shakeout",
-            "shakeout_ratio_yesterday": 0.38,
-            "shakeout_ratio_today": -0.03,
-            "shakeout_threshold": 1.0,
-            "had_shakeout_yesterday": false,
-            "today_is_shakeout": false,
-            "higher_low": true,
-            "confirm_close": true
-          },
-          "s2_fired": false,
-          "signal": false
-        }
-      ],
-      "elder": {
-        "has_data": true,
-        "macd_h_current": 4.1341,
-        "macd_h_prev": 2.6219,
-        "below_zero": false,
-        "rising": true,
-        "last_trough_bars_ago": 7,
-        "last_trough_val": -8.2116,
         "shallower_trough": false,
         "price_lower_low": true,
         "potential_divergence": false,
@@ -2883,43 +2887,28 @@
     "regime_ok": true,
     "tickers": [
       {
-        "ticker": "EXC",
-        "last_close": 45.61,
-        "last_date": "2026-08-07",
-        "macd_h": -0.1591,
+        "ticker": "NKE",
+        "last_close": 42.11,
+        "last_date": "2026-08-10",
+        "macd_h": -0.0163,
         "below_zero": true,
         "rising": true,
-        "shallower_trough": false,
+        "shallower_trough": true,
         "price_lower_low": false,
         "div_forming": false,
         "signal_today": true,
         "trough_bars_ago": 1,
-        "trough_val": -0.175,
-        "score": 12,
-        "entry_price": 45.61,
-        "stop_price": 44.6,
-        "div_strength": 0.603
+        "trough_val": -0.0369,
+        "score": 13,
+        "entry_price": 42.11,
+        "stop_price": 40.79,
+        "div_strength": 0.949
       },
       {
         "ticker": "AZN",
-        "last_close": 161.42,
-        "last_date": "2026-08-07",
-        "macd_h": -0.5409,
-        "below_zero": true,
-        "rising": true,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "div_forming": true,
-        "signal_today": false,
-        "trough_bars_ago": 3,
-        "trough_val": -0.9164,
-        "score": 6
-      },
-      {
-        "ticker": "TLT",
-        "last_close": 82.76,
-        "last_date": "2026-08-07",
-        "macd_h": -0.0055,
+        "last_close": 161.91,
+        "last_date": "2026-08-10",
+        "macd_h": -0.3384,
         "below_zero": true,
         "rising": true,
         "shallower_trough": true,
@@ -2927,14 +2916,74 @@
         "div_forming": true,
         "signal_today": false,
         "trough_bars_ago": 4,
-        "trough_val": -0.1327,
+        "trough_val": -0.9164,
         "score": 6
       },
       {
-        "ticker": "CPRT",
-        "last_close": 29.66,
-        "last_date": "2026-08-07",
-        "macd_h": 0.1708,
+        "ticker": "DDOG",
+        "last_close": 260.78,
+        "last_date": "2026-08-10",
+        "macd_h": -2.5272,
+        "below_zero": true,
+        "rising": true,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "div_forming": true,
+        "signal_today": false,
+        "trough_bars_ago": 1,
+        "trough_val": -3.2153,
+        "score": 6
+      },
+      {
+        "ticker": "BKR",
+        "last_close": 64.07,
+        "last_date": "2026-08-10",
+        "macd_h": 0.6756,
+        "below_zero": false,
+        "rising": true,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "div_forming": true,
+        "signal_today": false,
+        "trough_bars_ago": 26,
+        "trough_val": -0.6705,
+        "score": 5
+      },
+      {
+        "ticker": "CSGP",
+        "last_close": 31.48,
+        "last_date": "2026-08-10",
+        "macd_h": 0.326,
+        "below_zero": false,
+        "rising": true,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "div_forming": true,
+        "signal_today": false,
+        "trough_bars_ago": 11,
+        "trough_val": -0.0093,
+        "score": 5
+      },
+      {
+        "ticker": "GLD",
+        "last_close": 402.54,
+        "last_date": "2026-08-10",
+        "macd_h": 4.0847,
+        "below_zero": false,
+        "rising": true,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "div_forming": true,
+        "signal_today": false,
+        "trough_bars_ago": 31,
+        "trough_val": -1.7444,
+        "score": 5
+      },
+      {
+        "ticker": "NFLX",
+        "last_close": 76.29,
+        "last_date": "2026-08-10",
+        "macd_h": 0.8086,
         "below_zero": false,
         "rising": true,
         "shallower_trough": true,
@@ -2942,141 +2991,96 @@
         "div_forming": true,
         "signal_today": false,
         "trough_bars_ago": 13,
-        "trough_val": -0.0111,
-        "score": 5
-      },
-      {
-        "ticker": "CSGP",
-        "last_close": 30.24,
-        "last_date": "2026-08-07",
-        "macd_h": 0.2526,
-        "below_zero": false,
-        "rising": true,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "div_forming": true,
-        "signal_today": false,
-        "trough_bars_ago": 10,
-        "trough_val": -0.0093,
-        "score": 5
-      },
-      {
-        "ticker": "GLD",
-        "last_close": 398.47,
-        "last_date": "2026-08-07",
-        "macd_h": 3.5022,
-        "below_zero": false,
-        "rising": true,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "div_forming": true,
-        "signal_today": false,
-        "trough_bars_ago": 30,
-        "trough_val": -1.7444,
-        "score": 5
-      },
-      {
-        "ticker": "INTC",
-        "last_close": 101.65,
-        "last_date": "2026-08-07",
-        "macd_h": 1.614,
-        "below_zero": false,
-        "rising": true,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "div_forming": true,
-        "signal_today": false,
-        "trough_bars_ago": 7,
-        "trough_val": -2.2992,
+        "trough_val": -0.2681,
         "score": 5
       },
       {
         "ticker": "ORCL",
-        "last_close": 147.02,
-        "last_date": "2026-08-07",
-        "macd_h": 4.8499,
+        "last_close": 151.05,
+        "last_date": "2026-08-10",
+        "macd_h": 4.9559,
         "below_zero": false,
         "rising": true,
         "shallower_trough": true,
         "price_lower_low": true,
         "div_forming": true,
         "signal_today": false,
-        "trough_bars_ago": 16,
+        "trough_bars_ago": 17,
         "trough_val": -1.0408,
         "score": 5
       },
       {
-        "ticker": "XLE",
-        "last_close": 57.5,
-        "last_date": "2026-08-07",
-        "macd_h": -0.1553,
+        "ticker": "TLT",
+        "last_close": 82.06,
+        "last_date": "2026-08-10",
+        "macd_h": -0.0265,
         "below_zero": true,
         "rising": false,
         "shallower_trough": true,
         "price_lower_low": true,
         "div_forming": true,
         "signal_today": false,
-        "trough_bars_ago": 31,
-        "trough_val": -0.3616,
+        "trough_bars_ago": 5,
+        "trough_val": -0.1327,
         "score": 5
       },
       {
-        "ticker": "BKR",
-        "last_close": 61.55,
-        "last_date": "2026-08-07",
-        "macd_h": 0.6144,
-        "below_zero": false,
-        "rising": false,
-        "shallower_trough": true,
-        "price_lower_low": true,
-        "div_forming": true,
-        "signal_today": false,
-        "trough_bars_ago": 25,
-        "trough_val": -0.6705,
-        "score": 4
-      },
-      {
         "ticker": "CHTR",
-        "last_close": 152.57,
-        "last_date": "2026-08-07",
-        "macd_h": 2.7641,
+        "last_close": 153.29,
+        "last_date": "2026-08-10",
+        "macd_h": 2.4303,
         "below_zero": false,
         "rising": false,
         "shallower_trough": true,
         "price_lower_low": true,
         "div_forming": true,
         "signal_today": false,
-        "trough_bars_ago": 10,
+        "trough_bars_ago": 11,
         "trough_val": -0.3001,
         "score": 4
       },
       {
-        "ticker": "NFLX",
-        "last_close": 74.14,
-        "last_date": "2026-08-07",
-        "macd_h": 0.7073,
+        "ticker": "CPRT",
+        "last_close": 29.59,
+        "last_date": "2026-08-10",
+        "macd_h": 0.1622,
         "below_zero": false,
         "rising": false,
         "shallower_trough": true,
         "price_lower_low": true,
         "div_forming": true,
         "signal_today": false,
-        "trough_bars_ago": 12,
-        "trough_val": -0.2681,
+        "trough_bars_ago": 14,
+        "trough_val": -0.0111,
+        "score": 4
+      },
+      {
+        "ticker": "INTC",
+        "last_close": 97.52,
+        "last_date": "2026-08-10",
+        "macd_h": 1.524,
+        "below_zero": false,
+        "rising": false,
+        "shallower_trough": true,
+        "price_lower_low": true,
+        "div_forming": true,
+        "signal_today": false,
+        "trough_bars_ago": 8,
+        "trough_val": -2.2992,
         "score": 4
       },
       {
         "ticker": "PEP",
-        "last_close": 139.02,
-        "last_date": "2026-08-07",
-        "macd_h": 0.2547,
+        "last_close": 137.73,
+        "last_date": "2026-08-10",
+        "macd_h": 0.1409,
         "below_zero": false,
         "rising": false,
         "shallower_trough": true,
         "price_lower_low": true,
         "div_forming": true,
         "signal_today": false,
-        "trough_bars_ago": 13,
+        "trough_bars_ago": 14,
         "trough_val": -0.2541,
         "score": 4
       }
