@@ -151,7 +151,7 @@
     <span class="pill share">view-only</span>
       
       <span class="pill code">t1_uk_trading_co</span>
-      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:02:43</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:12:44</span>
     </div>
   </div>
   
@@ -178,24 +178,24 @@
     <div class="card">
       <p class="eyebrow">IB equity · USD · live</p>
       
-      <div class="hero-val num">$40,103.98</div>
+      <div class="hero-val num">$39,749.51</div>
       <div class="hero-sub">
         <span>Committed <span class="num">$39,890</span></span>
         
-        <span>Net P&amp;L <span class="num up">+214.23</span></span>
+        <span>Net P&amp;L <span class="num down">-140.24</span></span>
         
         
-        <span>Return <span class="num up">+0.5%</span> <span class="num up">(+3.5% p.a.)</span></span>
+        <span>Return <span class="num down">-0.4%</span> <span class="num down">(-2.2% p.a.)</span></span>
         
       </div>
       <div class="hero-sub">
-        <span>≈ <span class="num">£40,104</span> USD</span>
-        <span>NAV/unit <span class="num">1.0054</span></span>
-        <span>observed <span class="num">03 Sep 06:12</span></span>
+        <span>≈ <span class="num">£39,750</span> USD</span>
+        <span>NAV/unit <span class="num">0.9965</span></span>
+        <span>observed <span class="num">04 Sep 06:12</span></span>
       </div>
       
       
-      <p class="note" style="margin-top:6px">The return above is net of <span class="num">-564</span> of fees and financing since inception — IB commissions, account fees, financing and dividends net. The account is USD, so this is not FX.</p>
+      <p class="note" style="margin-top:6px">The return above is net of <span class="num">-504</span> of fees and financing since inception — IB commissions, account fees, financing and dividends net. The account is USD, so this is not FX.</p>
       
       
       
@@ -255,7 +255,7 @@
     
     <div class="card">
       <details class="more">
-        <summary>IB cash activity (non-trading) · 30 events</summary>
+        <summary>IB cash activity (non-trading) · 31 events</summary>
         <div class="kv">
           <span class="k">Interest</span><span class="v">$0.00</span>
           <span class="k">Dividends</span><span class="v">$0.00</span>
@@ -266,7 +266,7 @@
           
         </div>
         <p class="note">
-          Source: engine-written <span class="num">ib_account_state.json</span>, pulled 2026-09-03 06:12 <span style="color:var(--loss)">(stale &gt;12h)</span>.
+          Source: engine-written <span class="num">ib_account_state.json</span>, pulled 2026-09-04 06:12.
         </p>
       </details>
     </div>
@@ -275,11 +275,11 @@
       <details class="more">
         <summary>Reconciliation — balanced</summary>
         <div class="kv">
-          <span class="k">Observed equity</span><span class="v">$40,103.98</span>
+          <span class="k">Observed equity</span><span class="v">$39,749.51</span>
           <span class="k">Committed</span><span class="v">$39,889.75</span>
           <span class="k">Realised lifetime</span><span class="v">$737.60</span>
-          <span class="k">Unrealised (open)</span><span class="v">$40.44</span>
-          <span class="k">Expected equity</span><span class="v">$40,103.98</span>
+          <span class="k">Unrealised (open)</span><span class="v">$-373.51</span>
+          <span class="k">Expected equity</span><span class="v">$39,749.51</span>
           <span class="k">Delta</span><span class="v ">$0.00</span>
         </div>
       </details>
@@ -289,17 +289,17 @@
     
     <div class="card">
       <details class="more">
-        <summary>Last engine run — 2026-09-03 06:12</summary>
+        <summary>Last engine run — 2026-09-04 06:12</summary>
         <div class="kv">
           <span class="k">Mode</span><span class="v">LIVE</span>
-          <span class="k">Trading date</span><span class="v">2026-09-02</span>
-          <span class="k">Equity</span><span class="v">$40,104</span>
+          <span class="k">Trading date</span><span class="v">2026-09-03</span>
+          <span class="k">Equity</span><span class="v">$39,750</span>
           <span class="k">Entries placed</span><span class="v">0 / 0</span>
           <span class="k">Stops applied</span><span class="v">1</span>
           <span class="k">Open / pending</span><span class="v">4 / 0</span>
         </div>
         
-        <p class="note">Stop updates: CEG 259.70→262.06</p>
+        <p class="note">Stop updates: CEG 262.06→267.22</p>
         
         
       </details>
@@ -321,11 +321,11 @@
 
     <div class="card">
       <p class="eyebrow">Equity curve · USD · live <span id="eqRangeLbl" style="color:var(--faint)"></span></p>
-      <div class="hero-val num">$40,103.98</div>
+      <div class="hero-val num">$39,749.51</div>
       <div class="hero-sub">
         <span>Committed <span class="num">$39,890</span></span>
         
-        <span>vs committed <span class="num up">+214.23 (+0.5%)</span></span>
+        <span>vs committed <span class="num down">-140.24 (-0.4%)</span></span>
         
       </div>
 
@@ -336,7 +336,7 @@
           <span>low <span id="eqLow" class="num">$39,366</span></span><span>high <span id="eqHigh" class="num">$41,893</span></span>
         </div>
         <div style="display:flex;justify-content:space-between;font:9.5px var(--mono);color:var(--faint);margin-top:1px">
-          <span id="eqStart">08 Jul</span><span><span id="eqEnd">03 Sep</span> · <span id="eqCount">42</span> days</span>
+          <span id="eqStart">08 Jul</span><span><span id="eqEnd">04 Sep</span> · <span id="eqCount">43</span> days</span>
         </div>
         <div style="font:9px var(--mono);color:var(--faint);margin-top:4px"><span style="color:#5E7385">– – –</span> committed baseline $39,890</div>
       </div>
@@ -355,6 +355,14 @@
     <div class="card" style="padding:6px 10px">
       <table>
         <tr><th>Date</th><th class="r">Equity</th><th class="r">Day P&amp;L</th></tr>
+        
+        
+        <tr>
+          <td class="num">04 Sep</td>
+          <td class="r num">$39,749.51</td>
+          <td class="r num down">-354.47</td>
+        </tr>
+        
         
         
         <tr>
@@ -509,12 +517,6 @@
         
         
         
-        <tr>
-          <td class="num">07 Aug</td>
-          <td class="r num">$41,528.27</td>
-          <td class="r num down">-182.71</td>
-        </tr>
-        
         
         
         
@@ -561,10 +563,10 @@
         
         
       </table>
-      <p class="note">Latest 20 of 42 days · source: daily account equity (IB NetLiq).</p>
+      <p class="note">Latest 20 of 43 days · source: daily account equity (IB NetLiq).</p>
     </div>
 
-    <script type="application/json" id="eq-data">{"committed": 39889.75, "points": [{"day_change": null, "equity": 39889.75, "iso": "2026-07-08", "label": "08 Jul"}, {"day_change": -30.12000000000262, "equity": 39859.63, "iso": "2026-07-09", "label": "09 Jul"}, {"day_change": 9.080000000001746, "equity": 39868.71, "iso": "2026-07-10", "label": "10 Jul"}, {"day_change": -117.68000000000029, "equity": 39751.03, "iso": "2026-07-13", "label": "13 Jul"}, {"day_change": 67.08000000000175, "equity": 39818.11, "iso": "2026-07-14", "label": "14 Jul"}, {"day_change": 31.099999999998545, "equity": 39849.21, "iso": "2026-07-15", "label": "15 Jul"}, {"day_change": -47.029999999998836, "equity": 39802.18, "iso": "2026-07-16", "label": "16 Jul"}, {"day_change": 151.22000000000116, "equity": 39953.4, "iso": "2026-07-17", "label": "17 Jul"}, {"day_change": -81.61000000000058, "equity": 39871.79, "iso": "2026-07-20", "label": "20 Jul"}, {"day_change": -251.44000000000233, "equity": 39620.35, "iso": "2026-07-21", "label": "21 Jul"}, {"day_change": -154.61000000000058, "equity": 39465.74, "iso": "2026-07-22", "label": "22 Jul"}, {"day_change": 1011.060000000005, "equity": 40476.8, "iso": "2026-07-23", "label": "23 Jul"}, {"day_change": 90.83999999999651, "equity": 40567.64, "iso": "2026-07-24", "label": "24 Jul"}, {"day_change": 174.55999999999767, "equity": 40742.2, "iso": "2026-07-27", "label": "27 Jul"}, {"day_change": -777.6399999999994, "equity": 39964.56, "iso": "2026-07-28", "label": "28 Jul"}, {"day_change": 118.91000000000349, "equity": 40083.47, "iso": "2026-07-29", "label": "29 Jul"}, {"day_change": -331.97000000000116, "equity": 39751.5, "iso": "2026-07-30", "label": "30 Jul"}, {"day_change": 344.23999999999796, "equity": 40095.74, "iso": "2026-07-31", "label": "31 Jul"}, {"day_change": 124.02999999999884, "equity": 40219.77, "iso": "2026-08-03", "label": "03 Aug"}, {"day_change": 410.83000000000175, "equity": 40630.6, "iso": "2026-08-04", "label": "04 Aug"}, {"day_change": 1052.6399999999994, "equity": 41683.24, "iso": "2026-08-05", "label": "05 Aug"}, {"day_change": 27.74000000000524, "equity": 41710.98, "iso": "2026-08-06", "label": "06 Aug"}, {"day_change": -182.7100000000064, "equity": 41528.27, "iso": "2026-08-07", "label": "07 Aug"}, {"day_change": 257.9100000000035, "equity": 41786.18, "iso": "2026-08-10", "label": "10 Aug"}, {"day_change": 106.52999999999884, "equity": 41892.71, "iso": "2026-08-11", "label": "11 Aug"}, {"day_change": -303.04999999999563, "equity": 41589.66, "iso": "2026-08-12", "label": "12 Aug"}, {"day_change": -67.35000000000582, "equity": 41522.31, "iso": "2026-08-13", "label": "13 Aug"}, {"day_change": -123.97000000000116, "equity": 41398.34, "iso": "2026-08-14", "label": "14 Aug"}, {"day_change": -134.18999999999505, "equity": 41264.15, "iso": "2026-08-17", "label": "17 Aug"}, {"day_change": -659.3199999999997, "equity": 40604.83, "iso": "2026-08-18", "label": "18 Aug"}, {"day_change": -215.9300000000003, "equity": 40388.9, "iso": "2026-08-19", "label": "19 Aug"}, {"day_change": -11.040000000000873, "equity": 40377.86, "iso": "2026-08-20", "label": "20 Aug"}, {"day_change": -265.3899999999994, "equity": 40112.47, "iso": "2026-08-21", "label": "21 Aug"}, {"day_change": 196.8199999999997, "equity": 40309.29, "iso": "2026-08-24", "label": "24 Aug"}, {"day_change": -57.09000000000378, "equity": 40252.2, "iso": "2026-08-25", "label": "25 Aug"}, {"day_change": 17.85000000000582, "equity": 40270.05, "iso": "2026-08-26", "label": "26 Aug"}, {"day_change": 78.41999999999825, "equity": 40348.47, "iso": "2026-08-27", "label": "27 Aug"}, {"day_change": -94.41000000000349, "equity": 40254.06, "iso": "2026-08-28", "label": "28 Aug"}, {"day_change": -171.97999999999593, "equity": 40082.08, "iso": "2026-08-31", "label": "31 Aug"}, {"day_change": -307.6100000000006, "equity": 39774.47, "iso": "2026-09-01", "label": "01 Sep"}, {"day_change": -408.6800000000003, "equity": 39365.79, "iso": "2026-09-02", "label": "02 Sep"}, {"day_change": 738.1900000000023, "equity": 40103.98, "iso": "2026-09-03", "label": "03 Sep"}]}</script>
+    <script type="application/json" id="eq-data">{"committed": 39889.75, "points": [{"day_change": null, "equity": 39889.75, "iso": "2026-07-08", "label": "08 Jul"}, {"day_change": -30.12000000000262, "equity": 39859.63, "iso": "2026-07-09", "label": "09 Jul"}, {"day_change": 9.080000000001746, "equity": 39868.71, "iso": "2026-07-10", "label": "10 Jul"}, {"day_change": -117.68000000000029, "equity": 39751.03, "iso": "2026-07-13", "label": "13 Jul"}, {"day_change": 67.08000000000175, "equity": 39818.11, "iso": "2026-07-14", "label": "14 Jul"}, {"day_change": 31.099999999998545, "equity": 39849.21, "iso": "2026-07-15", "label": "15 Jul"}, {"day_change": -47.029999999998836, "equity": 39802.18, "iso": "2026-07-16", "label": "16 Jul"}, {"day_change": 151.22000000000116, "equity": 39953.4, "iso": "2026-07-17", "label": "17 Jul"}, {"day_change": -81.61000000000058, "equity": 39871.79, "iso": "2026-07-20", "label": "20 Jul"}, {"day_change": -251.44000000000233, "equity": 39620.35, "iso": "2026-07-21", "label": "21 Jul"}, {"day_change": -154.61000000000058, "equity": 39465.74, "iso": "2026-07-22", "label": "22 Jul"}, {"day_change": 1011.060000000005, "equity": 40476.8, "iso": "2026-07-23", "label": "23 Jul"}, {"day_change": 90.83999999999651, "equity": 40567.64, "iso": "2026-07-24", "label": "24 Jul"}, {"day_change": 174.55999999999767, "equity": 40742.2, "iso": "2026-07-27", "label": "27 Jul"}, {"day_change": -777.6399999999994, "equity": 39964.56, "iso": "2026-07-28", "label": "28 Jul"}, {"day_change": 118.91000000000349, "equity": 40083.47, "iso": "2026-07-29", "label": "29 Jul"}, {"day_change": -331.97000000000116, "equity": 39751.5, "iso": "2026-07-30", "label": "30 Jul"}, {"day_change": 344.23999999999796, "equity": 40095.74, "iso": "2026-07-31", "label": "31 Jul"}, {"day_change": 124.02999999999884, "equity": 40219.77, "iso": "2026-08-03", "label": "03 Aug"}, {"day_change": 410.83000000000175, "equity": 40630.6, "iso": "2026-08-04", "label": "04 Aug"}, {"day_change": 1052.6399999999994, "equity": 41683.24, "iso": "2026-08-05", "label": "05 Aug"}, {"day_change": 27.74000000000524, "equity": 41710.98, "iso": "2026-08-06", "label": "06 Aug"}, {"day_change": -182.7100000000064, "equity": 41528.27, "iso": "2026-08-07", "label": "07 Aug"}, {"day_change": 257.9100000000035, "equity": 41786.18, "iso": "2026-08-10", "label": "10 Aug"}, {"day_change": 106.52999999999884, "equity": 41892.71, "iso": "2026-08-11", "label": "11 Aug"}, {"day_change": -303.04999999999563, "equity": 41589.66, "iso": "2026-08-12", "label": "12 Aug"}, {"day_change": -67.35000000000582, "equity": 41522.31, "iso": "2026-08-13", "label": "13 Aug"}, {"day_change": -123.97000000000116, "equity": 41398.34, "iso": "2026-08-14", "label": "14 Aug"}, {"day_change": -134.18999999999505, "equity": 41264.15, "iso": "2026-08-17", "label": "17 Aug"}, {"day_change": -659.3199999999997, "equity": 40604.83, "iso": "2026-08-18", "label": "18 Aug"}, {"day_change": -215.9300000000003, "equity": 40388.9, "iso": "2026-08-19", "label": "19 Aug"}, {"day_change": -11.040000000000873, "equity": 40377.86, "iso": "2026-08-20", "label": "20 Aug"}, {"day_change": -265.3899999999994, "equity": 40112.47, "iso": "2026-08-21", "label": "21 Aug"}, {"day_change": 196.8199999999997, "equity": 40309.29, "iso": "2026-08-24", "label": "24 Aug"}, {"day_change": -57.09000000000378, "equity": 40252.2, "iso": "2026-08-25", "label": "25 Aug"}, {"day_change": 17.85000000000582, "equity": 40270.05, "iso": "2026-08-26", "label": "26 Aug"}, {"day_change": 78.41999999999825, "equity": 40348.47, "iso": "2026-08-27", "label": "27 Aug"}, {"day_change": -94.41000000000349, "equity": 40254.06, "iso": "2026-08-28", "label": "28 Aug"}, {"day_change": -171.97999999999593, "equity": 40082.08, "iso": "2026-08-31", "label": "31 Aug"}, {"day_change": -307.6100000000006, "equity": 39774.47, "iso": "2026-09-01", "label": "01 Sep"}, {"day_change": -408.6800000000003, "equity": 39365.79, "iso": "2026-09-02", "label": "02 Sep"}, {"day_change": 738.1900000000023, "equity": 40103.98, "iso": "2026-09-03", "label": "03 Sep"}, {"day_change": -354.47000000000116, "equity": 39749.51, "iso": "2026-09-04", "label": "04 Sep"}]}</script>
 
     
   </section>
@@ -577,11 +579,11 @@
       <div class="pos-top">
         <span><span class="tick">CEG</span> <span class="stag">elder</span></span>
         <span>
-          <span class="pnl up">+506.88</span>
-          <span class="rbadge up">+2.13R</span>
+          <span class="pnl up">+447.00</span>
+          <span class="rbadge up">+1.88R</span>
         </span>
       </div>
-      <div class="pos-mid num">12 @ 247.80 · last 290.04 · 56 days</div>
+      <div class="pos-mid num">12 @ 247.80 · last 285.05 · 57 days</div>
       
       
       
@@ -589,8 +591,8 @@
       
       <div class="rail">
         <div class="bar"></div>
-        <span class="lab" style="left:35.7%">stop 262.06</span>
-        <span class="pt" style="left:35.7%;background:var(--loss)"></span>
+        <span class="lab" style="left:51.9%">stop 267.22</span>
+        <span class="pt" style="left:51.9%;background:var(--loss)"></span>
         <span class="pt" style="left:6.0%;background:var(--steel-hi)"></span>
         <span class="lab below" style="left:6.0%">entry</span>
         <span class="pt" style="left:94.0%;background:var(--warn)"></span>
@@ -604,10 +606,10 @@
           <span class="k">Entry date</span><span class="v">2026-07-09</span>
           <span class="k">Direction</span><span class="v">long</span>
           <span class="k">Initial stop</span><span class="v">227.94</span>
-          <span class="k">Current stop</span><span class="v">262.06</span>
+          <span class="k">Current stop</span><span class="v">267.22</span>
           
           <span class="k">Risk at entry</span><span class="v">$238.27</span>
-          <span class="k">Craig share</span><span class="v">+253.44</span><span class="k">Kye share</span><span class="v">+168.96</span><span class="k">Rob share</span><span class="v">+84.48</span>
+          <span class="k">Craig share</span><span class="v">+223.50</span><span class="k">Kye share</span><span class="v">+149.00</span><span class="k">Rob share</span><span class="v">+74.50</span>
         </div>
       </details>
     </div>
@@ -616,11 +618,11 @@
       <div class="pos-top">
         <span><span class="tick">DDOG</span> <span class="stag">higher low shakeout</span></span>
         <span>
-          <span class="pnl down">-788.20</span>
-          <span class="rbadge down">-0.95R</span>
+          <span class="pnl down">-677.60</span>
+          <span class="rbadge down">-0.82R</span>
         </span>
       </div>
-      <div class="pos-mid num">20 @ 248.64 · last 209.23 · 23 days</div>
+      <div class="pos-mid num">20 @ 248.64 · last 214.76 · 24 days</div>
       
       
       
@@ -632,8 +634,8 @@
         <span class="pt" style="left:6.0%;background:var(--loss)"></span>
         <span class="pt" style="left:28.1%;background:var(--steel-hi)"></span>
         <span class="lab below" style="left:28.1%">entry</span>
-        <span class="pt" style="left:7.1%;background:var(--warn)"></span>
-        <span class="lab below" style="left:7.1%">last</span>
+        <span class="pt" style="left:10.1%;background:var(--warn)"></span>
+        <span class="lab below" style="left:10.1%">last</span>
         
         <span class="lab" style="left:94.0%">tgt 372.54</span>
         <span class="pt" style="left:94.0%;background:var(--gain)"></span>
@@ -649,7 +651,7 @@
           <span class="k">Current stop</span><span class="v">207.12</span>
           <span class="k">Target</span><span class="v">372.54</span>
           <span class="k">Risk at entry</span><span class="v">$830.42</span>
-          <span class="k">Craig share</span><span class="v">-394.10</span><span class="k">Kye share</span><span class="v">-262.73</span><span class="k">Rob share</span><span class="v">-131.37</span>
+          <span class="k">Craig share</span><span class="v">-338.80</span><span class="k">Kye share</span><span class="v">-225.87</span><span class="k">Rob share</span><span class="v">-112.93</span>
         </div>
       </details>
     </div>
@@ -658,11 +660,11 @@
       <div class="pos-top">
         <span><span class="tick">CHTR</span> <span class="stag">higher low shakeout</span></span>
         <span>
-          <span class="pnl up">+14.53</span>
-          <span class="rbadge up">+0.02R</span>
+          <span class="pnl down">-327.02</span>
+          <span class="rbadge down">-0.37R</span>
         </span>
       </div>
-      <div class="pos-mid num">45 @ 158.65 · last 158.97 · 17 days</div>
+      <div class="pos-mid num">45 @ 158.65 · last 151.38 · 18 days</div>
       
       
       
@@ -674,8 +676,8 @@
         <span class="pt" style="left:6.0%;background:var(--loss)"></span>
         <span class="pt" style="left:29.7%;background:var(--steel-hi)"></span>
         <span class="lab below" style="left:29.7%">entry</span>
-        <span class="pt" style="left:30.1%;background:var(--warn)"></span>
-        <span class="lab below" style="left:30.1%">last</span>
+        <span class="pt" style="left:21.0%;background:var(--warn)"></span>
+        <span class="lab below" style="left:21.0%">last</span>
         
         <span class="lab" style="left:94.0%">tgt 212.36</span>
         <span class="pt" style="left:94.0%;background:var(--gain)"></span>
@@ -691,7 +693,7 @@
           <span class="k">Current stop</span><span class="v">138.85</span>
           <span class="k">Target</span><span class="v">212.36</span>
           <span class="k">Risk at entry</span><span class="v">$890.84</span>
-          <span class="k">Craig share</span><span class="v">+7.27</span><span class="k">Kye share</span><span class="v">+4.84</span><span class="k">Rob share</span><span class="v">+2.42</span>
+          <span class="k">Craig share</span><span class="v">-163.51</span><span class="k">Kye share</span><span class="v">-109.01</span><span class="k">Rob share</span><span class="v">-54.50</span>
         </div>
       </details>
     </div>
@@ -700,11 +702,11 @@
       <div class="pos-top">
         <span><span class="tick">EXC</span> <span class="stag">elder</span></span>
         <span>
-          <span class="pnl up">+65.27</span>
-          <span class="rbadge up">+0.40R</span>
+          <span class="pnl up">+185.11</span>
+          <span class="rbadge up">+1.15R</span>
         </span>
       </div>
-      <div class="pos-mid num">214 @ 43.66 · last 43.97 · 0 days</div>
+      <div class="pos-mid num">214 @ 43.66 · last 44.53 · 1 day</div>
       
       
       
@@ -714,8 +716,8 @@
         <div class="bar"></div>
         <span class="lab" style="left:6.0%">stop 42.91</span>
         <span class="pt" style="left:6.0%;background:var(--loss)"></span>
-        <span class="pt" style="left:68.7%;background:var(--steel-hi)"></span>
-        <span class="lab below" style="left:68.7%">entry</span>
+        <span class="pt" style="left:47.0%;background:var(--steel-hi)"></span>
+        <span class="lab below" style="left:47.0%">entry</span>
         <span class="pt" style="left:94.0%;background:var(--warn)"></span>
         <span class="lab below" style="left:94.0%">last</span>
         
@@ -730,7 +732,7 @@
           <span class="k">Current stop</span><span class="v">42.91</span>
           
           <span class="k">Risk at entry</span><span class="v">$161.38</span>
-          <span class="k">Craig share</span><span class="v">+32.64</span><span class="k">Kye share</span><span class="v">+21.76</span><span class="k">Rob share</span><span class="v">+10.88</span>
+          <span class="k">Craig share</span><span class="v">+92.56</span><span class="k">Kye share</span><span class="v">+61.70</span><span class="k">Rob share</span><span class="v">+30.85</span>
         </div>
       </details>
     </div>
@@ -855,9 +857,9 @@
     <div class="card">
       <div class="pool-top"><span class="pool-name">Live fund</span><span class="share-r num">U25599624</span></div>
       <div class="pool-grid">
-        <div><div class="k">NAV / unit</div><div class="v">1.0054</div></div>
+        <div><div class="k">NAV / unit</div><div class="v">0.9965</div></div>
         <div><div class="k">Units</div><div class="v">39,890</div></div>
-        <div><div class="k">Equity</div><div class="v">$40,104</div></div>
+        <div><div class="k">Equity</div><div class="v">$39,750</div></div>
       </div>
     </div>
 
@@ -866,18 +868,18 @@
       <div class="pool-top"><span class="pool-name">Craig</span><span class="share-r">50.0%</span></div>
       <div class="pool-grid">
         <div><div class="k">Put in</div><div class="v">$19,945</div></div>
-        <div><div class="k">Value now</div><div class="v up">$20,052</div></div>
-        <div><div class="k">Return</div><div class="v up">+2.0%</div></div>
+        <div><div class="k">Value now</div><div class="v down">$19,875</div></div>
+        <div><div class="k">Return</div><div class="v up">+0.9%</div></div>
       </div>
-      <p class="note" style="margin-top:6px">19,944.88 units @ 1.0054/unit · +13.2% p.a.</p>
+      <p class="note" style="margin-top:6px">19,944.88 units @ 0.9965/unit · +6.0% p.a.</p>
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
           <span class="k">Realised share</span><span class="v">+368.80</span>
-          <span class="k">Unrealised share</span><span class="v">+20.22</span>
+          <span class="k">Unrealised share</span><span class="v">-186.76</span>
           <span class="k">Trade fees share</span><span class="v">−0.00</span>
-          <span class="k">Fees &amp; costs</span><span class="v">-281.90</span>
+          <span class="k">Fees &amp; costs</span><span class="v">-252.17</span>
           <span class="k">Est. tax (CT)</span><span class="v">−70.07</span>
-          <span class="k">Net after tax</span><span class="v up">+37.05</span>
+          <span class="k">Net after tax</span><span class="v down">-140.20</span>
         </div>
       </details>
     </div>
@@ -886,18 +888,18 @@
       <div class="pool-top"><span class="pool-name">Kye</span><span class="share-r">33.3%</span></div>
       <div class="pool-grid">
         <div><div class="k">Put in</div><div class="v">$13,297</div></div>
-        <div><div class="k">Value now</div><div class="v up">$13,368</div></div>
-        <div><div class="k">Return</div><div class="v up">+2.0%</div></div>
+        <div><div class="k">Value now</div><div class="v down">$13,250</div></div>
+        <div><div class="k">Return</div><div class="v up">+0.9%</div></div>
       </div>
-      <p class="note" style="margin-top:6px">13,296.58 units @ 1.0054/unit · +13.2% p.a.</p>
+      <p class="note" style="margin-top:6px">13,296.58 units @ 0.9965/unit · +6.0% p.a.</p>
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
           <span class="k">Realised share</span><span class="v">+245.87</span>
-          <span class="k">Unrealised share</span><span class="v">+13.48</span>
+          <span class="k">Unrealised share</span><span class="v">-124.50</span>
           <span class="k">Trade fees share</span><span class="v">−0.00</span>
-          <span class="k">Fees &amp; costs</span><span class="v">-187.93</span>
+          <span class="k">Fees &amp; costs</span><span class="v">-168.12</span>
           <span class="k">Est. tax (CT)</span><span class="v">−46.71</span>
-          <span class="k">Net after tax</span><span class="v up">+24.71</span>
+          <span class="k">Net after tax</span><span class="v down">-93.46</span>
         </div>
       </details>
     </div>
@@ -906,18 +908,18 @@
       <div class="pool-top"><span class="pool-name">Rob</span><span class="share-r">16.7%</span></div>
       <div class="pool-grid">
         <div><div class="k">Put in</div><div class="v">$6,648</div></div>
-        <div><div class="k">Value now</div><div class="v up">$6,684</div></div>
-        <div><div class="k">Return</div><div class="v up">+2.0%</div></div>
+        <div><div class="k">Value now</div><div class="v down">$6,625</div></div>
+        <div><div class="k">Return</div><div class="v up">+0.9%</div></div>
       </div>
-      <p class="note" style="margin-top:6px">6,648.29 units @ 1.0054/unit · +13.2% p.a.</p>
+      <p class="note" style="margin-top:6px">6,648.29 units @ 0.9965/unit · +6.0% p.a.</p>
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
           <span class="k">Realised share</span><span class="v">+122.93</span>
-          <span class="k">Unrealised share</span><span class="v">+6.74</span>
+          <span class="k">Unrealised share</span><span class="v">-62.25</span>
           <span class="k">Trade fees share</span><span class="v">−0.00</span>
-          <span class="k">Fees &amp; costs</span><span class="v">-93.96</span>
+          <span class="k">Fees &amp; costs</span><span class="v">-84.06</span>
           <span class="k">Est. tax (CT)</span><span class="v">−23.36</span>
-          <span class="k">Net after tax</span><span class="v up">+12.35</span>
+          <span class="k">Net after tax</span><span class="v down">-46.74</span>
         </div>
       </details>
     </div>
@@ -1076,7 +1078,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-09-04 05:02 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-09-04 05:12 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
