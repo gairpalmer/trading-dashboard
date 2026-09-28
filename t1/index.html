@@ -151,7 +151,7 @@
     <span class="pill share">view-only</span>
       
       <span class="pill code">t1_uk_trading_co</span>
-      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:13:17</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">07:03:02</span>
     </div>
   </div>
   
@@ -367,7 +367,10 @@
       <div class="hero-sub">
         <span>Committed <span class="num">$33,130</span></span>
         
-        <span>vs committed <span class="num down">-1,508.02 (-4.6%)</span></span>
+        <span>Gain <span class="num down">-1,508.02</span></span>
+        
+        
+        <span>Return per unit <span class="num down">-4.55%</span></span>
         
       </div>
 
@@ -384,6 +387,23 @@
       </div>
     </div>
 
+    
+    
+    <div class="card">
+      <p class="eyebrow">Return per unit · growth of $1</p>
+      <div class="hero-val num">-4.55%</div>
+      <div class="hero-sub">
+        <span>NAV/unit <span class="num">0.9545</span></span>
+        <span>from <span class="num">1.0000</span> at inception</span>
+      </div>
+      <svg id="eqNav" width="100%" viewBox="0 0 372 110" preserveAspectRatio="none" role="img" aria-label="Return per unit"></svg>
+      <div style="display:flex;justify-content:space-between;font:9.5px var(--mono);color:var(--faint);margin-top:3px">
+        <span>low <span id="navLow" class="num">—</span></span><span>high <span id="navHigh" class="num">—</span></span>
+      </div>
+      <p class="note">What $1 invested at the start is worth now. Money added or withdrawn buys or sells units at the price per unit on the day, so it never moves this line; the equity curve above does include it. This is the return to compare periods and investors.</p>
+    </div>
+    
+
     <div class="card">
       <p class="eyebrow">Daily P&amp;L</p>
       <div class="hero-sub" style="margin:0 0 10px">
@@ -391,7 +411,7 @@
         <span>Worst day <span id="eqWorst" class="num down">-882.03</span></span>
       </div>
       <svg id="eqBars" width="100%" viewBox="0 0 372 100" preserveAspectRatio="none" role="img" aria-label="Daily profit and loss"></svg>
-      <p class="note">Change in account equity between daily observations — the paper account is GBP-base, so this also carries daily GBP/USD revaluation. Bars sum to the curve's total move.</p>
+      <p class="note">Change in account equity between daily observations, <strong>excluding money added or withdrawn</strong> that day — the paper account is GBP-base, so this also carries daily GBP/USD revaluation. Bars plus deposits / withdrawals sum to the curve's total move.</p>
     </div>
 
     <div class="card" style="padding:6px 10px">
@@ -702,7 +722,7 @@
       <p class="note">Latest 20 of 90 days · source: daily account equity (IB NetLiq).</p>
     </div>
 
-    <script type="application/json" id="eq-data">{"committed": 33130.3969, "points": [{"day_change": null, "equity": 34574.65, "iso": "2026-05-26", "label": "26 May"}, {"day_change": 488.7099999999991, "equity": 35063.36, "iso": "2026-05-27", "label": "27 May"}, {"day_change": 217.1999999999971, "equity": 35280.56, "iso": "2026-05-28", "label": "28 May"}, {"day_change": -249.18999999999505, "equity": 35031.37, "iso": "2026-05-29", "label": "29 May"}, {"day_change": -184.56000000000495, "equity": 34846.81, "iso": "2026-06-01", "label": "01 Jun"}, {"day_change": 153.58000000000175, "equity": 35000.39, "iso": "2026-06-02", "label": "02 Jun"}, {"day_change": 313.8700000000026, "equity": 35314.26, "iso": "2026-06-03", "label": "03 Jun"}, {"day_change": 465.7699999999968, "equity": 35780.03, "iso": "2026-06-04", "label": "04 Jun"}, {"day_change": -228.40999999999622, "equity": 35551.62, "iso": "2026-06-05", "label": "05 Jun"}, {"day_change": -281.08000000000175, "equity": 35270.54, "iso": "2026-06-08", "label": "08 Jun"}, {"day_change": 285.6999999999971, "equity": 35556.24, "iso": "2026-06-09", "label": "09 Jun"}, {"day_change": 4.650000000001455, "equity": 35560.89, "iso": "2026-06-10", "label": "10 Jun"}, {"day_change": -180.0500000000029, "equity": 35380.84, "iso": "2026-06-11", "label": "11 Jun"}, {"day_change": 299.7800000000061, "equity": 35680.62, "iso": "2026-06-12", "label": "12 Jun"}, {"day_change": -229.06000000000495, "equity": 35451.56, "iso": "2026-06-15", "label": "15 Jun"}, {"day_change": -568.4199999999983, "equity": 34883.14, "iso": "2026-06-16", "label": "16 Jun"}, {"day_change": -113.43000000000029, "equity": 34769.71, "iso": "2026-06-17", "label": "17 Jun"}, {"day_change": -510.9400000000023, "equity": 34258.77, "iso": "2026-06-18", "label": "18 Jun"}, {"day_change": -251.88999999999942, "equity": 34006.88, "iso": "2026-06-19", "label": "19 Jun"}, {"day_change": 99.85000000000582, "equity": 34106.73, "iso": "2026-06-22", "label": "22 Jun"}, {"day_change": 353.2099999999991, "equity": 34459.94, "iso": "2026-06-23", "label": "23 Jun"}, {"day_change": -832.9700000000012, "equity": 33626.97, "iso": "2026-06-24", "label": "24 Jun"}, {"day_change": 263.8399999999965, "equity": 33890.81, "iso": "2026-06-25", "label": "25 Jun"}, {"day_change": -388.75999999999476, "equity": 33502.05, "iso": "2026-06-26", "label": "26 Jun"}, {"day_change": -269.6800000000003, "equity": 33232.37, "iso": "2026-06-29", "label": "29 Jun"}, {"day_change": 352.0699999999997, "equity": 33584.44, "iso": "2026-06-30", "label": "30 Jun"}, {"day_change": 735.0499999999956, "equity": 34319.49, "iso": "2026-07-01", "label": "01 Jul"}, {"day_change": -862.0499999999956, "equity": 33457.44, "iso": "2026-07-02", "label": "02 Jul"}, {"day_change": -451.1800000000003, "equity": 33006.26, "iso": "2026-07-03", "label": "03 Jul"}, {"day_change": -48.529999999998836, "equity": 32957.73, "iso": "2026-07-06", "label": "06 Jul"}, {"day_change": 334.5399999999936, "equity": 33292.27, "iso": "2026-07-07", "label": "07 Jul"}, {"day_change": -882.0299999999952, "equity": 32410.24, "iso": "2026-07-08", "label": "08 Jul"}, {"day_change": 141.23999999999796, "equity": 32551.48, "iso": "2026-07-09", "label": "09 Jul"}, {"day_change": 410.0099999999984, "equity": 32961.49, "iso": "2026-07-10", "label": "10 Jul"}, {"day_change": -279.8299999999981, "equity": 32681.66, "iso": "2026-07-13", "label": "13 Jul"}, {"day_change": -690.0799999999981, "equity": 31991.58, "iso": "2026-07-14", "label": "14 Jul"}, {"day_change": 452.27999999999884, "equity": 32443.86, "iso": "2026-07-15", "label": "15 Jul"}, {"day_change": 75.73999999999796, "equity": 32519.6, "iso": "2026-07-16", "label": "16 Jul"}, {"day_change": -321.10999999999694, "equity": 32198.49, "iso": "2026-07-17", "label": "17 Jul"}, {"day_change": -286.07000000000335, "equity": 31912.42, "iso": "2026-07-20", "label": "20 Jul"}, {"day_change": -355.119999999999, "equity": 31557.3, "iso": "2026-07-21", "label": "21 Jul"}, {"day_change": 121.33000000000175, "equity": 31678.63, "iso": "2026-07-22", "label": "22 Jul"}, {"day_change": 641.1499999999978, "equity": 32319.78, "iso": "2026-07-23", "label": "23 Jul"}, {"day_change": -52.409999999999854, "equity": 32267.37, "iso": "2026-07-24", "label": "24 Jul"}, {"day_change": 6.710000000002765, "equity": 32274.08, "iso": "2026-07-27", "label": "27 Jul"}, {"day_change": -765.2200000000012, "equity": 31508.86, "iso": "2026-07-28", "label": "28 Jul"}, {"day_change": -334.08000000000175, "equity": 31174.78, "iso": "2026-07-29", "label": "29 Jul"}, {"day_change": 126.96000000000276, "equity": 31301.74, "iso": "2026-07-30", "label": "30 Jul"}, {"day_change": 310.67999999999665, "equity": 31612.42, "iso": "2026-07-31", "label": "31 Jul"}, {"day_change": -38.06999999999971, "equity": 31574.35, "iso": "2026-08-03", "label": "03 Aug"}, {"day_change": -358.3899999999994, "equity": 31215.96, "iso": "2026-08-04", "label": "04 Aug"}, {"day_change": 41.090000000000146, "equity": 31257.05, "iso": "2026-08-05", "label": "05 Aug"}, {"day_change": 60.150000000001455, "equity": 31317.2, "iso": "2026-08-06", "label": "06 Aug"}, {"day_change": -78.31000000000131, "equity": 31238.89, "iso": "2026-08-07", "label": "07 Aug"}, {"day_change": 131.1800000000003, "equity": 31370.07, "iso": "2026-08-10", "label": "10 Aug"}, {"day_change": 270.90999999999985, "equity": 31640.98, "iso": "2026-08-11", "label": "11 Aug"}, {"day_change": -202.20000000000073, "equity": 31438.78, "iso": "2026-08-12", "label": "12 Aug"}, {"day_change": -168.21999999999753, "equity": 31270.56, "iso": "2026-08-13", "label": "13 Aug"}, {"day_change": 183.4499999999971, "equity": 31454.01, "iso": "2026-08-14", "label": "14 Aug"}, {"day_change": 35.20000000000073, "equity": 31489.21, "iso": "2026-08-17", "label": "17 Aug"}, {"day_change": -675.0999999999985, "equity": 30814.11, "iso": "2026-08-18", "label": "18 Aug"}, {"day_change": 43.04000000000087, "equity": 30857.15, "iso": "2026-08-19", "label": "19 Aug"}, {"day_change": 235.64999999999782, "equity": 31092.8, "iso": "2026-08-20", "label": "20 Aug"}, {"day_change": -206.1800000000003, "equity": 30886.62, "iso": "2026-08-21", "label": "21 Aug"}, {"day_change": 69.71000000000276, "equity": 30956.33, "iso": "2026-08-24", "label": "24 Aug"}, {"day_change": -3.8700000000026193, "equity": 30952.46, "iso": "2026-08-25", "label": "25 Aug"}, {"day_change": 197.13000000000102, "equity": 31149.59, "iso": "2026-08-26", "label": "26 Aug"}, {"day_change": -23.029999999998836, "equity": 31126.56, "iso": "2026-08-27", "label": "27 Aug"}, {"day_change": -12.140000000003056, "equity": 31114.42, "iso": "2026-08-28", "label": "28 Aug"}, {"day_change": -132.9499999999971, "equity": 30981.47, "iso": "2026-08-31", "label": "31 Aug"}, {"day_change": -202.79000000000087, "equity": 30778.68, "iso": "2026-09-01", "label": "01 Sep"}, {"day_change": -490.0400000000009, "equity": 30288.64, "iso": "2026-09-02", "label": "02 Sep"}, {"day_change": 531.7200000000012, "equity": 30820.36, "iso": "2026-09-03", "label": "03 Sep"}, {"day_change": -267.630000000001, "equity": 30552.73, "iso": "2026-09-04", "label": "04 Sep"}, {"day_change": 74.58000000000175, "equity": 30627.31, "iso": "2026-09-07", "label": "07 Sep"}, {"day_change": 66.0, "equity": 30693.31, "iso": "2026-09-08", "label": "08 Sep"}, {"day_change": -341.08000000000175, "equity": 30352.23, "iso": "2026-09-09", "label": "09 Sep"}, {"day_change": -434.25, "equity": 29917.98, "iso": "2026-09-10", "label": "10 Sep"}, {"day_change": -48.63000000000102, "equity": 29869.35, "iso": "2026-09-11", "label": "11 Sep"}, {"day_change": 329.3700000000026, "equity": 30198.72, "iso": "2026-09-14", "label": "14 Sep"}, {"day_change": 253.53999999999724, "equity": 30452.26, "iso": "2026-09-15", "label": "15 Sep"}, {"day_change": -375.0, "equity": 30077.26, "iso": "2026-09-16", "label": "16 Sep"}, {"day_change": -311.60999999999694, "equity": 29765.65, "iso": "2026-09-17", "label": "17 Sep"}, {"day_change": 264.4599999999991, "equity": 30030.11, "iso": "2026-09-18", "label": "18 Sep"}, {"day_change": 166.29000000000087, "equity": 30196.4, "iso": "2026-09-21", "label": "21 Sep"}, {"day_change": 1024.199999999997, "equity": 31220.6, "iso": "2026-09-22", "label": "22 Sep"}, {"day_change": 108.93000000000029, "equity": 31329.53, "iso": "2026-09-23", "label": "23 Sep"}, {"day_change": -241.61999999999898, "equity": 31087.91, "iso": "2026-09-24", "label": "24 Sep"}, {"day_change": 253.79000000000087, "equity": 31341.7, "iso": "2026-09-25", "label": "25 Sep"}, {"day_change": 280.6800000000003, "equity": 31622.38, "iso": "2026-09-28", "label": "28 Sep"}]}</script>
+    <script type="application/json" id="eq-data">{"committed": 33130.3969, "points": [{"day_change": 17.95, "equity": 34574.65, "flows": 0.0, "growth": 1.043593, "iso": "2026-05-26", "label": "26 May"}, {"day_change": 488.71, "equity": 35063.36, "flows": 0.0, "growth": 1.058344, "iso": "2026-05-27", "label": "27 May"}, {"day_change": 217.2, "equity": 35280.56, "flows": 0.0, "growth": 1.0649, "iso": "2026-05-28", "label": "28 May"}, {"day_change": -249.19, "equity": 35031.37, "flows": 0.0, "growth": 1.057379, "iso": "2026-05-29", "label": "29 May"}, {"day_change": -184.56, "equity": 34846.81, "flows": 0.0, "growth": 1.051808, "iso": "2026-06-01", "label": "01 Jun"}, {"day_change": 153.58, "equity": 35000.39, "flows": 0.0, "growth": 1.056443, "iso": "2026-06-02", "label": "02 Jun"}, {"day_change": 313.87, "equity": 35314.26, "flows": 0.0, "growth": 1.065917, "iso": "2026-06-03", "label": "03 Jun"}, {"day_change": 465.77, "equity": 35780.03, "flows": 0.0, "growth": 1.079976, "iso": "2026-06-04", "label": "04 Jun"}, {"day_change": -228.41, "equity": 35551.62, "flows": 0.0, "growth": 1.073082, "iso": "2026-06-05", "label": "05 Jun"}, {"day_change": -281.08, "equity": 35270.54, "flows": 0.0, "growth": 1.064598, "iso": "2026-06-08", "label": "08 Jun"}, {"day_change": 285.7, "equity": 35556.24, "flows": 0.0, "growth": 1.073221, "iso": "2026-06-09", "label": "09 Jun"}, {"day_change": 4.65, "equity": 35560.89, "flows": 0.0, "growth": 1.073361, "iso": "2026-06-10", "label": "10 Jun"}, {"day_change": -180.05, "equity": 35380.84, "flows": 0.0, "growth": 1.067927, "iso": "2026-06-11", "label": "11 Jun"}, {"day_change": 299.78, "equity": 35680.62, "flows": 0.0, "growth": 1.076975, "iso": "2026-06-12", "label": "12 Jun"}, {"day_change": -229.06, "equity": 35451.56, "flows": 0.0, "growth": 1.070061, "iso": "2026-06-15", "label": "15 Jun"}, {"day_change": -568.42, "equity": 34883.14, "flows": 0.0, "growth": 1.052904, "iso": "2026-06-16", "label": "16 Jun"}, {"day_change": -113.43, "equity": 34769.71, "flows": 0.0, "growth": 1.049481, "iso": "2026-06-17", "label": "17 Jun"}, {"day_change": -510.94, "equity": 34258.77, "flows": 0.0, "growth": 1.034059, "iso": "2026-06-18", "label": "18 Jun"}, {"day_change": -251.89, "equity": 34006.88, "flows": 0.0, "growth": 1.026456, "iso": "2026-06-19", "label": "19 Jun"}, {"day_change": 99.85, "equity": 34106.73, "flows": 0.0, "growth": 1.029469, "iso": "2026-06-22", "label": "22 Jun"}, {"day_change": 353.21, "equity": 34459.94, "flows": 0.0, "growth": 1.040131, "iso": "2026-06-23", "label": "23 Jun"}, {"day_change": -832.97, "equity": 33626.97, "flows": 0.0, "growth": 1.014988, "iso": "2026-06-24", "label": "24 Jun"}, {"day_change": 263.84, "equity": 33890.81, "flows": 0.0, "growth": 1.022952, "iso": "2026-06-25", "label": "25 Jun"}, {"day_change": -388.76, "equity": 33502.05, "flows": 0.0, "growth": 1.011218, "iso": "2026-06-26", "label": "26 Jun"}, {"day_change": -269.68, "equity": 33232.37, "flows": 0.0, "growth": 1.003078, "iso": "2026-06-29", "label": "29 Jun"}, {"day_change": 352.07, "equity": 33584.44, "flows": 0.0, "growth": 1.013705, "iso": "2026-06-30", "label": "30 Jun"}, {"day_change": 735.05, "equity": 34319.49, "flows": 0.0, "growth": 1.035891, "iso": "2026-07-01", "label": "01 Jul"}, {"day_change": -862.05, "equity": 33457.44, "flows": 0.0, "growth": 1.009871, "iso": "2026-07-02", "label": "02 Jul"}, {"day_change": -451.18, "equity": 33006.26, "flows": 0.0, "growth": 0.996253, "iso": "2026-07-03", "label": "03 Jul"}, {"day_change": -48.53, "equity": 32957.73, "flows": 0.0, "growth": 0.994788, "iso": "2026-07-06", "label": "06 Jul"}, {"day_change": 334.54, "equity": 33292.27, "flows": 0.0, "growth": 1.004886, "iso": "2026-07-07", "label": "07 Jul"}, {"day_change": -882.03, "equity": 32410.24, "flows": 0.0, "growth": 0.978263, "iso": "2026-07-08", "label": "08 Jul"}, {"day_change": 141.24, "equity": 32551.48, "flows": 0.0, "growth": 0.982526, "iso": "2026-07-09", "label": "09 Jul"}, {"day_change": 410.01, "equity": 32961.49, "flows": 0.0, "growth": 0.994902, "iso": "2026-07-10", "label": "10 Jul"}, {"day_change": -279.83, "equity": 32681.66, "flows": 0.0, "growth": 0.986455, "iso": "2026-07-13", "label": "13 Jul"}, {"day_change": -690.08, "equity": 31991.58, "flows": 0.0, "growth": 0.965626, "iso": "2026-07-14", "label": "14 Jul"}, {"day_change": 452.28, "equity": 32443.86, "flows": 0.0, "growth": 0.979278, "iso": "2026-07-15", "label": "15 Jul"}, {"day_change": 75.74, "equity": 32519.6, "flows": 0.0, "growth": 0.981564, "iso": "2026-07-16", "label": "16 Jul"}, {"day_change": -321.11, "equity": 32198.49, "flows": 0.0, "growth": 0.971872, "iso": "2026-07-17", "label": "17 Jul"}, {"day_change": -286.07, "equity": 31912.42, "flows": 0.0, "growth": 0.963237, "iso": "2026-07-20", "label": "20 Jul"}, {"day_change": -355.12, "equity": 31557.3, "flows": 0.0, "growth": 0.952518, "iso": "2026-07-21", "label": "21 Jul"}, {"day_change": 121.33, "equity": 31678.63, "flows": 0.0, "growth": 0.95618, "iso": "2026-07-22", "label": "22 Jul"}, {"day_change": 641.15, "equity": 32319.78, "flows": 0.0, "growth": 0.975533, "iso": "2026-07-23", "label": "23 Jul"}, {"day_change": -52.41, "equity": 32267.37, "flows": 0.0, "growth": 0.973951, "iso": "2026-07-24", "label": "24 Jul"}, {"day_change": 6.71, "equity": 32274.08, "flows": 0.0, "growth": 0.974153, "iso": "2026-07-27", "label": "27 Jul"}, {"day_change": -765.22, "equity": 31508.86, "flows": 0.0, "growth": 0.951056, "iso": "2026-07-28", "label": "28 Jul"}, {"day_change": -334.08, "equity": 31174.78, "flows": 0.0, "growth": 0.940972, "iso": "2026-07-29", "label": "29 Jul"}, {"day_change": 126.96, "equity": 31301.74, "flows": 0.0, "growth": 0.944804, "iso": "2026-07-30", "label": "30 Jul"}, {"day_change": 310.68, "equity": 31612.42, "flows": 0.0, "growth": 0.954182, "iso": "2026-07-31", "label": "31 Jul"}, {"day_change": -38.07, "equity": 31574.35, "flows": 0.0, "growth": 0.953033, "iso": "2026-08-03", "label": "03 Aug"}, {"day_change": -358.39, "equity": 31215.96, "flows": 0.0, "growth": 0.942215, "iso": "2026-08-04", "label": "04 Aug"}, {"day_change": 41.09, "equity": 31257.05, "flows": 0.0, "growth": 0.943455, "iso": "2026-08-05", "label": "05 Aug"}, {"day_change": 60.15, "equity": 31317.2, "flows": 0.0, "growth": 0.945271, "iso": "2026-08-06", "label": "06 Aug"}, {"day_change": -78.31, "equity": 31238.89, "flows": 0.0, "growth": 0.942907, "iso": "2026-08-07", "label": "07 Aug"}, {"day_change": 131.18, "equity": 31370.07, "flows": 0.0, "growth": 0.946867, "iso": "2026-08-10", "label": "10 Aug"}, {"day_change": 270.91, "equity": 31640.98, "flows": 0.0, "growth": 0.955044, "iso": "2026-08-11", "label": "11 Aug"}, {"day_change": -202.2, "equity": 31438.78, "flows": 0.0, "growth": 0.948941, "iso": "2026-08-12", "label": "12 Aug"}, {"day_change": -168.22, "equity": 31270.56, "flows": 0.0, "growth": 0.943863, "iso": "2026-08-13", "label": "13 Aug"}, {"day_change": 183.45, "equity": 31454.01, "flows": 0.0, "growth": 0.9494, "iso": "2026-08-14", "label": "14 Aug"}, {"day_change": 35.2, "equity": 31489.21, "flows": 0.0, "growth": 0.950463, "iso": "2026-08-17", "label": "17 Aug"}, {"day_change": -675.1, "equity": 30814.11, "flows": 0.0, "growth": 0.930086, "iso": "2026-08-18", "label": "18 Aug"}, {"day_change": 43.04, "equity": 30857.15, "flows": 0.0, "growth": 0.931385, "iso": "2026-08-19", "label": "19 Aug"}, {"day_change": 235.65, "equity": 31092.8, "flows": 0.0, "growth": 0.938498, "iso": "2026-08-20", "label": "20 Aug"}, {"day_change": -206.18, "equity": 30886.62, "flows": 0.0, "growth": 0.932274, "iso": "2026-08-21", "label": "21 Aug"}, {"day_change": 69.71, "equity": 30956.33, "flows": 0.0, "growth": 0.934378, "iso": "2026-08-24", "label": "24 Aug"}, {"day_change": -3.87, "equity": 30952.46, "flows": 0.0, "growth": 0.934262, "iso": "2026-08-25", "label": "25 Aug"}, {"day_change": 197.13, "equity": 31149.59, "flows": 0.0, "growth": 0.940212, "iso": "2026-08-26", "label": "26 Aug"}, {"day_change": -23.03, "equity": 31126.56, "flows": 0.0, "growth": 0.939517, "iso": "2026-08-27", "label": "27 Aug"}, {"day_change": -12.14, "equity": 31114.42, "flows": 0.0, "growth": 0.93915, "iso": "2026-08-28", "label": "28 Aug"}, {"day_change": -132.95, "equity": 30981.47, "flows": 0.0, "growth": 0.935137, "iso": "2026-08-31", "label": "31 Aug"}, {"day_change": -202.79, "equity": 30778.68, "flows": 0.0, "growth": 0.929016, "iso": "2026-09-01", "label": "01 Sep"}, {"day_change": -490.04, "equity": 30288.64, "flows": 0.0, "growth": 0.914225, "iso": "2026-09-02", "label": "02 Sep"}, {"day_change": 531.72, "equity": 30820.36, "flows": 0.0, "growth": 0.930274, "iso": "2026-09-03", "label": "03 Sep"}, {"day_change": -267.63, "equity": 30552.73, "flows": 0.0, "growth": 0.922196, "iso": "2026-09-04", "label": "04 Sep"}, {"day_change": 74.58, "equity": 30627.31, "flows": 0.0, "growth": 0.924447, "iso": "2026-09-07", "label": "07 Sep"}, {"day_change": 66.0, "equity": 30693.31, "flows": 0.0, "growth": 0.92644, "iso": "2026-09-08", "label": "08 Sep"}, {"day_change": -341.08, "equity": 30352.23, "flows": 0.0, "growth": 0.916144, "iso": "2026-09-09", "label": "09 Sep"}, {"day_change": -434.25, "equity": 29917.98, "flows": 0.0, "growth": 0.903037, "iso": "2026-09-10", "label": "10 Sep"}, {"day_change": -48.63, "equity": 29869.35, "flows": 0.0, "growth": 0.901569, "iso": "2026-09-11", "label": "11 Sep"}, {"day_change": 329.37, "equity": 30198.72, "flows": 0.0, "growth": 0.911511, "iso": "2026-09-14", "label": "14 Sep"}, {"day_change": 253.54, "equity": 30452.26, "flows": 0.0, "growth": 0.919164, "iso": "2026-09-15", "label": "15 Sep"}, {"day_change": -375.0, "equity": 30077.26, "flows": 0.0, "growth": 0.907845, "iso": "2026-09-16", "label": "16 Sep"}, {"day_change": -311.61, "equity": 29765.65, "flows": 0.0, "growth": 0.898439, "iso": "2026-09-17", "label": "17 Sep"}, {"day_change": 264.46, "equity": 30030.11, "flows": 0.0, "growth": 0.906422, "iso": "2026-09-18", "label": "18 Sep"}, {"day_change": 166.29, "equity": 30196.4, "flows": 0.0, "growth": 0.911441, "iso": "2026-09-21", "label": "21 Sep"}, {"day_change": 1024.2, "equity": 31220.6, "flows": 0.0, "growth": 0.942355, "iso": "2026-09-22", "label": "22 Sep"}, {"day_change": 108.93, "equity": 31329.53, "flows": 0.0, "growth": 0.945643, "iso": "2026-09-23", "label": "23 Sep"}, {"day_change": -241.62, "equity": 31087.91, "flows": 0.0, "growth": 0.93835, "iso": "2026-09-24", "label": "24 Sep"}, {"day_change": 253.79, "equity": 31341.7, "flows": 0.0, "growth": 0.94601, "iso": "2026-09-25", "label": "25 Sep"}, {"day_change": 280.68, "equity": 31622.38, "flows": 0.0, "growth": 0.954482, "iso": "2026-09-28", "label": "28 Sep"}]}</script>
 
     
   </section>
@@ -1218,6 +1238,10 @@
         <div><div class="k">Return</div><div class="v down">-0.2%</div></div>
       </div>
       <p class="note" style="margin-top:6px">13,252.16 units @ 0.9545/unit · -0.3% p.a.</p>
+      
+      <p class="note" style="margin-top:2px">Gain <span class="num down">-603.21</span> · -4.55% on money in · joined 01 Feb @ 1.0000</p>
+      
+      
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
           <span class="k">Realised share</span><span class="v">-915.69</span>
@@ -1238,6 +1262,10 @@
         <div><div class="k">Return</div><div class="v down">-0.2%</div></div>
       </div>
       <p class="note" style="margin-top:6px">19,878.24 units @ 0.9545/unit · -0.3% p.a.</p>
+      
+      <p class="note" style="margin-top:2px">Gain <span class="num down">-904.82</span> · -4.55% on money in · joined 01 Feb @ 1.0000</p>
+      
+      
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
           <span class="k">Realised share</span><span class="v">-1,373.53</span>
@@ -1402,7 +1430,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-09-28 05:13 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-09-28 06:03 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
@@ -1507,10 +1535,37 @@
         setTxt('eqWorst', worst === null ? '—' : fmt2s(worst));
       }
 
+      // s280: return per unit ("growth of $1") — unaffected by deposits /
+      // withdrawals. Dashed line = $1.00 (break-even since inception).
+      function drawNav(pts) {
+        const el = document.getElementById('eqNav');
+        if (!el) return;
+        const g = pts.filter(p => p.growth !== null && p.growth !== undefined);
+        if (g.length < 2) { el.innerHTML = ''; return; }
+        const vals = g.map(p => p.growth);
+        const lo = Math.min.apply(null, vals.concat([1])), hi = Math.max.apply(null, vals.concat([1]));
+        const range = (hi - lo) || 0.001;
+        const X = i => 4 + i * 364 / (g.length - 1);
+        const Y = v => 102 - ((v - lo) / range * 94);
+        let s = '';
+        g.forEach((p, i) => { s += X(i).toFixed(1) + ',' + Y(p.growth).toFixed(1) + ' '; });
+        const y1 = Y(1).toFixed(1);
+        let svg = '<line x1="4" y1="' + y1 + '" x2="368" y2="' + y1 + '" stroke="#5E7385" stroke-dasharray="2 4" stroke-width="1"/>';
+        svg += '<polyline fill="none" stroke="#2FA57C" stroke-width="1.8" points="' + s.trim() + '"/>';
+        g.forEach((p, i) => {
+          if (p.flows) {   // mark days with money in / out: the line does not jump
+            svg += '<circle cx="' + X(i).toFixed(1) + '" cy="' + Y(p.growth).toFixed(1) + '" r="2.6" fill="#D9A441"><title>' + (p.flows > 0 ? '+' : '−') + '$' + Math.abs(Math.round(p.flows)).toLocaleString('en-US') + (p.flows > 0 ? ' added ' : ' withdrawn ') + p.label + '</title></circle>';
+          }
+        });
+        el.innerHTML = svg;
+        const pct = v => ((v - 1) * 100 >= 0 ? '+' : '') + ((v - 1) * 100).toFixed(2) + '%';
+        setTxt('navLow', pct(Math.min.apply(null, vals))); setTxt('navHigh', pct(Math.max.apply(null, vals)));
+      }
+
       const RLABEL = { 7: '· 1W', 30: '· 1M', 90: '· 3M', 0: '· all' };
       function applyRange(days) {
         const pts = windowPoints(days);
-        drawCurve(pts); drawBars(pts);
+        drawCurve(pts); drawBars(pts); drawNav(pts);
         setTxt('eqRangeLbl', RLABEL[days] || '');
       }
 
