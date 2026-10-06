@@ -151,7 +151,7 @@
     <span class="pill share">view-only</span>
       
       <span class="pill code">t1_uk_trading_co</span>
-      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:13:20</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">07:58:46</span>
     </div>
   </div>
   
@@ -193,10 +193,6 @@
         <span>NAV/unit <span class="num">1.0497</span></span>
         <span>observed <span class="num">06 Oct 06:12</span></span>
       </div>
-      
-      
-      <p class="note" style="margin-top:6px">The return above is net of <span class="num">-457</span> of fees and financing since inception — IB commissions, account fees, financing and dividends net. The account is USD, so this is not FX.</p>
-      
       
       
       
@@ -271,14 +267,14 @@
     
     <div class="card">
       <details class="more">
-        <summary>IB cash activity (non-trading) · 54 events</summary>
+        <summary>IB cash activity (non-trading) · 60 events</summary>
         <div class="kv">
-          <span class="k">Interest</span><span class="v">$11.47</span>
+          <span class="k">Interest</span><span class="v">$31.74</span>
           <span class="k">Dividends</span><span class="v">$108.23</span>
-          <span class="k">Withholding tax</span><span class="v">$-39.20</span>
+          <span class="k">Withholding tax</span><span class="v">$-41.99</span>
           <span class="k">Account fees</span><span class="v">$0.00</span>
           <span class="k">FX P/L</span><span class="v">$0.00</span>
-          <span class="k">Trade fees</span><span class="v">$0.00</span>
+          <span class="k">Trade fees</span><span class="v">$41.18</span>
           
         </div>
         <p class="note">
@@ -293,7 +289,7 @@
         <div class="kv">
           <span class="k">Observed equity</span><span class="v">$55,112.52</span>
           <span class="k">Committed</span><span class="v">$53,129.75</span>
-          <span class="k">Realised lifetime</span><span class="v">$2,029.21</span>
+          <span class="k">Realised lifetime</span><span class="v">$1,589.03</span>
           <span class="k">Unrealised (open)</span><span class="v">$330.40</span>
           <span class="k">Expected equity</span><span class="v">$55,112.52</span>
           <span class="k">Delta</span><span class="v ">$-0.00</span>
@@ -742,7 +738,7 @@
 
   
   <section class="tabpane" id="pane-ledger">
-    <h2 class="eyebrow">Closed trades · latest 14</h2>
+    <h2 class="eyebrow">Closed trades · latest 17</h2>
     
     <div class="filters">
       <button class="chipbtn on" data-f="all">All</button>
@@ -813,6 +809,21 @@
       
       <details class="lrow" data-k="loss">
         <summary>
+          <span class="tick">NKE</span>
+          <span class="dates">2026-09-15 → 2026-09-15</span>
+          <span class="rr" style="color:var(--faint)">—</span>
+          <span class="amt down">-100.80</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">36.75 → 36.44</span>
+          <span class="k">Qty</span><span class="v">320</span>
+          <span class="k">Exit reason</span><span class="v">IB-only round trip NKE 2026-09-15 (Flex-sourced; engine ledger showed it as expired unfilled) exit</span>
+          
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
           <span class="tick">EXC</span>
           <span class="dates">2026-09-03 → 2026-09-15</span>
           <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
@@ -868,6 +879,36 @@
           <span class="k">Qty</span><span class="v">12</span>
           <span class="k">Exit reason</span><span class="v">time_stop (60d)</span>
           <span class="k">R multiple</span><span class="v">+2.58</span>
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">GOOGL</span>
+          <span class="dates">2026-08-31 → 2026-08-31</span>
+          <span class="rr" style="color:var(--faint)">—</span>
+          <span class="amt down">-144.54</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">344.05 → 337.48</span>
+          <span class="k">Qty</span><span class="v">22</span>
+          <span class="k">Exit reason</span><span class="v">IB-only round trip GOOGL 2026-08-31 (Flex-sourced; engine ledger showed it as expired unfilled) exit</span>
+          
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
+          <span class="tick">ADI</span>
+          <span class="dates">2026-08-28 → 2026-08-28</span>
+          <span class="rr" style="color:var(--faint)">—</span>
+          <span class="amt down">-194.85</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">374.14 → 361.15</span>
+          <span class="k">Qty</span><span class="v">15</span>
+          <span class="k">Exit reason</span><span class="v">IB-only round trip ADI 2026-08-28 (Flex-sourced; engine ledger showed it as expired unfilled) exit</span>
+          
         </div>
       </details>
       
@@ -992,12 +1033,12 @@
       
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">+770.85</span>
-          <span class="k">Unrealised share</span><span class="v">+125.51</span>
-          <span class="k">Trade fees share</span><span class="v">−0.00</span>
-          <span class="k">Fees &amp; costs</span><span class="v">+94.70</span>
-          <span class="k">Est. tax (CT)</span><span class="v">−146.46</span>
-          <span class="k">Net after tax</span><span class="v up">+844.60</span>
+          <span class="k">Realised share</span><span class="v">+808.06</span>
+          <span class="k">Unrealised share</span><span class="v">+168.02</span>
+          <span class="k">Trade fees share</span><span class="v">−19.78</span>
+          <span class="k">Fees &amp; costs</span><span class="v">+34.76</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−147.00</span>
+          <span class="k">Net after tax</span><span class="v up">+844.06</span>
         </div>
       </details>
     </div>
@@ -1016,12 +1057,12 @@
       
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">+513.90</span>
-          <span class="k">Unrealised share</span><span class="v">+83.67</span>
-          <span class="k">Trade fees share</span><span class="v">−0.00</span>
-          <span class="k">Fees &amp; costs</span><span class="v">+63.14</span>
-          <span class="k">Est. tax (CT)</span><span class="v">−97.64</span>
-          <span class="k">Net after tax</span><span class="v up">+563.07</span>
+          <span class="k">Realised share</span><span class="v">+538.71</span>
+          <span class="k">Unrealised share</span><span class="v">+112.01</span>
+          <span class="k">Trade fees share</span><span class="v">−13.19</span>
+          <span class="k">Fees &amp; costs</span><span class="v">+23.18</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−98.00</span>
+          <span class="k">Net after tax</span><span class="v up">+562.71</span>
         </div>
       </details>
     </div>
@@ -1042,19 +1083,19 @@
       
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">+744.46</span>
-          <span class="k">Unrealised share</span><span class="v">+121.21</span>
-          <span class="k">Trade fees share</span><span class="v">−0.00</span>
-          <span class="k">Fees &amp; costs</span><span class="v">-534.67</span>
-          <span class="k">Est. tax (CT)</span><span class="v">−141.45</span>
-          <span class="k">Net after tax</span><span class="v up">+189.55</span>
+          <span class="k">Realised share</span><span class="v">+242.25</span>
+          <span class="k">Unrealised share</span><span class="v">+50.37</span>
+          <span class="k">Trade fees share</span><span class="v">−8.21</span>
+          <span class="k">Fees &amp; costs</span><span class="v">+46.59</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−49.09</span>
+          <span class="k">Net after tax</span><span class="v up">+281.91</span>
         </div>
       </details>
     </div>
     
 
     
-    <p class="note">Tax estimate: CT @ 19.0% on £2,029 (≈ $2,029 × FX 1.0000). Applies to the legal entity (t1_uk_trading_co); allocated by pool share. Indicative only.</p>
+    <p class="note">Tax estimate: CT @ 19.0% on £1,548 (≈ $1,548 × FX 1.0000). Applies to the legal entity (t1_uk_trading_co); allocated by share of profit earned. Indicative only.</p>
     
 
     
@@ -1212,7 +1253,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-10-06 05:13 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-10-06 06:58 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
