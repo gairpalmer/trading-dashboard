@@ -1,5 +1,5 @@
 {
-  "generated": "2026-10-15T07:23:24.586030",
+  "generated": "2026-10-15T10:06:12.109370",
   "initial_equity": 32225.0,
   "open_trades": [
     {
@@ -35,38 +35,6 @@
       "days_held": 14
     },
     {
-      "trade_id": 70,
-      "ticker": "ORCL",
-      "direction": "long",
-      "leg_name": "elder_macd_div",
-      "strategy": "elder",
-      "status": "OPEN",
-      "signal_date": "2026-09-29T00:00:00",
-      "entry_date": "2026-10-01T00:00:00",
-      "exit_date": "NaT",
-      "entry_price": 137.3735,
-      "stop_price": 131.1853,
-      "initial_stop_price": 131.1853,
-      "target_price": 0.0,
-      "exit_price": null,
-      "qty": 23,
-      "filled_qty": 23,
-      "pnl": null,
-      "r_multiple": null,
-      "entry_commission": 0.0,
-      "exit_commission": null,
-      "ib_entry_order_id": 6408.0,
-      "ib_stop_order_id": 6409.0,
-      "ib_target_order_id": 6411.0,
-      "exit_reason": null,
-      "notes": null,
-      "last_price": 130.55,
-      "unrealized_pnl": -156.94,
-      "unrealized_r": -1.1,
-      "risk_amount": 142.33,
-      "days_held": 14
-    },
-    {
       "trade_id": 71,
       "ticker": "GOOGL",
       "direction": "long",
@@ -99,8 +67,36 @@
       "days_held": 9
     }
   ],
-  "total_unrealized_pnl": -246.21,
-  "pending_trades": [],
+  "total_unrealized_pnl": -89.27,
+  "pending_trades": [
+    {
+      "trade_id": 72,
+      "ticker": "AZN",
+      "direction": "long",
+      "leg_name": "elder_macd_div",
+      "strategy": "elder",
+      "status": "PENDING",
+      "signal_date": "2026-10-14T00:00:00",
+      "entry_date": "NaT",
+      "exit_date": "NaT",
+      "entry_price": 162.03,
+      "stop_price": 153.538,
+      "initial_stop_price": 153.538,
+      "target_price": 0.0,
+      "exit_price": null,
+      "qty": 18,
+      "filled_qty": 0,
+      "pnl": null,
+      "r_multiple": null,
+      "entry_commission": null,
+      "exit_commission": null,
+      "ib_entry_order_id": 6862.0,
+      "ib_stop_order_id": 6863.0,
+      "ib_target_order_id": 6865.0,
+      "exit_reason": null,
+      "notes": null
+    }
+  ],
   "closed_trades": [
     {
       "trade_id": 2,
@@ -1445,6 +1441,34 @@
       "exit_reason": "stop_loss",
       "notes": null,
       "duration_days": 9
+    },
+    {
+      "trade_id": 70,
+      "ticker": "ORCL",
+      "direction": "long",
+      "leg_name": "elder_macd_div",
+      "strategy": "elder",
+      "status": "CLOSED",
+      "signal_date": "2026-09-29T00:00:00",
+      "entry_date": "2026-10-01T00:00:00",
+      "exit_date": "2026-10-15T00:00:00",
+      "entry_price": 137.3735,
+      "stop_price": 131.1853,
+      "initial_stop_price": 131.1853,
+      "target_price": 0.0,
+      "exit_price": 131.1853,
+      "qty": 23,
+      "filled_qty": 23,
+      "pnl": -142.32859999999988,
+      "r_multiple": -1.0,
+      "entry_commission": 0.0,
+      "exit_commission": 0.0,
+      "ib_entry_order_id": 6408.0,
+      "ib_stop_order_id": 6409.0,
+      "ib_target_order_id": 6411.0,
+      "exit_reason": "stop_loss",
+      "notes": null,
+      "duration_days": 14
     }
   ],
   "missed_trades": [
@@ -1978,7 +2002,7 @@
     },
     {
       "date": "2026-04-30",
-      "equity": 31910.81
+      "equity": 33593.96
     },
     {
       "date": "2026-04-30",
@@ -2098,7 +2122,7 @@
     },
     {
       "date": "2026-09-09",
-      "equity": 31501.8
+      "equity": 30374.12
     },
     {
       "date": "2026-09-09",
@@ -2131,6 +2155,10 @@
     {
       "date": "2026-10-02",
       "equity": 31942.43
+    },
+    {
+      "date": "2026-10-15",
+      "equity": 31800.1
     }
   ],
   "monthly_pnl": [
@@ -2185,10 +2213,10 @@
     },
     {
       "period": "2026-10",
-      "pnl": 1243.0,
-      "trades": 1,
-      "win_rate": 1.0,
-      "avg_r": 6.46
+      "pnl": 1100.67,
+      "trades": 2,
+      "win_rate": 0.5,
+      "avg_r": 2.73
     }
   ],
   "quarterly_pnl": [
@@ -2215,53 +2243,63 @@
     },
     {
       "period": "2026Q4",
-      "pnl": 1243.0,
-      "trades": 1,
-      "win_rate": 1.0,
-      "avg_r": 6.46
+      "pnl": 1100.67,
+      "trades": 2,
+      "win_rate": 0.5,
+      "avg_r": 2.73
     }
   ],
   "yearly_pnl": [
     {
       "period": "2026",
-      "pnl": -282.57,
-      "trades": 48,
-      "win_rate": 0.375,
-      "avg_r": 0.07
+      "pnl": -424.9,
+      "trades": 49,
+      "win_rate": 0.367,
+      "avg_r": 0.04
     }
   ],
   "summary": {
-    "total_trades": 71,
-    "open": 3,
-    "closed": 48,
-    "pending": 0,
+    "total_trades": 72,
+    "open": 2,
+    "closed": 49,
+    "pending": 1,
     "cancelled": 2,
     "missed": 18,
-    "win_rate": 0.375,
-    "avg_r": 0.07,
-    "profit_factor": 0.97,
-    "total_pnl": -282.57,
-    "current_equity": 31426.95,
+    "win_rate": 0.367,
+    "avg_r": 0.04,
+    "profit_factor": 0.96,
+    "total_pnl": -424.9,
+    "current_equity": 30809.69,
     "max_drawdown": -0.1488,
-    "sharpe_approx": 0.22
+    "sharpe_approx": 0.15
   },
   "status": "Live",
   "last_run": {
-    "timestamp": "2026-10-14T06:07:41.177282",
-    "trading_date": "2026-10-13",
+    "timestamp": "2026-10-15T10:06:08.569834",
+    "trading_date": "2026-10-14",
     "mode": "LIVE",
     "ib_connected": true,
-    "equity": 31426.951162010275,
-    "entries_planned": 0,
-    "entries_placed": 0,
+    "equity": 30809.685991520124,
+    "entries_planned": 1,
+    "entries_placed": 1,
     "stop_updates": [],
     "stops_applied": 0,
-    "exits_detected": [],
+    "exits_detected": [
+      {
+        "ticker": "ORCL",
+        "trade_id": 70,
+        "exit_reason": "stop_loss",
+        "exit_price": 131.1853,
+        "pnl": -142.33,
+        "r_multiple": -1.0,
+        "exit_commission": 0.0
+      }
+    ],
     "discrepancies": [
       "IB has position in CEG (qty=-9) not in ledger"
     ],
-    "open_count": 3,
-    "pending_count": 0
+    "open_count": 2,
+    "pending_count": 1
   },
   "watchlist": [
     {
