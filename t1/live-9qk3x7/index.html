@@ -151,7 +151,7 @@
     <span class="pill share">view-only</span>
       
       <span class="pill code">t1_uk_trading_co</span>
-      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:13:12</span>
+      <span class="pill code" title="Server render time — if this isn't current, the page is cached">06:03:50</span>
     </div>
   </div>
   
@@ -185,7 +185,7 @@
         <span>Net P&amp;L <span class="num up">+3,374.91</span></span>
         
         
-        <span>Return per unit <span class="num up">+7.6%</span> <span class="num up">(+25.3% p.a.)</span></span>
+        <span>Return per unit <span class="num up">+7.6%</span> <span class="num up">(+25.0% p.a.)</span></span>
         
       </div>
       <div class="hero-sub">
@@ -195,7 +195,7 @@
       </div>
       
       
-      <p class="note" style="margin-top:6px">The return above is net of <span class="num">+188</span> of fees and financing since inception — IB commissions, account fees, financing and dividends net. The account is USD, so this is not FX.</p>
+      <p class="note" style="margin-top:6px">The return above is net of <span class="num">+164</span> of fees and financing since inception — IB commissions, account fees, financing and dividends net. The account is USD, so this is not FX.</p>
       
       
       
@@ -279,18 +279,18 @@
     
     <div class="card">
       <details class="more">
-        <summary>IB cash activity (non-trading) · 77 events</summary>
+        <summary>IB cash activity (non-trading) · 82 events</summary>
         <div class="kv">
-          <span class="k">Interest</span><span class="v">$31.74</span>
-          <span class="k">Dividends</span><span class="v">$108.23</span>
-          <span class="k">Withholding tax</span><span class="v">$-41.99</span>
+          <span class="k">Interest</span><span class="v">$77.88</span>
+          <span class="k">Dividends</span><span class="v">$128.23</span>
+          <span class="k">Withholding tax</span><span class="v">$-61.83</span>
           <span class="k">Account fees</span><span class="v">$0.00</span>
           <span class="k">FX P/L</span><span class="v">$0.00</span>
-          <span class="k">Trade fees</span><span class="v">$41.18</span>
+          <span class="k">Trade fees</span><span class="v">$54.37</span>
           
         </div>
         <p class="note">
-          Source: engine-written <span class="num">ib_account_state.json</span>, pulled 2026-11-05 06:12.
+          Source: engine-written <span class="num">ib_account_state.json</span>, pulled 2026-11-05 06:12 <span style="color:var(--loss)">(stale &gt;12h)</span>.
         </p>
       </details>
     </div>
@@ -301,7 +301,7 @@
         <div class="kv">
           <span class="k">Observed equity</span><span class="v">$56,504.66</span>
           <span class="k">Committed</span><span class="v">$53,129.75</span>
-          <span class="k">Realised lifetime</span><span class="v">$1,139.18</span>
+          <span class="k">Realised lifetime</span><span class="v">$1,130.21</span>
           <span class="k">Unrealised (open)</span><span class="v">$1,990.99</span>
           <span class="k">Expected equity</span><span class="v">$56,504.66</span>
           <span class="k">Delta</span><span class="v ">$0.00</span>
@@ -890,6 +890,21 @@
       
       <details class="lrow" data-k="loss">
         <summary>
+          <span class="tick">AVGO</span>
+          <span class="dates">2026-10-22 → 2026-10-22</span>
+          <span class="rr" style="color:var(--faint)">—</span>
+          <span class="amt down">-8.97</span>
+        </summary>
+        <div class="detail kv">
+          <span class="k">Entry / exit</span><span class="v">327.00 → 326.65</span>
+          <span class="k">Qty</span><span class="v">26</span>
+          <span class="k">Exit reason</span><span class="v">IB-only round trip AVGO 2026-10-22 (Flex-sourced; engine ledger showed it as expired unfilled) exit</span>
+          
+        </div>
+      </details>
+      
+      <details class="lrow" data-k="loss">
+        <summary>
           <span class="tick">GOOGL</span>
           <span class="dates">2026-10-06 → 2026-10-22</span>
           <span class="rr down" style="background:var(--loss-soft)">-1.0R</span>
@@ -1143,21 +1158,6 @@
         </div>
       </details>
       
-      <details class="lrow" data-k="win">
-        <summary>
-          <span class="tick">COST</span>
-          <span class="dates">2026-07-15 → 2026-07-29</span>
-          <span class="rr up" style="background:var(--gain-soft)">+3.9R</span>
-          <span class="amt up">+590.68</span>
-        </summary>
-        <div class="detail kv">
-          <span class="k">Entry / exit</span><span class="v">921.49 → 987.12</span>
-          <span class="k">Qty</span><span class="v">9</span>
-          <span class="k">Exit reason</span><span class="v">channel_envelope</span>
-          <span class="k">R multiple</span><span class="v">+3.86</span>
-        </div>
-      </details>
-      
     </div>
     <p class="note">Latest 20 closed trades. Full history lives in the desktop Activity view and the engine ledger.</p>
     
@@ -1182,19 +1182,19 @@
         <div><div class="k">Value now</div><div class="v up">$21,465</div></div>
         <div><div class="k">Return / unit</div><div class="v up">+7.6%</div></div>
       </div>
-      <p class="note" style="margin-top:6px">19,944.88 units @ 1.0762/unit · +25.0% p.a.</p>
+      <p class="note" style="margin-top:6px">19,944.88 units @ 1.0762/unit · +24.8% p.a.</p>
       
       <p class="note" style="margin-top:2px">Gain <span class="num up">+1,519.90</span> · +7.62% on money in · joined 08 Jul @ 1.0000</p>
       
       
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">+542.80</span>
-          <span class="k">Unrealised share</span><span class="v">+948.67</span>
-          <span class="k">Trade fees share</span><span class="v">−19.78</span>
-          <span class="k">Interest &amp; dividends (net of WHT)</span><span class="v">+48.21</span>
-          <span class="k">Est. tax (CT)</span><span class="v">−93.95</span>
-          <span class="k">Net after tax</span><span class="v up">+1,425.95</span>
+          <span class="k">Realised share</span><span class="v">+535.52</span>
+          <span class="k">Unrealised share</span><span class="v">+943.37</span>
+          <span class="k">Trade fees share</span><span class="v">−24.79</span>
+          <span class="k">Interest &amp; dividends (net of WHT)</span><span class="v">+65.80</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−92.06</span>
+          <span class="k">Net after tax</span><span class="v up">+1,427.84</span>
         </div>
       </details>
     </div>
@@ -1206,19 +1206,19 @@
         <div><div class="k">Value now</div><div class="v up">$14,310</div></div>
         <div><div class="k">Return / unit</div><div class="v up">+7.6%</div></div>
       </div>
-      <p class="note" style="margin-top:6px">13,296.58 units @ 1.0762/unit · +25.0% p.a.</p>
+      <p class="note" style="margin-top:6px">13,296.58 units @ 1.0762/unit · +24.8% p.a.</p>
       
       <p class="note" style="margin-top:2px">Gain <span class="num up">+1,013.27</span> · +7.62% on money in · joined 08 Jul @ 1.0000</p>
       
       
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">+361.87</span>
-          <span class="k">Unrealised share</span><span class="v">+632.45</span>
-          <span class="k">Trade fees share</span><span class="v">−13.19</span>
-          <span class="k">Interest &amp; dividends (net of WHT)</span><span class="v">+32.14</span>
-          <span class="k">Est. tax (CT)</span><span class="v">−62.64</span>
-          <span class="k">Net after tax</span><span class="v up">+950.63</span>
+          <span class="k">Realised share</span><span class="v">+357.02</span>
+          <span class="k">Unrealised share</span><span class="v">+628.92</span>
+          <span class="k">Trade fees share</span><span class="v">−16.53</span>
+          <span class="k">Interest &amp; dividends (net of WHT)</span><span class="v">+43.86</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−61.37</span>
+          <span class="k">Net after tax</span><span class="v up">+951.90</span>
         </div>
       </details>
     </div>
@@ -1230,7 +1230,7 @@
         <div><div class="k">Value now</div><div class="v up">$20,730</div></div>
         <div><div class="k">Return / unit</div><div class="v up">+7.6%</div></div>
       </div>
-      <p class="note" style="margin-top:6px">19,262.15 units @ 1.0762/unit · +25.0% p.a.</p>
+      <p class="note" style="margin-top:6px">19,262.15 units @ 1.0762/unit · +24.8% p.a.</p>
       
       <p class="note" style="margin-top:2px">Gain <span class="num up">+841.73</span> · +4.23% on money in · joined 08 Jul @ 1.0000</p>
       
@@ -1239,19 +1239,19 @@
       
       <details class="more"><summary>P&amp;L breakdown · pre-tax</summary>
         <div class="kv">
-          <span class="k">Realised share</span><span class="v">+302.90</span>
-          <span class="k">Unrealised share</span><span class="v">+529.40</span>
-          <span class="k">Trade fees share</span><span class="v">−8.21</span>
-          <span class="k">Interest &amp; dividends (net of WHT)</span><span class="v">+17.64</span>
-          <span class="k">Est. tax (CT)</span><span class="v">−52.03</span>
-          <span class="k">Net after tax</span><span class="v up">+789.70</span>
+          <span class="k">Realised share</span><span class="v">+296.99</span>
+          <span class="k">Unrealised share</span><span class="v">+523.18</span>
+          <span class="k">Trade fees share</span><span class="v">−13.05</span>
+          <span class="k">Interest &amp; dividends (net of WHT)</span><span class="v">+34.61</span>
+          <span class="k">Est. tax (CT)</span><span class="v">−50.98</span>
+          <span class="k">Net after tax</span><span class="v up">+790.75</span>
         </div>
       </details>
     </div>
     
 
     
-    <p class="note">Tax estimate: CT @ 19.0% on £1,098 (≈ $1,098 × FX 1.0000). Applies to the legal entity (t1_uk_trading_co); allocated by share of profit earned. Indicative only.</p>
+    <p class="note">Tax estimate: CT @ 19.0% on £1,076 (≈ $1,076 × FX 1.0000). Applies to the legal entity (t1_uk_trading_co); allocated by share of profit earned. Indicative only.</p>
     
 
     
@@ -1409,7 +1409,7 @@
   
   Tier 1 UK Trading Co Ltd
   
-<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-11-05 06:13 UTC · republish via scripts/push_dashboard_static.bat</span></div>
+<br><span style="color: var(--muted); font-size: 9px;">Static snapshot · last published 2026-11-06 06:03 UTC · republish via scripts/push_dashboard_static.bat</span></div>
 
 <script>
 (function() {
